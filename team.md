@@ -11,3 +11,5 @@
 | | | | | |
 |
 | | | | | |
+
+**Discord Chat/Server Invite :** https://discord.gg/TNBZchyJ4w
