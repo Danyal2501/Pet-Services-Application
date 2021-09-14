@@ -8,10 +8,10 @@
 
 | Wader Zheng| zheng453| 1007188945| wader.zheng@mail.utoronto.ca| UofT Email| wbondz#0930
 
-| | | | | |
+| Lingfeng Yang | yangli32 | 1003362933 | lingfeng.yang@mail.utoronto.ca | UofT Email | mlfy#6958 
 
 | | | | | |
 
-| Danyal Rana | ranadany | 1006329206 |danyal.rana@mail.utoronto.ca | email| dannn#0198
+| Danyal Rana | ranadany | 1006329206 |danyal.rana@mail.utoronto.ca | email| dannn#0198 
 
 Discord Chat/Server Invite : https://discord.gg/TNBZchyJ4w
