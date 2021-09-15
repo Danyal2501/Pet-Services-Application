@@ -10,7 +10,7 @@
 
 | Lingfeng Yang | yangli32 | 1003362933 | lingfeng.yang@mail.utoronto.ca | UofT Email | mlfy#6958 
 
-| | | | | |
+| Annas Rahuma | rahumaan | 1005005566 | annas.rahuma@mail.utoronto.ca | UofT Email | Annas-Rahuma#1937
 
 | Danyal Rana | ranadany | 1006329206 |danyal.rana@mail.utoronto.ca | email| dannn#0198 
 
