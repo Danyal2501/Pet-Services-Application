@@ -2,11 +2,11 @@
 
 |-----------|--------|------------|-------|---------------------|------------------
 
-| Yiming Zheng| zheng233|1005421152 | yiming.zheng@mail.utoronto.ca|Uoft email | zgdjcls#1681
+| Yiming Zheng | zheng233 | 1005421152 | yiming.zheng@mail.utoronto.ca | Uoft email | zgdjcls#1681
 
-| Shu Sun| sunshu3| 1005948487| shu.sun@mail.utoronto.ca| UofT mail| shusun#0668
+| Shu Sun | sunshu3 | 1005948487| shu.sun@mail.utoronto.ca | UofT mail| shusun#0668
 
-| Wader Zheng| zheng453| 1007188945| wader.zheng@mail.utoronto.ca| UofT Email| wbondz#0930
+| Wader Zheng | zheng453| 1007188945| wader.zheng@mail.utoronto.ca | UofT Email| wbondz#0930
 
 | Lingfeng Yang | yangli32 | 1003362933 | lingfeng.yang@mail.utoronto.ca | UofT Email | mlfy#6958 
 
