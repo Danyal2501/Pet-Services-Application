@@ -20,6 +20,12 @@ Git flow will be used to track the changes and progress made in each branch. Whe
 
 ### What do you name your branches?
 
+Master: Main branch of project. Used for documentation and sprint materials.
+
+Frontend: Used for front end components, including User interfaes and user experience components.
+
+Backend: Used for back end components, including servers and databases.
+
 ### Do you use github issues or another ticketing website?
 
 ### Do you use pull requests?
