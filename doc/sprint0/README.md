@@ -17,3 +17,9 @@ Database: MongoDB
 ### Do you use git flow?
 
 Git flow will be used to track the changes and progress made in each branch.
+
+### What do you name your branches?
+
+### Do you use github issues or another ticketing website?
+
+### Do you use pull requests?
