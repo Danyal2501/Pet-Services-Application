@@ -12,6 +12,15 @@ Back End: Android Studios, Java
 
 Database: MongoDB
 
+Installation links:
+
+Android Studios: https://developer.android.com/studio/install
+
+Java:https://java.com/en/download/
+
+MongoDB: https://www.mongodb.com/try
+
+
 ## Contribution:
 
 ### Do you use git flow?
@@ -26,7 +35,11 @@ Frontend: Used for front end components, including User interfaes and user exper
 
 Backend: Used for back end components, including servers and databases.
 
+Features: Used for completing individual features before merging.
+
 ### Do you use github issues or another ticketing website?
+
+Discord will be used for ticketing.
 
 ### Do you use pull requests?
 
