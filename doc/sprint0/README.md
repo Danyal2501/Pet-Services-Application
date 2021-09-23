@@ -29,3 +29,5 @@ Backend: Used for back end components, including servers and databases.
 ### Do you use github issues or another ticketing website?
 
 ### Do you use pull requests?
+
+It is recommended that team members use pull requests. It can provide other members with details and updates regarding any changes and progress made on any of the components.
