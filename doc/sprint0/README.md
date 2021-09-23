@@ -13,3 +13,7 @@ Back End: Java
 Database: MongoDB
 
 ## Contribution:
+
+# Do you use git flow?
+
+Git flow will be used to track the changes and progress made in each branch.
