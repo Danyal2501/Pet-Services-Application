@@ -8,7 +8,7 @@ The purpose of Pawsup is to provide a method for pet owners and service provider
 
 Front End: Android Studios
 
-Back End: Java
+Back End: Android Studios, Java
 
 Database: MongoDB
 
