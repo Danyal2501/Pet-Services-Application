@@ -11,8 +11,11 @@ As a seller, I want to upload and advertise the products or services that I am o
 # User Story #6 (Information displayed for seller)
 As a seller, I want to be able to customize the information that is advertised for the product/service I am offering.
 # User Story #7 ()
+As a user, I would like to have the option to reset my password, in the case I have forgotten it.
 # User Story #8 ()
+As a customer, I would like to sort and filter between products, so my browsing experience can be optimized.
 # User Story #9 ()
+As a customer, I would like to sort and filter between services, so my browsing experience can be optimized.
 # User Story #10 ()
 # User Story #12 ()
 # User Story #13 ()
