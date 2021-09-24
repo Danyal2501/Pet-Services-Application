@@ -57,69 +57,69 @@ Criteria of satisfaction:
 - The user can select the products they need and the site will filter the results based on the selections. 
 
 # User Story #10 ()
-As Mike (a customer), I would like to contact the service provider so I can ask for more details. 
+As Mike (a customer), I would like to contact the service provider so I can ask for more details.\
 Criteria of satisfaction: 
 - When a customer selects a service page, there is a button that will link to a chatbox for contact with the provider. 
 - The customer can enter their message and the application will send it to the provider’s inbox. 
 
 # User Story #11 ()
-As Fiona (a service provider), I would like to respond to any messages or inquiries from any potential customers so I can resolve any outstanding communications
+As Fiona (a service provider), I would like to respond to any messages or inquiries from any potential customers so I can resolve any outstanding communications\
 Criteria of satisfaction: 
 -The provider will receive any messages directed at them in their inbox. 
 -From there, they can respond to the messages. 
 
 # User Story #12 ()
-As Mike (a customer), I would like to be able to change my profile information, account information, and password. 
+As Mike (a customer), I would like to be able to change my profile information, account information, and password.\
 Criteria of satisfaction: 
 - There will be a page where all the information of the user is displayed.
 - The user can click on any of the information that requires changing by typing in the updates.
 - password and username info will require a confirmation process.
 
 # User Story #13 ()
-As Fiona (a service provider), I would like to withdraw a service that I no longer offer. 
+As Fiona (a service provider), I would like to withdraw a service that I no longer offer.\
 Criteria of satisfaction: 
 - On the current users product/service page, the user will have an option to delete any specific product/service
 - a confirmation popup is shown to warn the user, in case they pressed the button by mistake, and if the user confirms, the product is deleted from the backend.
 
 # User Story #14 ()
-As Holly (a seller/shop), I want to be able to see a summary/log/history of the items I sold and basic information of the customers who bought it. 
+As Holly (a seller/shop), I want to be able to see a summary/log/history of the items I sold and basic information of the customers who bought it.\
 Criteria of satisfaction: 
 - On the seller's main account page, the user can see a page to “History” on the sidebar of the account.
 - Once clicked, the user will be brought to a page where they can see the information of the user’s past transactions. 
 
 # User Story #15 ()
-As Fiona (a service provider), I would like to set and modify the prices of the services I offer. 
+As Fiona (a service provider), I would like to set and modify the prices of the services I offer.\
 Criteria of satisfaction: 
 - On the current users product/service page, the user will have an option to modify the services that they offer by clicking an button, in which the interface will drop down
 - a confirmation popup is shown to warn the user, in case they pressed the button by mistake once the user is ready to submit the changes, and if the user confirms, the changes are then modified.
 
 # User Story #16 ()
-As Fiona (a service provider), I would like to see the contact information of all my customers so that I can contact them when needed. 
+As Fiona (a service provider), I would like to see the contact information of all my customers so that I can contact them when needed.\
 Criteria of satisfaction: 
 - On the service provider’s main account page, the user can see a page to “Customers” on the sidebar of the account.
 - Once clicked, the user will be brought to a page where they can see the information of the user’s current and past customers. 
 - Details can be shown once the provider clicks on a specific customer. 
 
 # User Story #17 ()
-As Mike (a customer), I would like to see the location of each service provider so that I can send my pets to the spot after booking. 
+As Mike (a customer), I would like to see the location of each service provider so that I can send my pets to the spot after booking.\
 Criteria of satisfaction: 
 - Once the customer confirms a booking, a popup window will open, showing general location information along with other general information for reference.
 
 # User Story #18 ()
-As Mike (a customer), I would like to book a service at a specific time from a service provider immediately for my pets. 
+As Mike (a customer), I would like to book a service at a specific time from a service provider immediately for my pets.\
 Criteria of satisfaction: 
 - When viewing a service, there should be a visible option to create a booking.
 - Payment option and confirmation should be displayed if the customer tries to book.
 - The service provider should be notified in some way that a customer has requested to book their services.
 
 # User Story #19 ()
-As Mike (a customer), I can set my location, time period, and the number of pets I have so that services that can cater my needs for the specific time period are displayed. 
+As Mike (a customer), I can set my location, time period, and the number of pets I have so that services that can cater my needs for the specific time period are displayed.\
 Criteria of satisfaction: 
 - Customers can enter their own profile page after logging in.
 - On the profile page, customers can edit all their information on their page by clicking the edit button.
 
 # User Story #20 ()
-As Mike (customer) or Fiona (service provider), I would like to have the option to reset my password without logging in, in the case I have forgotten it, so I can regain access to my account. 
+As Mike (customer) or Fiona (service provider), I would like to have the option to reset my password without logging in, in the case I have forgotten it, so I can regain access to my account.\
 Criteria of satisfaction: 
 - User can enter their email to request a password reset
 - An email should be sent to the given address, if the email matches an account in the database
