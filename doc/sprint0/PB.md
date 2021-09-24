@@ -1,18 +1,18 @@
 # User Story #1 ()
-As Mike (a customer), I would like to register and log in to my personal account so that the application could display information, products, and services applicable and personalized to me. 
+As Mike (a customer), I would like to register and log in to my personal account so that the application could display information, products, and services applicable and personalized to me.\
 Criteria of satisfaction: 
 - Upon opening the app, the user will see a welcome page followed by the login page requiring credentials. 
 - If the user has an account, by typing in the login information, the user will be taken to the main account page, where it’s personal account will be shown. 
 - If the user doesn’t have an account, the user has the option to register, by clicking the register option below, in which an account would be created, once the process is complete.  
 
 # User Story #2 ()
-As Mike (a customer), I would like to be able to browse the products and services offered on their respective pages to see what is available to buy in my location. 
+As Mike (a customer), I would like to be able to browse the products and services offered on their respective pages to see what is available to buy in my location.\ 
 Criteria of satisfaction: 
 - Existing products and services on the website are displayed. 
 - Information such as payment details, and location are described in each specific page 
 
 # User Story #3 ()
-As Mike (a customer), I would like to filter the services such as pet boarding, pet walking and pet training products to personalize the results to my type of pet. 
+As Mike (a customer), I would like to filter the services such as pet boarding, pet walking and pet training products to personalize the results to my type of pet.\
 Criteria of satisfaction: 
 - There will be a menu where users are able to filter services by different categories. 
 - The user can select the services they need and the site will filter the results based on the selections. 
