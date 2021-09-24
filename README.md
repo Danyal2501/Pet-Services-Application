@@ -25,7 +25,7 @@ MongoDB: https://www.mongodb.com/try
 
 ### Do you use git flow?
 
-Git flow will be used to maintain the changes and progress made in each branch. Whenever a new feature is needed, it will be developed in seperate branches, and whenever the feature finishes development and is completely tested and verified, it will be merged back into the respective branch.
+Git flow will be used to track the changes and progress made in each branch. Whenever a new feature is needed, it will be developed in seperate branches, and whenever the feature finishes development and is completely tested and verified, it will be merged back into the respective branch.
 
 ### What do you name your branches?
 
@@ -39,7 +39,7 @@ Features: Used for completing individual features before merging.
 
 ### Do you use github issues or another ticketing website?
 
-Discord will be used for ticketing.
+Discord and Github issues will be used for ticketing.
 
 ### Do you use pull requests?
 
