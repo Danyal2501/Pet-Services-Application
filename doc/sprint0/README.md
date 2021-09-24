@@ -39,7 +39,7 @@ Features: Used for completing individual features before merging.
 
 ### Do you use github issues or another ticketing website?
 
-Discord will be used for ticketing.
+Discord and Github issues will be used for ticketing.
 
 ### Do you use pull requests?
 
