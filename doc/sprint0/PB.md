@@ -6,7 +6,7 @@ Criteria of satisfaction:
 - If the user doesn’t have an account, the user has the option to register, by clicking the register option below, in which an account would be created, once the process is complete.  
 
 # User Story #2 ()
-As Mike (a customer), I would like to be able to browse the products and services offered on their respective pages to see what is available to buy in my location.\ 
+As Mike (a customer), I would like to be able to browse the products and services offered on their respective pages to see what is available to buy in my location.\
 Criteria of satisfaction: 
 - Existing products and services on the website are displayed. 
 - Information such as payment details, and location are described in each specific page 
@@ -18,40 +18,40 @@ Criteria of satisfaction:
 - The user can select the services they need and the site will filter the results based on the selections. 
 
 # User Story #4 ()
-As Mike (a customer), I would like to apply to become a service provider so that I can offer my services to customers. 
+As Mike (a customer), I would like to apply to become a service provider so that I can offer my services to customers.\
 Criteria of satisfaction: 
 - There will be a page where users can apply to become service providers 
 - The user must be prompted with information including name, address and identification information 
 - Administrators should have the ability to accept or decline applications 
 
 # User Story #5 ()
-As Fiona (a service provider), I want to upload and advertise the services that I am offering so that customers can buy my services and gain profits. 
+As Fiona (a service provider), I want to upload and advertise the services that I am offering so that customers can buy my services and gain profits.\
 Criteria of satisfaction: 
 - Service providers should have a tab where they can set up a new service they are offering 
 - Service providers can add images, descriptions of service and location. 
 - Service providers can add a schedule to notify what timeframes their services are available to the customer. 
 
 # User Story #6 ()
-As Holly (a seller/shop), I want to be able to customize the information such as description and images that is advertised for the product/service I am offering. 
+As Holly (a seller/shop), I want to be able to customize the information such as description and images that is advertised for the product/service I am offering.\
 Criteria of satisfaction: 
 - Current products and services for the logged in user can be seen 
 - If the user chooses to do so, they will be able to make modifications to the description and image of their product/service 
 
 # User Story #7 ()
-As Mike (a customer), I would like to create pet cards to store information about my pets so that I can easily book services for each pet. 
+As Mike (a customer), I would like to create pet cards to store information about my pets so that I can easily book services for each pet.\
 Criteria of satisfaction: 
 - Users should be able to create a card for pets to include all their information. 
 - Users should be able to easily book a service for a pet by clicking on the desired card. 
 
 # User Story #8 ()
-As Mike (a customer), I would like to leave a rating out of 5 stars to a service or product after I have used it so that I can rate the quality of the service for future customers 
+As Mike (a customer), I would like to leave a rating out of 5 stars to a service or product after I have used it so that I can rate the quality of the service for future customers\
 Criteria of satisfaction: 
 - After a user has used a service, they should be prompted with the box on whether they want to fill a review or not. 
 - A user can later fill in the review after by going back to the service page 
 - The reviews should be available for all users to view. 
 
 # User Story #9 ()
-As Mike (a customer), I would like to filter the products available by type, such as pet food, toys, accessories, etc. so I can choose the items I need. 
+As Mike (a customer), I would like to filter the products available by type, such as pet food, toys, accessories, etc. so I can choose the items I need.\
 Criteria of satisfaction: 
 - There will be a menu where users are able to filter products by different categories. 
 - The user can select the products they need and the site will filter the results based on the selections. 
