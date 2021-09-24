@@ -1,4 +1,3 @@
-
 1.The Project Objective:
 
 Build a mobile application of pets service platform for both service providers and customers on Android.
@@ -6,26 +5,26 @@ The service included the pet inn/pet care service and sales of pet products.
 
 2.The Key Users:
 
-Steven Sun is a 28-year-old bank clerk at TD Canada Trust.
+Customer: Steven Sun is a 28-year-old bank clerk at TD Canada Trust.
 He got this job recently.
 Steven lives far away from his workplace and needs to go to work every workday.
 He is a pet lover and has two dogs and one cat.
 He doesn't have much time to buy food and rent places for his pets every day.
 
-Joseph Joestar is a 68-year-old retired soldier and is running a shop for pet supplies.
+Seller/Service Provider: Joseph Joestar is a 68-year-old retired soldier and is running a shop for pet supplies.
 Joseph used to train dogs when he was a soldier and he loves pets very much.
 He has a lot of spare time every day and likes walking dogs for friends and neighbours.
 Joseph can also provide a safe, cozy shelter for other people's pets and care for them at a low price.
 
 3.The Key Scenarios:
 
-Steven gets home late today and wants to rent a cozy place for his pets and find people to care for them on his Android phone quickly by tomorrow.
+(Customer)Steven gets home late today and wants to rent a cozy place for his pets and find people to care for them on his Android phone quickly by tomorrow.
 
-Steven wants to buy some reliable pet food for his dogs on his Android phone as soon as possible since he got a lot of works to do today.
+(Customer)Steven wants to buy some reliable pet food for his dogs on his Android phone as soon as possible since he got a lot of works to do today.
 
-Joseph wants to find a place to get more customers for his excellent pet supplies, so he is searching for applications on his Android phone.
+(Seller)Joseph wants to find a place to get more customers for his excellent pet supplies, so he is searching for applications on his Android phone.
 
-Joseph has no business tomorrow, so he is looking for people who want to let him care for their pets and walk pets for them.
+(Service Provider)Joseph has no business tomorrow, so he is looking for people who want to let him care for their pets and walk pets for them.
 
 4.The Key Principles:
 
@@ -43,4 +42,3 @@ The design should provide contact information for both customers and service pro
 
 Transparent feedback and rating:
 The design should let customers provide ratings and feedbacks quickly after their service and show them on the service provider's page transparently.
-
