@@ -51,7 +51,7 @@
     - 1 mark  = Few user stories, clearly not enough to occupy team for release 1
     - 0 marks = No user stories
    
-    Your mark: _1, you  have too much user story for realease 1
+    Your mark: _2, you  have too much user story for realease 1
 
   - Relevant persona clearly identified for each user story (max 2 marks) 
     - 2 marks = All user stories identify relevant persona
@@ -74,7 +74,7 @@
 
     Your mark: _1 some typos such as Story #15, 'a' should be capitalized. Also, it's not too clear that what the drop down is using for
   
-  PB.md Total Mark: 6_ / 8
+  PB.md Total Mark: 7_ / 8
 
 ---
 ## Setup (max 3 marks)
@@ -222,5 +222,5 @@
    
 ---
 ## Total Mark  
-Sprint 0 Total Mark : _42.5_ / 48
+Sprint 0 Total Mark : _43.5_ / 48
 	
