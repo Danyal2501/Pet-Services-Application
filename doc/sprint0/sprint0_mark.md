@@ -1,7 +1,7 @@
 # Sprint 0 Marking Scheme
 
-**Team Name:** [Team Name]  
-**Github:** [GitHub Repo Link]  
+**Team Name:** [Dream Team]  
+**Github:** [https://github.com/UTSCCSCC01/projectf21-dream-team]  
 
 ---
 ## summary.md (Max 8 marks)
