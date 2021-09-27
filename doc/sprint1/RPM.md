@@ -11,12 +11,12 @@ Lingfeng Yang
 Yunfei Wang
 
 Release Goals:
-To be able to register a user.
-To be able to login.
-To be able to browse the products and services offered.
-To be able to apply to become a service provider.
-To be able to create pet cards to store information about my pets.
-To be able to change my profile information, account information, and password.
+- To be able to register a user.
+- To be able to login.
+- To be able to browse the products and services offered.
+- To be able to apply to become a service provider.
+- To be able to create pet cards to store information about my pets.
+- To be able to change my profile information, account information, and password.
 
 Corresponding User Stories:
 1, 2, 4, 7 &12
