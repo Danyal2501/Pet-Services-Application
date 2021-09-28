@@ -1,4 +1,4 @@
-package com.example.pawsup.data;
+package com.example.pawsupapplication.data;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.

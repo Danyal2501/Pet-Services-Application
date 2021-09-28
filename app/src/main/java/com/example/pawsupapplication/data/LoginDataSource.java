@@ -1,6 +1,6 @@
-package com.example.pawsup.data;
+package com.example.pawsupapplication.data;
 
-import com.example.pawsup.data.model.LoggedInUser;
+import com.example.pawsupapplication.data.model.LoggedInUser;
 
 import java.io.IOException;
 

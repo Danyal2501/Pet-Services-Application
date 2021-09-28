@@ -1,4 +1,4 @@
-package com.example.pawsup.ui.login;
+package com.example.pawsupapplication.ui.login;
 
 import android.app.Activity;
 
@@ -22,10 +22,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pawsup.R;
-import com.example.pawsup.ui.login.LoginViewModel;
-import com.example.pawsup.ui.login.LoginViewModelFactory;
-import com.example.pawsup.databinding.ActivityLoginBinding;
+import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.login.LoginViewModel;
+import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
+import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 

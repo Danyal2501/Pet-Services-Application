@@ -1,4 +1,4 @@
-package com.example.pawsup;
+package com.example.pawsupapplication;
 
 import org.junit.Test;
 

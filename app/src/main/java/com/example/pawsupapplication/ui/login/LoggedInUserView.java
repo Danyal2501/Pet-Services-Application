@@ -1,4 +1,4 @@
-package com.example.pawsup.ui.login;
+package com.example.pawsupapplication.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.

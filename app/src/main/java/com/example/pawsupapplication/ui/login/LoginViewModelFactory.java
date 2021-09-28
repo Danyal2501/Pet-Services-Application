@@ -1,11 +1,11 @@
-package com.example.pawsup.ui.login;
+package com.example.pawsupapplication.ui.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.example.pawsup.data.LoginDataSource;
-import com.example.pawsup.data.LoginRepository;
+import com.example.pawsupapplication.data.LoginDataSource;
+import com.example.pawsupapplication.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

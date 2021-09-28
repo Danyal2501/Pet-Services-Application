@@ -1,4 +1,4 @@
-package com.example.pawsup.ui.login;
+package com.example.pawsupapplication.ui.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.example.pawsup.data.LoginRepository;
-import com.example.pawsup.data.Result;
-import com.example.pawsup.data.model.LoggedInUser;
-import com.example.pawsup.R;
+import com.example.pawsupapplication.data.LoginRepository;
+import com.example.pawsupapplication.data.Result;
+import com.example.pawsupapplication.data.model.LoggedInUser;
+import com.example.pawsupapplication.R;
 
 public class LoginViewModel extends ViewModel {
 

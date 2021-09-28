@@ -1,4 +1,4 @@
-package com.example.pawsup.data.model;
+package com.example.pawsupapplication.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
