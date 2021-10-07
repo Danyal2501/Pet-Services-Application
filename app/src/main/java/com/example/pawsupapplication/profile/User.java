@@ -2,7 +2,6 @@ package com.example.features_dream_14;
 
 public class User {
     private String name;
-    private String username;
     private String birthday;
     private String location;
     private String email;
@@ -11,7 +10,6 @@ public class User {
 
     public User(){
         name = "John Smith";
-        username = "johnsmith";
         birthday = "03/18/1997";
         location = "Toronto, Ontario";
         email = "sample@sample.com";
@@ -20,10 +18,6 @@ public class User {
     }
     public void setName(String s){
         name = changeString(s);
-    }
-
-    public void setUsername(String s){
-        username = changeString(s);
     }
 
     public void setBirthday(String s){ birthday = changeString(s); }
@@ -46,10 +40,6 @@ public class User {
 
     public String getName(){
         return name;
-    }
-
-    public String getUsername(){
-        return username;
     }
 
     public String getBirthday(){

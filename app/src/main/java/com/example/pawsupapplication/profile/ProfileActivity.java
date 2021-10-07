@@ -22,9 +22,6 @@ public class ProfileActivity extends AppCompatActivity {
         View t = findViewById(R.id.changefullname);
         ((TextView) t).setText(u.getName());
 
-        View t1 = findViewById(R.id.changename);
-        ((TextView) t1).setText(u.getUsername());
-
         View t2 = findViewById(R.id.changeBirthday);
         ((TextView) t2).setText(u.getBirthday());
 
@@ -45,20 +42,16 @@ public class ProfileActivity extends AppCompatActivity {
         EditText t = findViewById(R.id.changefullname);
         String s = t.getText().toString();
 
-        EditText t1 = findViewById(R.id.changename);
-        String s1 = t1.getText().toString();
-
         EditText t2 = findViewById(R.id.changeBirthday);
         String s2 = t2.getText().toString();
 
         EditText t3 = findViewById(R.id.changelocation);
         String s3 = t3.getText().toString();
 
-        if(s.equals("") || s1.equals("") || s2.equals("") || s3.equals("")){
+        if(s.equals("") || s2.equals("") || s3.equals("")){
             Toast.makeText(this, "One of the boxes is empty.", Toast.LENGTH_LONG).show();
         } else {
             ProfileActivity.u.setName(s);
-            ProfileActivity.u.setUsername(s1);
             ProfileActivity.u.setBirthday(s2);
             ProfileActivity.u.setLocation(s3);
 

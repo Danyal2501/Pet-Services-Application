@@ -23,17 +23,17 @@ public class EmailActivity extends AppCompatActivity {
         EditText t2 = findViewById(R.id.new_email);
         String p2 = t2.getText().toString();
 
-        if(p1.equals(ProfileActivity.u.getEmail())){
-            ProfileActivity.u.setEmail(p2);
-            Intent i = new Intent(this, SuccessActivity.class);
-            startActivity(i);
-        } else if (p1.equals("") || p2.equals("")) {
+        if (p1.equals("") || p2.equals("")) {
             Toast.makeText(this, "Please fill in all boxes", Toast.LENGTH_LONG).show();
         } else if(!p1.equals(ProfileActivity.u.getEmail())) {
             Toast.makeText(this, "Please enter the correct email.", Toast.LENGTH_LONG)
                     .show();
         } else if (p1.equals(p2)) {
             Toast.makeText(this, "Please enter a new email.", Toast.LENGTH_LONG).show();
+        } else if(p1.equals(ProfileActivity.u.getEmail())){
+            ProfileActivity.u.setEmail(p2);
+            Intent i = new Intent(this, SuccessActivity.class);
+            startActivity(i);
         }
     }
 

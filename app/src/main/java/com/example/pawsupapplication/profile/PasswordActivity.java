@@ -26,11 +26,7 @@ public class PasswordActivity extends AppCompatActivity {
         EditText t3 = findViewById(R.id.confirm_password);
         String p3 = t3.getText().toString();
 
-        if(p1.equals(ProfileActivity.u.getPassword()) && !p1.equals(p2) && p2.equals(p3)) {
-            ProfileActivity.u.setPassword(p2);
-            Intent i = new Intent(this, SuccessActivity.class);
-            startActivity(i);
-        } else if (p1.equals("") || p2.equals("") || p3.equals("")){
+        if (p1.equals("") || p2.equals("") || p3.equals("")){
             Toast.makeText(this, "Please fill in all boxes", Toast.LENGTH_LONG).show();
         } else if (!p1.equals(ProfileActivity.u.getPassword())) {
             Toast.makeText(this, "Please enter the correct password.",
@@ -40,6 +36,10 @@ public class PasswordActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         } else if (!p2.equals(p3)) {
             Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_LONG).show();
+        } else if(p1.equals(ProfileActivity.u.getPassword()) && !p1.equals(p2) && p2.equals(p3)) {
+            ProfileActivity.u.setPassword(p2);
+            Intent i = new Intent(this, SuccessActivity.class);
+            startActivity(i);
         }
     }
 

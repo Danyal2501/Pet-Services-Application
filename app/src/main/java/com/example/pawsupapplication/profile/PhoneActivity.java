@@ -23,11 +23,7 @@ public class PhoneActivity extends AppCompatActivity {
         EditText t2 = findViewById(R.id.new_number);
         String p2 = t2.getText().toString();
 
-        if(p1.equals(ProfileActivity.u.getPhone()) && !p1.equals(p2)){
-            ProfileActivity.u.setPhone(p2);
-            Intent i = new Intent(this, SuccessActivity.class);
-            startActivity(i);
-        } else if (p1.equals("") || p2.equals("")){
+         if (p1.equals("") || p2.equals("")){
             Toast.makeText(this, "Please fill in all boxes", Toast.LENGTH_LONG).show();
         } else if(!p1.equals(ProfileActivity.u.getPhone())) {
             Toast.makeText(this, "Please enter the correct phone number.",
@@ -35,6 +31,10 @@ public class PhoneActivity extends AppCompatActivity {
         } else if (p1.equals(p2)) {
             Toast.makeText(this, "Phone numbers do not match.", Toast.LENGTH_LONG)
                     .show();
+        } else if(p1.equals(ProfileActivity.u.getPhone()) && !p1.equals(p2)){
+            ProfileActivity.u.setPhone(p2);
+            Intent i = new Intent(this, SuccessActivity.class);
+            startActivity(i);
         }
     }
 
