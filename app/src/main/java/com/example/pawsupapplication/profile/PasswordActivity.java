@@ -28,6 +28,9 @@ public class PasswordActivity extends AppCompatActivity {
 
         if (p1.equals("") || p2.equals("") || p3.equals("")){
             Toast.makeText(this, "Please fill in all boxes", Toast.LENGTH_LONG).show();
+        } else if(!validPassword(p2)){
+            Toast.makeText(this, "Please enter a valid password.", Toast.LENGTH_LONG)
+                    .show();
         } else if (!p1.equals(ProfileActivity.u.getPassword())) {
             Toast.makeText(this, "Please enter the correct password.",
                     Toast.LENGTH_LONG).show();
@@ -36,7 +39,8 @@ public class PasswordActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         } else if (!p2.equals(p3)) {
             Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_LONG).show();
-        } else if(p1.equals(ProfileActivity.u.getPassword()) && !p1.equals(p2) && p2.equals(p3)) {
+        } else if(p1.equals(ProfileActivity.u.getPassword()) && !p1.equals(p2) && p2.equals(p3)
+                && validPassword(p2)) {
             ProfileActivity.u.setPassword(p2);
             Intent i = new Intent(this, SuccessActivity.class);
             startActivity(i);
@@ -46,5 +50,26 @@ public class PasswordActivity extends AppCompatActivity {
     public void back2(View v){
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
+    }
+
+    private static boolean validPassword(String s) {
+        char c;
+        boolean capital = false;
+        boolean lowerCase = false;
+        boolean number = false;
+        for(int i=0;i < s.length();i++) {
+            c = s.charAt(i);
+            if(Character.isDigit(c)) {
+                number = true;
+            }
+            else if (Character.isUpperCase(c)) {
+                capital = true;
+            } else if (Character.isLowerCase(c)) {
+                lowerCase = true;
+            }
+            if(number && capital && lowerCase)
+                return true;
+        }
+        return false;
     }
 }

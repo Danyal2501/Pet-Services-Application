@@ -28,10 +28,13 @@ public class PhoneActivity extends AppCompatActivity {
         } else if(!p1.equals(ProfileActivity.u.getPhone())) {
             Toast.makeText(this, "Please enter the correct phone number.",
                     Toast.LENGTH_LONG).show();
-        } else if (p1.equals(p2)) {
-            Toast.makeText(this, "Phone numbers do not match.", Toast.LENGTH_LONG)
-                    .show();
-        } else if(p1.equals(ProfileActivity.u.getPhone()) && !p1.equals(p2)){
+        } else if(!validPhone(p2)) {
+             Toast.makeText(this, "Please enter a valid phone number.",
+                     Toast.LENGTH_LONG).show();
+         } else if (p1.equals(p2)) {
+            Toast.makeText(this, "Phone enter a different phone number.",
+                    Toast.LENGTH_LONG).show();
+        } else if(p1.equals(ProfileActivity.u.getPhone()) && !p1.equals(p2) && validPhone(p2)){
             ProfileActivity.u.setPhone(p2);
             Intent i = new Intent(this, SuccessActivity.class);
             startActivity(i);
@@ -41,5 +44,9 @@ public class PhoneActivity extends AppCompatActivity {
     public void back3(View v){
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
+    }
+
+    private boolean validPhone(String s){
+       return s.charAt(3) == '-' && s.charAt(7) == '-';
     }
 }

@@ -28,6 +28,9 @@ public class EmailActivity extends AppCompatActivity {
         } else if(!p1.equals(ProfileActivity.u.getEmail())) {
             Toast.makeText(this, "Please enter the correct email.", Toast.LENGTH_LONG)
                     .show();
+        } else if(!validEmail(p2)){
+            Toast.makeText(this, "Please enter a valid email.", Toast.LENGTH_LONG)
+                    .show();
         } else if (p1.equals(p2)) {
             Toast.makeText(this, "Please enter a new email.", Toast.LENGTH_LONG).show();
         } else if(p1.equals(ProfileActivity.u.getEmail())){
@@ -40,5 +43,21 @@ public class EmailActivity extends AppCompatActivity {
     public void back1(View v){
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
+    }
+
+    private boolean validEmail(String s){
+        boolean at = false;
+        boolean dot = false;
+        for(int i=0;i < s.length();i++) {
+            if(s.charAt(i) == '@') {
+                at = true;
+            }
+            else if (s.charAt(i) == '.') {
+                dot = true;
+            }
+        }
+        if(at && dot)
+            return true;
+        return false;
     }
 }
