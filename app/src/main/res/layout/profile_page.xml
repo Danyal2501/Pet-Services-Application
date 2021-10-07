@@ -19,37 +19,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/changename"
-        android:layout_width="210dp"
+    <TextView
+        android:id="@+id/fullname"
+        android:layout_width="119dp"
         android:layout_height="50dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="10dp"
+        android:text="Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/age"
+        app:layout_constraintEnd_toStartOf="@+id/changefullname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/changeBirthday"
+        android:layout_width="211dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="23dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/changeBirthday"
+        app:layout_constraintBottom_toTopOf="@+id/changelocation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Username"
+        app:layout_constraintStart_toEndOf="@+id/age"
         app:layout_constraintTop_toBottomOf="@+id/changefullname"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/changepassword"
-        android:layout_width="206dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
-        android:onClick="password"
-        android:password="true"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/savechange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/changephone" />
 
     <TextView
         android:id="@+id/password"
@@ -57,6 +56,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
         android:layout_marginBottom="17dp"
         android:text="Password"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -66,58 +66,34 @@
         app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <TextView
-        android:id="@+id/Username"
-        android:layout_width="119dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="3dp"
-        android:text="Username"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/age"
-        app:layout_constraintEnd_toStartOf="@+id/changename"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullname" />
-
-    <TextView
-        android:id="@+id/mail"
-        android:layout_width="119dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="12dp"
-        android:text="Email"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/phone"
-        app:layout_constraintEnd_toStartOf="@+id/changeEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
-
-    <TextView
-        android:id="@+id/changephone"
+        android:id="@+id/changepassword"
         android:layout_width="206dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="31dp"
-        android:onClick="phone"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="29dp"
+        android:onClick="password"
+        android:password="true"
+        android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/changepassword"
+        app:layout_constraintBottom_toTopOf="@+id/savechange"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/phone"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toEndOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/changephone" />
 
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="119dp"
+    <EditText
+        android:id="@+id/changelocation"
+        android:layout_width="210dp"
         android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="17dp"
-        android:text="Location"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/mail"
-        app:layout_constraintEnd_toStartOf="@+id/changelocation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age" />
+        app:layout_constraintBottom_toTopOf="@+id/changeEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/location"
+        app:layout_constraintTop_toBottomOf="@+id/changeBirthday"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/phone"
@@ -133,56 +109,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail" />
 
-    <EditText
-        android:id="@+id/changelocation"
-        android:layout_width="210dp"
+    <TextView
+        android:id="@+id/changephone"
+        android:layout_width="206dp"
         android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
+        android:onClick="phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/changeEmail"
+        app:layout_constraintBottom_toTopOf="@+id/changepassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/location"
-        app:layout_constraintTop_toBottomOf="@+id/changeBirthday"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/fullname"
-        android:layout_width="119dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="10dp"
-        android:text="Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/Username"
-        app:layout_constraintEnd_toStartOf="@+id/changefullname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/age"
-        android:layout_width="119dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="10dp"
-        android:text="Birthday"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/location"
-        app:layout_constraintEnd_toStartOf="@+id/changeBirthday"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Username" />
+        app:layout_constraintStart_toEndOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@+id/changeEmail"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/changeEmail"
         android:layout_width="206dp"
         android:layout_height="48dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="29dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="26dp"
         android:onClick="email"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/changephone"
@@ -191,30 +137,55 @@
         app:layout_constraintTop_toBottomOf="@+id/changelocation"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/changeBirthday"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="26dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="119dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:text="Birthday"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/changelocation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/age"
-        app:layout_constraintTop_toBottomOf="@+id/changename"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintBottom_toTopOf="@+id/location"
+        app:layout_constraintEnd_toStartOf="@+id/changeBirthday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullname" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="9dp"
+        android:text="Location"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/mail"
+        app:layout_constraintEnd_toStartOf="@+id/changelocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age" />
+
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="12dp"
+        android:text="Email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintEnd_toStartOf="@+id/changeEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
 
     <Button
         android:id="@+id/savechange"
         android:layout_width="280dp"
         android:layout_height="48dp"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="57dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="288dp"
         android:clickable="true"
         android:onClick="saveProfile"
         android:shadowColor="#F44336"
@@ -234,7 +205,7 @@
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/changename"
+        app:layout_constraintBottom_toTopOf="@+id/changeBirthday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fullname"
         app:layout_constraintTop_toTopOf="parent"
