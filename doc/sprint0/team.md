@@ -14,6 +14,6 @@
 
 | Danyal Rana | ranadany | 1006329206 |danyal.rana@mail.utoronto.ca | UofT Email | dannn#0198 
 
-|  |  |  |  |  | 
+| Yuehai Zhou | zhouy134 | 1005859402 | yuehai.zhou@mail.utoronto.ca | UofT Email | Yuehai#4547
 
 Discord Chat/Server Invite : https://discord.gg/TNBZchyJ4w
