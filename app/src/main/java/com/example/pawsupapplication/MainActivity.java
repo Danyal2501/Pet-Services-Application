@@ -1,4 +1,4 @@
-package com.example.pawsupapplication.ui;
+package com.example.pawsupapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToLogin(View v) {
-        Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(startIntent);
     }
 
