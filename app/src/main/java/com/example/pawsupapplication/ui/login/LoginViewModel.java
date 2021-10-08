@@ -11,6 +11,14 @@ import com.example.pawsupapplication.data.Result;
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.R;
 
+/**
+ * Class responsible for the direct managing of all data, logic, and rules
+ * of the login application, including login requirement check and data change monitoring.
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
+ */
+
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
@@ -65,6 +73,6 @@ public class LoginViewModel extends ViewModel {
 
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 8;
+        return password != null && password.trim().length() > 5;
     }
 }

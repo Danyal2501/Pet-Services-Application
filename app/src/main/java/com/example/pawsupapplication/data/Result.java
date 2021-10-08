@@ -2,6 +2,9 @@ package com.example.pawsupapplication.data;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
  */
 public class Result<T> {
     // hide the private constructor to limit subclass types (Success, Error)

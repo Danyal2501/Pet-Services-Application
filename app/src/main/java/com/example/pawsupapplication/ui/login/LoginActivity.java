@@ -27,6 +27,13 @@ import com.example.pawsupapplication.ui.login.LoginViewModel;
 import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 
+/**
+ * Class responsible for carrying out the action of the interface when someone "login".
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
@@ -154,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean validSymbol=false;
         boolean validNumber=false;
 
-//aA1!asd
+        //aA1!asd
         String stringRegPass=registerPassword.getText().toString();
         String stringRegPassConfirm=registerConfirmPassword.getText().toString();
 
