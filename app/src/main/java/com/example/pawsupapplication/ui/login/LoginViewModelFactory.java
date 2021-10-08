@@ -10,6 +10,9 @@ import com.example.pawsupapplication.data.LoginRepository;
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
  */
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 

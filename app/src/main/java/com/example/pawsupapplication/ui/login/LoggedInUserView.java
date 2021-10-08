@@ -2,6 +2,9 @@ package com.example.pawsupapplication.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
  */
 class LoggedInUserView {
     private String displayName;

@@ -8,6 +8,9 @@ import java.util.HashMap;
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
  */
 public class LoginDataSource {
 
@@ -15,11 +18,15 @@ public class LoginDataSource {
 
     public Result<LoggedInUser> login(String username, String password) {
         LoggedInUser currentUser;
-        testData.put("Testbot1", "Aa1234567");
-        testData.put("Testbot2", "1234567Aa");
-        testData.put("Testbot3", "556677YYY");
-        testData.put("Testbot4", "!aGoodTime1");
-        testData.put("Testbot5", "YBHI567411!");
+        /**
+         * Currently employs a hashmap to store mock data for authentication purposes.
+         */
+        testData.put("Testbot1@inbox.com", "Aa12345!");
+        testData.put("Testbot2@mail.ca", "12345Aa!");
+        testData.put("Testbot3@gmail.com", "yY!12345");
+        testData.put("Testbot4@mail.ca", "!aGoodTime1");
+        testData.put("Testbot5@inbox.com", "Yb567411!");
+        // Mock Data ends here.
         boolean pass = false;
         try {
             // TODO: handle loggedInUser authentication

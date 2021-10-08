@@ -5,7 +5,6 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -28,8 +27,12 @@ import com.example.pawsupapplication.ui.login.LoginViewModel;
 import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 
-import java.io.File;
-import java.io.FileOutputStream;
+/**
+ * Class responsible for carrying out the action of the interface when someone "login".
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
+ */
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -139,18 +142,15 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
-    //Moves from login page to register page when register button is clicked
+    //To change view when register button is clicked
     public void showRegister(View view) {
         setContentView(R.layout.activity_register);
     }
 
-    //Moves from register page to login page when register button is clicked
     public void returnRegister(View view) {
         setContentView(R.layout.activity_login);
     }
 
-    //Gets email, password, and confirm password fields, and verifies that password
-    //inputs are valid. If valid, a toast is shown to the user.
     public void registerAccount(View view){
         EditText registerEmail = findViewById(R.id.createEmail);
         EditText registerPassword = findViewById(R.id.createPassword);
@@ -161,6 +161,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean validSymbol=false;
         boolean validNumber=false;
 
+        //aA1!asd
         String stringRegPass=registerPassword.getText().toString();
         String stringRegPassConfirm=registerConfirmPassword.getText().toString();
 
@@ -182,11 +183,9 @@ public class LoginActivity extends AppCompatActivity {
             }
             if (validUpperCase && validLowerCase && validSymbol && validNumber && validConfirm) {
                 Toast.makeText(getApplicationContext(), "Account Created!", Toast.LENGTH_SHORT).show();
-
             }
         }
         TextView testText = findViewById(R.id.testText);
         testText.setText(String.valueOf(validUpperCase)+String.valueOf(validLowerCase)+String.valueOf(validSymbol)+ String.valueOf(validNumber) + String.valueOf(validConfirm) +"||"+ stringRegPass +"||"+stringRegPassConfirm);
     }
-
 }
