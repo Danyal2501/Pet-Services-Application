@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.login.LoginViewModel;
 import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
+import com.example.pawsupapplication.ui.petcard.AddCard;
 
 /**
  * Class responsible for carrying out the action of the interface when someone "login".
@@ -142,6 +144,13 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
+//Temporary button launcher for pet card activity
+    public void launchAddPetCard(View v){
+
+        Intent i = new Intent(this, AddCard.class);
+        startActivity(i);
+    }
+
     //Moves from login page to register page when register button is clicked
     public void showRegister(View view) {
         setContentView(R.layout.activity_register);
@@ -191,5 +200,6 @@ public class LoginActivity extends AppCompatActivity {
         TextView testText = findViewById(R.id.testText);
         testText.setText(String.valueOf(validUpperCase)+String.valueOf(validLowerCase)+String.valueOf(validSymbol)+ String.valueOf(validNumber) + String.valueOf(validConfirm) +"||"+ stringRegPass +"||"+stringRegPassConfirm);
     }
+
 
 }
