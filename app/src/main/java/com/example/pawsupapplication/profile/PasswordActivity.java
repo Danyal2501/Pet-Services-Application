@@ -8,14 +8,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+This class is responsible for providing users with the ability to change their passwords.
+Users need to first enter their current password before entering their new password, then they
+need to re-enter their password to confirm changes.
+
+@author Shu Sun
+ */
 public class PasswordActivity extends AppCompatActivity {
 
+    /*
+    Displays UI for changing password.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
     }
 
+    /*
+    Performs various checks on the password before saving.
+     */
     public void savePassword(View v){
         EditText t1 = findViewById(R.id.current_password);
         String p1 = t1.getText().toString();
@@ -47,11 +60,17 @@ public class PasswordActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    Returns to the previous page.
+     */
     public void back2(View v){
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
     }
 
+    /*
+    Checks if the new password is valid.
+     */
     private static boolean validPassword(String s) {
         char c;
         boolean capital = false;

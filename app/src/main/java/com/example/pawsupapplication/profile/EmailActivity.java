@@ -7,15 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+/*
+This class is responsible for providing users with the ability to change their emails.
+Users need to first enter their current email before entering their new email to confirm
+changes.
+
+@author Shu Sun
+ */
 
 public class EmailActivity extends AppCompatActivity {
 
+    /*
+    Displays UI for changing email.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_mail);
     }
 
+    /*
+    Performs various checks on the email before saving.
+     */
     public void saveMail(View v){
         EditText t1 = findViewById(R.id.current_email);
         String p1 = t1.getText().toString();
@@ -40,11 +53,17 @@ public class EmailActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    Returns to the previous page.
+     */
     public void back1(View v){
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
     }
 
+    /*
+    Checks if the new email is valid.
+     */
     private boolean validEmail(String s){
         boolean at = false;
         boolean dot = false;

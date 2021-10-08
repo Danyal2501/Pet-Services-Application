@@ -10,10 +10,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+/*
+This class is responsible for displaying the profile, which contains numerous pieces of user
+information.
 
+@author Shu Sun
+ */
 public class ProfileActivity extends AppCompatActivity {
+    /*
+    Creates user object for temporary data storage.
+     */
     public static User u = new User();
 
+    /*
+    Displays UI for user profile.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +49,9 @@ public class ProfileActivity extends AppCompatActivity {
         ((TextView) t6).setText(u.getPassword());
     }
 
+    /*
+    Performs various checks on the profile before saving.
+     */
     public void saveProfile(View v){
         EditText t = findViewById(R.id.changefullname);
         String s = t.getText().toString();
@@ -60,16 +74,25 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    Sends users to the email page.
+     */
     public void email(View v){
         Intent i = new Intent(this, EmailActivity.class);
         startActivity(i);
     }
 
+    /*
+    Sends users to the phone number page.
+     */
     public void phone(View v){
         Intent i = new Intent(this, PhoneActivity.class);
         startActivity(i);
     }
 
+    /*
+    Sends users to the password page.
+     */
     public void password(View v){
         Intent i = new Intent(this, PasswordActivity.class);
         startActivity(i);
