@@ -1,8 +1,8 @@
-package com.example.pawsupapplication.profile;
+package com.example.pawsupapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.R;
+import com.example.pawsupapplication.R;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.EditText;

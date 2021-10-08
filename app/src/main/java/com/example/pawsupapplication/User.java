@@ -1,4 +1,4 @@
-package com.example.pawsupapplication.profile;
+package com.example.pawsupapplication;
 
 public class User {
     private String name;

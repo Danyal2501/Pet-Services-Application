@@ -1,8 +1,8 @@
-package com.example.pawsupapplication.profile;
+package com.example.pawsupapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.R;
+import com.example.pawsupapplication.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
