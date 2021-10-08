@@ -4,6 +4,9 @@ import androidx.annotation.Nullable;
 
 /**
  * Authentication result : success (user details) or error message.
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
  */
 class LoginResult {
     @Nullable

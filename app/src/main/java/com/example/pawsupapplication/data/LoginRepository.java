@@ -3,11 +3,13 @@ package com.example.pawsupapplication.data;
 import com.example.pawsupapplication.data.model.LoggedInUser;
 
 /**
- * Class that requests authentication and user information from the remote data source and
+ * Class that requests authentication and user information from the remote data source (MongoDB) and
  * maintains an in-memory cache of login status and user credentials information.
+ * @author Android Studio, Wader
+ * @version 1.1
+ * @since Oct 1st 2021
  */
 public class LoginRepository {
-
     private static volatile LoginRepository instance;
 
     private LoginDataSource dataSource;
