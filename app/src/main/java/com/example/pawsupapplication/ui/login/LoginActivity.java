@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.login.LoginViewModel;
 import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
+import com.example.pawsupapplication.ui.petcard.AddCard;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -132,5 +134,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    public void launchAddPetCard(View v){
+
+        Intent i = new Intent(this, AddCard.class);
+        startActivity(i);
     }
 }
