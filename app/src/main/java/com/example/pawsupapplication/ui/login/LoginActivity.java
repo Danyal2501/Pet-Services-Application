@@ -133,4 +133,51 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+    //To change view when register button is clicked
+    public void showRegister(View view) {
+        setContentView(R.layout.activity_register);
+    }
+
+    public void returnRegister(View view) {
+        setContentView(R.layout.activity_login);
+    }
+
+    public void registerAccount(View view){
+        EditText registerEmail = findViewById(R.id.createEmail);
+        EditText registerPassword = findViewById(R.id.createPassword);
+        EditText registerConfirmPassword = findViewById(R.id.confirmCreatePassword);
+
+        boolean validUpperCase=false;
+        boolean validLowerCase=false;
+        boolean validSymbol=false;
+        boolean validNumber=false;
+
+//aA1!asd
+        String stringRegPass=registerPassword.getText().toString();
+        String stringRegPassConfirm=registerConfirmPassword.getText().toString();
+
+        boolean validConfirm=(stringRegPassConfirm.equals(stringRegPass));
+
+        if (stringRegPass.length()>=6) {
+            for (int i = 0; i < stringRegPass.length(); i++) {
+                char currentChar = stringRegPass.charAt(i);
+                if (Character.isLetter(currentChar) && currentChar == Character.toUpperCase(currentChar)) {
+                    validUpperCase = true;
+                } else if (Character.isLetter(currentChar) && currentChar == Character.toLowerCase(currentChar)) {
+                    validLowerCase = true;
+                } else if (!Character.isLetterOrDigit(currentChar)) {
+                    validSymbol = true;
+                } else if (Character.isDigit(currentChar)) {
+                    validNumber = true;
+                }
+
+            }
+            if (validUpperCase && validLowerCase && validSymbol && validNumber && validConfirm) {
+                Toast.makeText(getApplicationContext(), "Account Created!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        TextView testText = findViewById(R.id.testText);
+        testText.setText(String.valueOf(validUpperCase)+String.valueOf(validLowerCase)+String.valueOf(validSymbol)+ String.valueOf(validNumber) + String.valueOf(validConfirm) +"||"+ stringRegPass +"||"+stringRegPassConfirm);
+    }
 }
