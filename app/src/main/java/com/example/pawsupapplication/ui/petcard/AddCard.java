@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.data.PetCard;
+import com.example.pawsupapplication.data.model.PetCard;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

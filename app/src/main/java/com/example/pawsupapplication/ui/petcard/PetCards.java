@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.data.PetCardAdapter;
+import com.example.pawsupapplication.data.adapter.PetCardAdapter;
 
 import java.util.ArrayList;
 
