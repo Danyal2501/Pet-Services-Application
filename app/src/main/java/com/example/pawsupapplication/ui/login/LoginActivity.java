@@ -24,26 +24,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.ui.login.LoginViewModel;
-import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
+import com.example.pawsupapplication.ui.apply.ApplyPage;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
-import com.example.pawsupapplication.ui.petcard.AddCard;
-
-/**
- * Class responsible for carrying out the action of the interface when someone "login".
- * @author Android Studio, Wader
- * @version 1.1
- * @since Oct 1st 2021
- */
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private TextView apply;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        apply = findViewById(R.id.apply);
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
+        final TextView applyButton = apply;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -84,12 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
-                    finish();
                 }
                 setResult(Activity.RESULT_OK);
 
                 //Complete and destroy login activity once successful
-                //finish();
+                finish();
             }
         });
 
@@ -123,7 +116,13 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingProgressBar.setVisibility(View.VISIBLE);
+                startActivity(new Intent(LoginActivity.this, ApplyPage.class));
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,63 +142,4 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
-
-//Temporary button launcher for pet card activity
-    public void launchAddPetCard(View v){
-
-        Intent i = new Intent(this, AddCard.class);
-        startActivity(i);
-    }
-
-    //Moves from login page to register page when register button is clicked
-    public void showRegister(View view) {
-        setContentView(R.layout.activity_register);
-    }
-
-    //Moves from register page to login page when register button is clicked
-    public void returnRegister(View view) {
-        setContentView(R.layout.activity_login);
-    }
-
-    //Gets email, password, and confirm password fields, and verifies that password
-    //inputs are valid. If valid, a toast is shown to the user.
-    public void registerAccount(View view){
-        EditText registerEmail = findViewById(R.id.createEmail);
-        EditText registerPassword = findViewById(R.id.createPassword);
-        EditText registerConfirmPassword = findViewById(R.id.confirmCreatePassword);
-
-        boolean validUpperCase=false;
-        boolean validLowerCase=false;
-        boolean validSymbol=false;
-        boolean validNumber=false;
-
-        String stringRegPass=registerPassword.getText().toString();
-        String stringRegPassConfirm=registerConfirmPassword.getText().toString();
-
-        boolean validConfirm=(stringRegPassConfirm.equals(stringRegPass));
-
-        if (stringRegPass.length()>=6) {
-            for (int i = 0; i < stringRegPass.length(); i++) {
-                char currentChar = stringRegPass.charAt(i);
-                if (Character.isLetter(currentChar) && currentChar == Character.toUpperCase(currentChar)) {
-                    validUpperCase = true;
-                } else if (Character.isLetter(currentChar) && currentChar == Character.toLowerCase(currentChar)) {
-                    validLowerCase = true;
-                } else if (!Character.isLetterOrDigit(currentChar)) {
-                    validSymbol = true;
-                } else if (Character.isDigit(currentChar)) {
-                    validNumber = true;
-                }
-
-            }
-            if (validUpperCase && validLowerCase && validSymbol && validNumber && validConfirm) {
-                Toast.makeText(getApplicationContext(), "Account Created!", Toast.LENGTH_SHORT).show();
-
-            }
-        }
-        TextView testText = findViewById(R.id.testText);
-        testText.setText(String.valueOf(validUpperCase)+String.valueOf(validLowerCase)+String.valueOf(validSymbol)+ String.valueOf(validNumber) + String.valueOf(validConfirm) +"||"+ stringRegPass +"||"+stringRegPassConfirm);
-    }
-
-
 }
