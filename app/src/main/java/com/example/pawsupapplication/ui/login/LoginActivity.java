@@ -127,13 +127,14 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
+        /**
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 startActivity(new Intent(LoginActivity.this, ApplyPage.class));
             }
-        });
+        });*/
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
