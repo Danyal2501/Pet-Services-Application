@@ -9,10 +9,21 @@
         android:id="@+id/loginActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
         android:layout_marginTop="80dp"
         android:onClick="goToLogin"
         android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/productsActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:onClick="goToProducts"
+        android:text="Products"
+        app:layout_constraintEnd_toEndOf="@+id/loginActivityButton"
+        app:layout_constraintStart_toStartOf="@+id/loginActivityButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginActivityButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,13 +3,11 @@ package com.example.pawsupapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.login.LoginActivity;
+import com.example.pawsupapplication.ui.products.Products;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -20,6 +18,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToLogin(View v) {
         Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goToProducts(View v) {
+        Intent startIntent = new Intent(getApplicationContext(), Products.class);
         startActivity(startIntent);
     }
 
