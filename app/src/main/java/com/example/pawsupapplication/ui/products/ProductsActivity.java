@@ -22,7 +22,7 @@ import java.util.List;
  * @author Lingfeng Yang
  */
 
-public class Products extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity {
 
     RecyclerView prodItemRecycler;
     ProductAdapter productAdapter;

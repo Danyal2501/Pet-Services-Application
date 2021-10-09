@@ -26,7 +26,7 @@
             android:name=".ui.products.ProductDetails"
             android:exported="true" />
         <activity
-            android:name=".ui.products.Products"
+            android:name=".ui.products.ProductsActivity"
             android:exported="true" />
         <activity
 
