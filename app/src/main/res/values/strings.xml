@@ -23,5 +23,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="registration_success">Account Created!</string>
+    <string name="apply">Apply to become a service provider</string>
+    <string name="service_name">Service Name</string>
+    <string name="service_address">Service Address</string>
+    <string name="service_desc">Service description</string>
+    <string name="service_price">Service Price</string>
 
 </resources>
