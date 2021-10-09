@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.login.LoginViewModel;
 import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
+import com.example.pawsupapplication.ui.apply.ApplyPage;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 import com.example.pawsupapplication.ui.petcard.AddCard;
 
@@ -40,10 +41,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private TextView apply;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        apply = findViewById(R.id.apply);
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -54,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
+        final TextView applyButton = apply;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -123,7 +127,13 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingProgressBar.setVisibility(View.VISIBLE);
+                startActivity(new Intent(LoginActivity.this, ApplyPage.class));
+            }
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
-//Temporary button launcher for pet card activity
+    //Temporary button launcher for pet card activity
     public void launchAddPetCard(View v){
 
         Intent i = new Intent(this, AddCard.class);
