@@ -18,6 +18,12 @@ import com.example.pawsupapplication.R;
 
 import java.util.List;
 
+/**
+ * This class is the adapter for the product. It handles the functionalities that will be required
+ * to get information from product, and creating the structures for product viewing.
+ *
+ * @author Lingfeng Yang
+ */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     Context context;
