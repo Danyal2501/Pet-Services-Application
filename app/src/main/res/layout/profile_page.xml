@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--
+    Home button
+     -->
     <Button
         android:id="@+id/button2"
         android:layout_width="91dp"
@@ -13,12 +16,16 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="52dp"
+        android:onClick="home"
         android:text="Home"
         app:layout_constraintBottom_toTopOf="@+id/fullname"
         app:layout_constraintEnd_toStartOf="@+id/Profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+    Full name
+     -->
     <TextView
         android:id="@+id/fullname"
         android:layout_width="119dp"
@@ -28,11 +35,14 @@
         android:layout_marginEnd="10dp"
         android:text="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/age"
+        app:layout_constraintBottom_toTopOf="@+id/birthday"
         app:layout_constraintEnd_toStartOf="@+id/changefullname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+    Change Birthday
+     -->
     <EditText
         android:id="@+id/changeBirthday"
         android:layout_width="211dp"
@@ -46,10 +56,13 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/changelocation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/age"
+        app:layout_constraintStart_toEndOf="@+id/birthday"
         app:layout_constraintTop_toBottomOf="@+id/changefullname"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!--
+    Password
+     -->
     <TextView
         android:id="@+id/password"
         android:layout_width="119dp"
@@ -65,6 +78,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone" />
 
+    <!--
+    Change Password
+     -->
     <TextView
         android:id="@+id/changepassword"
         android:layout_width="206dp"
@@ -80,6 +96,9 @@
         app:layout_constraintStart_toEndOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/changephone" />
 
+    <!--
+    Change Location
+     -->
     <EditText
         android:id="@+id/changelocation"
         android:layout_width="210dp"
@@ -95,6 +114,9 @@
         app:layout_constraintTop_toBottomOf="@+id/changeBirthday"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!--
+    Phone Number
+     -->
     <TextView
         android:id="@+id/phone"
         android:layout_width="119dp"
@@ -109,6 +131,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail" />
 
+    <!--
+    Change Phone Number
+     -->
     <TextView
         android:id="@+id/changephone"
         android:layout_width="206dp"
@@ -123,6 +148,9 @@
         app:layout_constraintTop_toBottomOf="@+id/changeEmail"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
+    <!--
+    Change Email
+     -->
     <TextView
         android:id="@+id/changeEmail"
         android:layout_width="206dp"
@@ -137,8 +165,11 @@
         app:layout_constraintTop_toBottomOf="@+id/changelocation"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!--
+    Birthday
+     -->
     <TextView
-        android:id="@+id/age"
+        android:id="@+id/birthday"
         android:layout_width="119dp"
         android:layout_height="51dp"
         android:layout_marginStart="30dp"
@@ -150,6 +181,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullname" />
 
+    <!--
+    Location
+     -->
     <TextView
         android:id="@+id/location"
         android:layout_width="119dp"
@@ -162,8 +196,11 @@
         app:layout_constraintBottom_toTopOf="@+id/mail"
         app:layout_constraintEnd_toStartOf="@+id/changelocation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/age" />
+        app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
+    <!--
+    Email
+     -->
     <TextView
         android:id="@+id/mail"
         android:layout_width="119dp"
@@ -178,6 +215,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location" />
 
+    <!--
+    Save Changes
+     -->
     <Button
         android:id="@+id/savechange"
         android:layout_width="280dp"
@@ -195,6 +235,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changepassword" />
 
+    <!--
+    Change Name
+     -->
     <EditText
         android:id="@+id/changefullname"
         android:layout_width="210dp"
@@ -211,6 +254,9 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!--
+    Profile
+     -->
     <TextView
         android:id="@+id/Profile"
         android:layout_width="101dp"
