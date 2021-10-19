@@ -198,30 +198,42 @@ Tracking on Jira Total Mark: 11 / 20
 ---
 ## Sprint Demo (Max 14 marks) 
   - Attendance (max 2 marks)
-    - 2 marks = full team is present
+    - **2 marks = full team is present**
     - 1 mark = one member is not present
     - 0 marks = more than one member is not present
   
   - Working software (max 2 marks)
     - 8 marks = features presented work flawlessly
     - 1 mark removed for each bug/error identified or for missing records on Jira
+    
+    Mark: 7
 
   - Presentation (max 2 marks)
     - 2 marks = UI demonstrated is visually appealing and intuitive for users
     - 1 mark = one or more errors identified by the demo TA
-    - 0 marks = UI is visually unappealing
+    - **0 marks = UI is visually unappealing**
 
-  - Documentation (max 2 marks)
+  - Documentation (max 2 marks
+    - 2 marks = documentation has been created for frontend and backend systems with great detail
+    - **1 mark = documentation has been created for frontend and backend systems with some errors**
+    - 0 marks = documentation has not been created
 
-  - 2 marks = documentation has been created for frontend and backend systems with great detail
-  - 1 mark = documentation has been created for frontend and backend systems with some errors
-  - 0 marks = documentation has not been created
+  Your Mark: 10 / 14
 
-  Your Mark: __ / 14
-
+Comments:
+- Base MaterialUI looks pretty ugly when you don't modify it since it's the default for android apps
+- TextFields/Buttons are not equal width on Register page
+- Invalid input should render as an error on the field
+- Creating an account should redirect to login/homepage
+- Button, text not centered on Login page
+- Error shouldn't render until the user hits sign in with an incorrect input
+- Think about how you render information. i.e. Neutered or Spayed (Y/N) would look better as a disabled checkbox.
+- Type textfield doesn't have limited input.. what if I put Human? o.o
+- Product page didnt have any indication it was a carousel, thought it was just a page with a single image
+- Hard coded product page
 ---
 
 
 ## Total Mark
 
-63/ 90
+73 / 90
