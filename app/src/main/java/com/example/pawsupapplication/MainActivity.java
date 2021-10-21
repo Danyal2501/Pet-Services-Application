@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.ui.login.LoginActivity;
+import com.example.pawsupapplication.ui.products.ChangePrice;
 import com.example.pawsupapplication.ui.products.ProductsActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToProducts(View v) {
         Intent startIntent = new Intent(getApplicationContext(), ProductsActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goToPriceChange(View v) {
+        Intent startIntent = new Intent(getApplicationContext(), ChangePrice.class);
         startActivity(startIntent);
     }
 
