@@ -13,7 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PawsupApplication">
         <activity
-            android:name=".ui.ratingReview.ReviewPageActivity"
+            android:name=".ui.ratingReview.RecentServices"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ratingReview.DisplayReviews"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ratingReview.ReviewActivity"
             android:exported="true" />
         <activity
             android:name=".ui.petcard.PetCards"

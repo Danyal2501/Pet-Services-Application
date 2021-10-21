@@ -12,9 +12,9 @@ import com.example.pawsupapplication.R;
 import com.squareup.picasso.Picasso;
 
 /**
- * This class is an extension of the adaptar class that allows for the input of images alongside
- * text rather than the basic adaptar only having one paramater, this one has two.
- * This is an extention of a class from https://abhiandroid.com/ui/listview.
+ * This class is an extension of the adapter class that allows for the input of images alongside
+ * text rather than the basic adapter only having one parameter, this one has two.
+ * This is an extension of a class from https://abhiandroid.com/ui/listview.
  *
  * @author Annas Rahuma
  */
