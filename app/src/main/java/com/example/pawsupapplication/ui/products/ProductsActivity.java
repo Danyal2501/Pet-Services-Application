@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is responsible for viewing all products in the database
+ * This class is responsible for viewing all products in the database.
+ * This class also contains the recycler that holds the products for viewing
  *
  * @author Lingfeng Yang
  */

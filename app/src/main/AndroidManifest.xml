@@ -31,6 +31,12 @@
             android:name=".ui.login.LoginActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.products.ChangePrice"
+            android:exported="true" />
+        <activity
+            android:name=".ui.products.ConfirmChange"
+            android:exported="true" />
+        <activity
             android:name=".ui.products.ProductDetails"
             android:exported="true" />
         <activity
