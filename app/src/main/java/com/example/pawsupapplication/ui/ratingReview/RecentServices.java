@@ -12,6 +12,14 @@ import com.example.pawsupapplication.R;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is responsible for displaying recent
+ * services booked by the user. It is meant to act
+ * as a landing page for the review functionality.
+ *
+ * @author Annas Rahuma and Shu Sun
+ */
+
 public class RecentServices extends AppCompatActivity {
 
     public static Map<String, Review> reviewMap= new HashMap<String, Review>();

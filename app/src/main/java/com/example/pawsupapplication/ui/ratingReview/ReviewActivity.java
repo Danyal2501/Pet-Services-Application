@@ -19,6 +19,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.UUID;
 
+/**
+ * This class is responsible for allowing users
+ * to enter their review and add them to the
+ * database.
+ *
+ * @author Annas Rahuma and Shu Sun
+ */
+
 public class ReviewActivity extends AppCompatActivity {
 
     @Override

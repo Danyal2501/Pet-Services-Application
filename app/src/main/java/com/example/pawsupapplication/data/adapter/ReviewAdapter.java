@@ -9,6 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.pawsupapplication.R;
 
+/**
+ * This class is an adapter object for the reviews.
+ * It contains all functions necessary for retrieving information from Reviews
+ * including the ratings and review body, and creating structures for viewing
+ * reviews.
+ *
+ * @author Annas Rahuma and Shu Sun
+ */
 public class ReviewAdapter extends BaseAdapter {
 
     Context context;
