@@ -149,7 +149,7 @@ public class AddCard extends AppCompatActivity {
             s3 = "Yes";
         }
         else if(i3.toLowerCase().equals("n") || i3.toLowerCase().equals("no")){
-            s3 = "Female";
+            s3 = "No";
         }
         else{
             s3 = "N/A";

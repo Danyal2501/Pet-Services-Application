@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.pawsupapplication.ui.login.LoginActivity;
 import com.example.pawsupapplication.ui.products.ChangePrice;
 import com.example.pawsupapplication.ui.products.ProductsActivity;
+import com.example.pawsupapplication.ui.ratingReview.RecentServices;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -27,9 +28,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(startIntent);
     }
 
+
+    public void goToReview(View v) {
+        Intent startIntent = new Intent(getApplicationContext(), RecentServices.class);
+    }
     public void goToPriceChange(View v) {
         Intent startIntent = new Intent(getApplicationContext(), ChangePrice.class);
         startActivity(startIntent);
     }
-
 }

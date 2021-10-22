@@ -23,9 +23,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pawsupapplication.ui.profile.ProfileActivity;
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.ui.login.LoginViewModel;
-import com.example.pawsupapplication.ui.login.LoginViewModelFactory;
 import com.example.pawsupapplication.ui.apply.ApplyPage;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 import com.example.pawsupapplication.ui.petcard.AddCard;
@@ -158,6 +157,12 @@ public class LoginActivity extends AppCompatActivity {
     public void launchAddPetCard(View v){
 
         Intent i = new Intent(this, AddCard.class);
+        startActivity(i);
+    }
+
+    public void launchProfile(View v){
+
+        Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
     }
 

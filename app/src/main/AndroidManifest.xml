@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pawsupapplication">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PawsupApplication">
+        <activity
+            android:name=".ui.ratingReview.RecentServices"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ratingReview.DisplayReviews"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ratingReview.ReviewActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.petcard.PetCards"
             android:exported="true" />
