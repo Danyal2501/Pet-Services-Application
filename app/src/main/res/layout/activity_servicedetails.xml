@@ -78,6 +78,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/serviceName" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/deleteService"
+            android:layout_width="55dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#C80000"
+            android:clickable="true"
+            android:onClick="onButtonShowPopupWindowClick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.898"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/serviceDesc"
+            app:srcCompat="@android:drawable/ic_delete"
+            app:useCompatPadding="false" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
