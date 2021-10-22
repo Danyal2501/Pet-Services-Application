@@ -108,4 +108,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/returnRegister" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteService"
+        android:layout_width="55dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#C80000"
+        android:clickable="true"
+        android:onClick="onButtonShowPopupWindowClick"
+        app:srcCompat="@android:drawable/ic_delete"
+        app:useCompatPadding="false"
+        tools:layout_editor_absoluteX="224dp"
+        tools:layout_editor_absoluteY="564dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
