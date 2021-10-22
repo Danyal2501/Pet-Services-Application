@@ -28,15 +28,17 @@ public class MainActivity extends AppCompatActivity {
         Intent startIntent = new Intent(getApplicationContext(), ProductsActivity.class);
         startActivity(startIntent);
     }
-
+  
     public void goToServices(View v) {
         Intent startIntent = new Intent(getApplicationContext(), ServiceActivity.class);
         startActivity(startIntent);
     }
-    
+
     public void goToReview(View v) {
         Intent startIntent = new Intent(getApplicationContext(), RecentServices.class);
+        startActivity(startIntent);
     }
+
     public void goToPriceChange(View v) {
         Intent startIntent = new Intent(getApplicationContext(), ChangePrice.class);
         startActivity(startIntent);

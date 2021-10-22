@@ -4,12 +4,18 @@
       Learnt how to create custom ratings bar from https://hackernoon.com/how-to-customize-ratingbar-component-in-android-gf1h3u0d
       -->
 
+    <!--
+      This block of code sets up the background for the rating bar.
+      -->
+    
     <item android:id="@android:id/background"
-        android:drawable="@drawable/star1"/>
-
-    <item android:id="@android:id/secondaryProgress"
         android:drawable="@drawable/star1"
-        />
+          />
+
+    <!--
+      This block of code shows the current value of the rating.
+      -->
+    
     <item android:id="@android:id/progress"
         android:drawable="@drawable/star2"
         />
