@@ -14,11 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,8 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
@@ -188,12 +192,15 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean validConfirm=(stringRegPassConfirm.equals(stringRegPass));
 
+        //verifies password length
         if (stringRegPass.length()>=6) {
             for (int i = 0; i < stringRegPass.length(); i++) {
                 char currentChar = stringRegPass.charAt(i);
+                //Checks for an uppercase character
                 if (Character.isLetter(currentChar) && currentChar == Character.toUpperCase(currentChar)) {
                     validUpperCase = true;
-                } else if (Character.isLetter(currentChar) && currentChar == Character.toLowerCase(currentChar)) {
+                }
+                else if (Character.isLetter(currentChar) && currentChar == Character.toLowerCase(currentChar)) {
                     validLowerCase = true;
                 } else if (!Character.isLetterOrDigit(currentChar)) {
                     validSymbol = true;
@@ -211,5 +218,31 @@ public class LoginActivity extends AppCompatActivity {
         testText.setText(String.valueOf(validUpperCase)+String.valueOf(validLowerCase)+String.valueOf(validSymbol)+ String.valueOf(validNumber) + String.valueOf(validConfirm) +"||"+ stringRegPass +"||"+stringRegPassConfirm);
     }
 
+    public void onButtonShowPopupWindowClick(View view) {
+
+        // inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_window, null);
+
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        // show the popup window
+        // which view you pass in doesn't matter, it is only used for the window tolken
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        // dismiss the popup window when touched
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
 
 }
