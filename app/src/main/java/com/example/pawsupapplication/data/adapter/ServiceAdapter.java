@@ -84,17 +84,10 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
             super(itemView);
 
             servImage = itemView.findViewById(R.id.serv_image);
-            System.out.println("image found");
             servName = itemView.findViewById(R.id.serv_name);
-            System.out.println("name found");
             servDesc = itemView.findViewById(R.id.serv_desc);
-            System.out.println("desc found");
             servAddr = itemView.findViewById(R.id.serv_address);
-            System.out.println("addr found");
             servPrice = itemView.findViewById(R.id.serv_price);
-            System.out.println("price found");
-
-
         }
     }
 
