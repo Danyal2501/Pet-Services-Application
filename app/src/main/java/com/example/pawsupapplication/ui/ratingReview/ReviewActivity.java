@@ -56,19 +56,28 @@ public class ReviewActivity extends AppCompatActivity {
         Intent i = new Intent(this, DisplayReviews.class);
 
         Iterator<Review> it = RecentServices.reviewMap.values().iterator();
+        Iterator<Review> itRatings = RecentServices.reviewMap.values().iterator();
         ArrayList<String> reviewArray = new ArrayList<String>();
+        ArrayList<Float> reviewRatings = new ArrayList<Float>();
 
         while(it.hasNext()){
             Review r = it.next();
-            String review = "Rating: " + r.getRating() + "\nTitle:" + r.getTitle()
+            String review = "Title:" + r.getTitle()
                     + "\nDetails:" + r.getReview() +
                     "\nDate: " + r.getDate() ;
 
             reviewArray.add(review);
         }
 
-        i.putExtra("map", reviewArray);
+        while(itRatings.hasNext()){
+            Review r = itRatings.next();
+            Float rate = r.getRating();
 
+            reviewRatings.add(rate);
+        }
+
+        i.putExtra("map", reviewArray);
+        i.putExtra("map1", reviewRatings);
         startActivity(i);
     }
 }

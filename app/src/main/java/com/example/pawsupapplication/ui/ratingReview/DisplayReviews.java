@@ -18,7 +18,8 @@ public class DisplayReviews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displayreview_activity);
         ArrayList<String> arr =  getIntent().getStringArrayListExtra("map");
-        ReviewAdapter a = new ReviewAdapter(this, arr.toArray());
+        ArrayList<String> arr2 =  getIntent().getStringArrayListExtra("map1");
+        ReviewAdapter a = new ReviewAdapter(this, arr.toArray(), arr2.toArray());
         ListView ReviewList = (ListView)findViewById(R.id.reviewLister);
         ReviewList.setAdapter(a);
     }
