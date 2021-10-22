@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToReview(View v) {
         Intent startIntent = new Intent(getApplicationContext(), RecentServices.class);
+        startActivity(startIntent);
     }
     public void goToPriceChange(View v) {
         Intent startIntent = new Intent(getApplicationContext(), ChangePrice.class);
