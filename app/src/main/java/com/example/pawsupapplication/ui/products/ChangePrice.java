@@ -13,12 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
 
+//import com.example.pawsupapplication.SuccessActivity;
+=======
+
 /**
  * Class that handles the processing and basic validation of changing the price.
  * @author Wader
  * @version 1.1
  * @since Oct 22st 2021
  */
+
 
 public class ChangePrice extends AppCompatActivity {
 
