@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.SuccessActivity;
+//import com.example.pawsupapplication.SuccessActivity;
 
 public class ChangePrice extends AppCompatActivity {
 
