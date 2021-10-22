@@ -14,7 +14,6 @@ import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
 
 //import com.example.pawsupapplication.SuccessActivity;
-=======
 
 /**
  * Class that handles the processing and basic validation of changing the price.
