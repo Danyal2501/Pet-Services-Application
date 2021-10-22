@@ -11,6 +11,13 @@ import com.example.pawsupapplication.data.adapter.ReviewAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for displaying all
+ * reviews currently saved within the database.
+ *
+ * @author Annas Rahuma and Shu Sun
+ */
+
 public class DisplayReviews extends AppCompatActivity {
 
     @Override
