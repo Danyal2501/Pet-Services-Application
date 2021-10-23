@@ -1,6 +1,6 @@
-Sprint 2 Planning Meeting (Notes) \
-Date: Oct 18th 2021. \
-Time Conducted: 11:20 PM EST \
+Sprint 2 Planning Meeting (Notes)
+Date: Oct 18th 2021
+Time Conducted: 11:20 PM EST
 Location: Discord
 
 Sprint Goals: 
@@ -9,11 +9,11 @@ Sprint Goals:
 - Create backend code for service related features. 
 - Ask product owner about their database structure
 
-User Stories: \
-DREAM-7, DREAM-10, DREAM-15, DREAM-17, DREAM-46 \
+User Stories: 
+DREAM-7, DREAM-10, DREAM-15, DREAM-17, DREAM-46 
 (Reflected on Jira - Includes detailed task breakdown) 
 
-Task breakdown: \
+Task breakdown: 
 DREAM-7: 
 - Register and log into account; 
 - Service providers should have a tab where they can set up a new service they are offering
