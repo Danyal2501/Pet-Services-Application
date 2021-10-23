@@ -1,7 +1,7 @@
 Sprint 2 Planning Meeting (Notes) \
 Date: Oct 18th 2021. \
 Time Conducted: 11:20 PM EST \
-Location: Discord\
+Location: Discord
 
 Sprint Goals: 
 - Plan out the project structure using CRC cards 
@@ -11,9 +11,9 @@ Sprint Goals:
 
 User Stories: \
 DREAM-7, DREAM-10, DREAM-15, DREAM-17, DREAM-46 \
-(Reflected on Jira - Includes detailed task breakdown) \
+(Reflected on Jira - Includes detailed task breakdown) 
 
-Task breakdown: 
+Task breakdown: \
 DREAM-7: 
 - Register and log into account; 
 - Service providers should have a tab where they can set up a new service they are offering
