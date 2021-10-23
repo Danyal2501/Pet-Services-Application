@@ -1,6 +1,6 @@
-Sprint 2 Planning Meeting (Notes)
-Date: Oct 18th 2021
-Time Conducted: 11:20 PM EST
+Sprint 2 Planning Meeting (Notes) 
+Date: Oct 18th 2021. 
+Time Conducted: 11:20 PM EST 
 Location: Discord
 
 Sprint Goals: 
