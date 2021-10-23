@@ -3,11 +3,11 @@ Date: Oct 18th 2021
 Time Conducted: 11:20 PM EST
 Location: Discord
 
-Sprint Goals:
-Plan out the project structure using CRC cards 
-Prepare MongoDB database for the project
-Create backend code for service related features. 
-Ask product owner about their database structure
+Sprint Goals: 
+- Plan out the project structure using CRC cards 
+- Prepare MongoDB database for the project
+- Create backend code for service related features. 
+- Ask product owner about their database structure
 
 User Stories: 
 DREAM-7, DREAM-10, DREAM-15, DREAM-17, DREAM-46 
