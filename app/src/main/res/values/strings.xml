@@ -32,5 +32,7 @@
     <string name="confirmation_message">Are you sure you want to go through with this change?</string>
     <string name="Confirm">Confirm</string>
     <string name="Cancel">Cancel</string>
+    <string name="Log">Transaction Summary</string>
+    <string name="Reset_password_prompt">Enter your email address and we’ll send you a recovery link.</string>
 
 </resources>
