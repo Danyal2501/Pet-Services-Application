@@ -20,8 +20,7 @@ Android Studios: https://developer.android.com/studio/install
 
 Java:https://java.com/en/download/
 
-MongoDB: https://www.mongodb.com/try
-
+SQLite: https://www.sqlite.org/download.html
 
 ## Contribution:
 
