@@ -12,7 +12,7 @@ Front End: Android Studios
 
 Back End: Android Studios, Java
 
-Database: MongoDB
+Database: SQlite
 
 Installation links:
 
