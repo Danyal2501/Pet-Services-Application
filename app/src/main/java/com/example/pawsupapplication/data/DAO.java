@@ -8,29 +8,78 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DAO extends SQLiteOpenHelper {
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "pawsup.db";
+
     public DAO(@Nullable Context context ) {
-        super(context, "pawsup.db", null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-    String createTableStatement = "CREATE TABLE " +
-            "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
-            " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, UserId INTEGER)";
-    db.execSQL(createTableStatement);
+        String createTableStatement1 = "CREATE TABLE " +
+                "USER_TABLE (UserID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, Id TEXT)";
+        db.execSQL(createTableStatement1);
+        String createTableStatement2 = "CREATE TABLE " +
+                "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
+                " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, Email TEXT)";
+        db.execSQL(createTableStatement2);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + "USER_TABLE");
+        db.execSQL("DROP TABLE IF EXISTS " + "PETCARD_TABLE");
+        onCreate(db);
     }
 
-    public boolean addPetCard(PetCard pet){
+    public boolean addUser(LoggedInUser user){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("email", user.getEmail());
+        cv.put("password", user.getPassword());
+        cv.put("Id", user.getUserId());
+
+        long report = db.insert("USER_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
+    public Map<String,ArrayList<String>> getUsers(){
+        Map<String,ArrayList<String>> users = new HashMap<>();
+        String q = "Select * From USER_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                //int ID = cursor.getInt(0);
+                String email = cursor.getString(1);
+                String password = cursor.getString(2);
+                String UserId = cursor.getString(3);
+
+                ArrayList<String> userInfo = new ArrayList<>();
+                userInfo.add(password);
+                userInfo.add(UserId);
+
+                users.put(email, userInfo);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return users;
+    }
+
+    public boolean addPetCard(PetCard pet, String email){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -41,16 +90,16 @@ public class DAO extends SQLiteOpenHelper {
         cv.put("Weight", pet.getWeight());
         cv.put("Information", pet.getInformation());
         cv.put("Picture", pet.getProfilePic());
-        cv.put("UserId", 1);
+        cv.put("Email", email);
 
         long report = db.insert("PETCARD_TABLE", null, cv);
 
         return (report != -1);
     }
 
-    public ArrayList<String> getPetsInfo(){
+    public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();
-        String q = "Select * From PETCARD_TABLE";
+        String q = "Select * From PETCARD_TABLE Where Email = " + email;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 
@@ -77,9 +126,9 @@ public class DAO extends SQLiteOpenHelper {
         return cards;
     }
 
-    public ArrayList<String> getPetsPic(){
+    public ArrayList<String> getPetsPic(String email){
         ArrayList<String> cards = new ArrayList<>();
-        String q = "Select * From PETCARD_TABLE";
+        String q = "Select * From PETCARD_TABLE Where Email = " + email;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 

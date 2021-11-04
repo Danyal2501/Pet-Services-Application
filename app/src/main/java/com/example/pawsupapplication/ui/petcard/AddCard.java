@@ -28,11 +28,13 @@ public class AddCard extends AppCompatActivity {
      * Temporary "database" for sprint 1.
      */
     //private Map<String, PetCard> cardMap= new HashMap<String, PetCard>();
+    String ID = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_card);
+        ID = getIntent().getStringExtra("userEmail");
         Intent i = getIntent();
         ImageView petPic = (ImageView) findViewById(R.id.imageView2);
         petPic.setImageResource(R.drawable.ic_launcher_background);
@@ -48,6 +50,7 @@ public class AddCard extends AppCompatActivity {
     public void viewPetCards(View v){
 
         Intent i = new Intent(this, PetCards.class);
+        i.putExtra("userEmail", ID);
         /*Collection<PetCard> cards = cardMap.values();
 
         Iterator<PetCard> it = cardMap.values().iterator();
@@ -106,15 +109,16 @@ public class AddCard extends AppCompatActivity {
             Picasso.with(this).load(url).placeholder(R.drawable.ic_launcher_background)
                     .resize(100, 100).into(petPic);
             //cardMap.put(id, card);
-
+            DAO dbHelp = new DAO(AddCard.this);
+            boolean report = dbHelp.addPetCard(card, ID);
             Toast.makeText(this, "Pet card created", Toast.LENGTH_LONG).show();
         }
         catch(Exception e){
-            Toast.makeText(this, "An error has occured with last pet card", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "An error has occurred with last pet card", Toast.LENGTH_LONG).show();
         }
-        DAO dbHelp = new DAO(AddCard.this);
+        //DAO dbHelp = new DAO(AddCard.this);
 
-        boolean report = dbHelp.addPetCard(card);
+        //boolean report = dbHelp.addPetCard(card);
 
         //Toast.makeText(this, "Report " + report, Toast.LENGTH_LONG).show();
 

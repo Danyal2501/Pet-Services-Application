@@ -21,19 +21,19 @@ import java.util.ArrayList;
 
 public class PetCards extends AppCompatActivity {
 
+    String ID = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_cards);
-        System.out.println("2");
-        Intent i = getIntent();
-        System.out.println("3");
+        ID = getIntent().getStringExtra("userEmail");
        // ArrayList<String> arr =  getIntent().getStringArrayListExtra("map");
         DAO dbh = new DAO(PetCards.this);
         System.out.println("4");
-        ArrayList<String> arr3 = dbh.getPetsInfo();
-        ArrayList<String> arr4 = dbh.getPetsPic();
+        ArrayList<String> arr3 = dbh.getPetsInfo(ID);
+        ArrayList<String> arr4 = dbh.getPetsPic(ID);
        // Toast.makeText(this, arr3.toString(), Toast.LENGTH_LONG).show();
         //ArrayList<String> arr2 =  getIntent().getStringArrayListExtra("map1");
         PetCardAdapter a = new PetCardAdapter(this, arr3.toArray(), arr4.toArray());
