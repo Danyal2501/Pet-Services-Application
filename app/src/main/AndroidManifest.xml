@@ -17,6 +17,9 @@
             android:name=".ui.ratingReview.RecentServices"
             android:exported="true" />
         <activity
+            android:name=".user.AfterLoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.ratingReview.DisplayReviews"
             android:exported="true" />
         <activity

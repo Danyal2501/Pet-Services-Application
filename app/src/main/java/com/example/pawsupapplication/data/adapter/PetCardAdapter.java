@@ -26,7 +26,7 @@ public class PetCardAdapter extends BaseAdapter {
     LayoutInflater inflter;
 
     public PetCardAdapter(Context applicationContext, Object[] PetCardInfo, Object[] PetCardPic) {
-        this.context = context;
+        this.context = applicationContext;
         this.PetCardInfo = PetCardInfo;
         this.PetCardPic = PetCardPic;
         inflter = (LayoutInflater.from(applicationContext));

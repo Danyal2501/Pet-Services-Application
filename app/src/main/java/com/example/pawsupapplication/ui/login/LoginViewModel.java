@@ -11,6 +11,9 @@ import com.example.pawsupapplication.data.Result;
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.R;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 /**
  * Class responsible for the direct managing of all data, logic, and rules
  * of the login application, including login requirement check and data change monitoring.
@@ -37,13 +40,13 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String password) {
+    public void login(String username, String password, Map<String, ArrayList<String>> users) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+        Result<LoggedInUser> result = loginRepository.login(username, password, users);
 
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getEmail(), data.getUserId())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
