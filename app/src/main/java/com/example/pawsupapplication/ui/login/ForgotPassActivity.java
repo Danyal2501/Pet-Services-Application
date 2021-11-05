@@ -3,6 +3,7 @@ package com.example.pawsupapplication.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.DAO;
+import com.example.pawsupapplication.data.model.LoggedInUser;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -26,34 +28,40 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+/**
+ * This class is responsible for resetting the user's password,
+ * This invloves verifying the account exists, sending an email to the user,
+ * generating an OTP, verifying that the new password is valid, and altering
+ * the user's password within the database
+ *
+ * @author Danyal Rana
+ */
 public class ForgotPassActivity extends AppCompatActivity {
 
-    String sendEmail;
-    String sendPassword;
+    String sendEmail=PawsupEmail.sendEmail;
+    String sendPassword= PawsupEmail.sendPassword;
     String currentOTP;
+    String currentEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
     }
+
+    //verifies that the email exists, and sends email with OTP to the user
     public void verifyEmail(View view){
         boolean emailExists=false;
         EditText resetEmail = findViewById(R.id.resetEmail);
         String stringEmail=resetEmail.getText().toString();
+        currentEmail=stringEmail;
         DAO database = new DAO(view.getContext());
         Map<String, ArrayList<String>> users = database.getUsers();
         if(!users.isEmpty()) {
             emailExists=(users.get(stringEmail)!=null);
         }
         if(emailExists) {
-            //uniqueEmail=(users.get(stringEmail)==null);
-            Toast.makeText(getApplicationContext(), "Aye: "+stringEmail, Toast.LENGTH_SHORT).show();
-
-            System.out.println("Account found");
-            sendEmail="pawsupincapp@gmail.com";
-            sendPassword="Pawsup12!";
+            Toast.makeText(getApplicationContext(), "Account exists: "+stringEmail, Toast.LENGTH_SHORT).show();
 
             Properties properties = new Properties();
             properties.put("mail.smtp.auth", "true");
@@ -108,14 +116,17 @@ public class ForgotPassActivity extends AppCompatActivity {
         }
     }
 
+    //Asynchronous tasks for before, during, and after the email is sent
     private class SendMail extends AsyncTask<Message, String, String> {
 
+        //Runs before email is sent
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             Toast.makeText(getApplicationContext(), "Sending Email, please wait", Toast.LENGTH_SHORT).show();
         }
 
+        //Runs when email starts sending
         @Override
         protected String doInBackground(Message... messages) {
             try {
@@ -127,6 +138,7 @@ public class ForgotPassActivity extends AppCompatActivity {
             }
         }
 
+        //If email is sent successfully, switch view and send toast.
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -140,6 +152,8 @@ public class ForgotPassActivity extends AppCompatActivity {
             }
         }
     }
+
+    //Simple function that generates an OTP of size length
     private char[] generateOTP(int length) {
         String numbers = "1234567890";
         Random random = new Random();
@@ -150,5 +164,67 @@ public class ForgotPassActivity extends AppCompatActivity {
         }
         currentOTP=String.valueOf(otp);
         return otp;
+    }
+
+    //Verifies that the OTP matches, and changes the password in the database based on the users input
+    public void verifyOTP(View view){
+
+        EditText checkOTP = findViewById(R.id.resetCodeOTP);
+        String stringOTP=checkOTP.getText().toString();
+        boolean validOTP=stringOTP.equals(currentOTP);
+        System.out.println("Entered OTP:"+stringOTP+ ":Actual OTP:"+currentOTP + ":Equal: "+validOTP);
+
+        if (!validOTP){
+            Toast.makeText(getApplicationContext(), "Incorrect OTP, please try again", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            DAO database = new DAO(view.getContext());
+            EditText resetPassword = findViewById(R.id.newPaswordOTP);
+            EditText resetConfirmPassword = findViewById(R.id.newPasswordConfirmOTP);
+
+            boolean validUpperCase=false;
+            boolean validLowerCase=false;
+            boolean validSymbol=false;
+            boolean validNumber=false;
+
+            String stringPassword=resetPassword.getText().toString();
+            String stringPasswordConfirm=resetConfirmPassword.getText().toString();
+
+            boolean validConfirm=(stringPasswordConfirm.equals(stringPassword));
+
+            //verifies password length
+            if (stringPassword.length()>=6) {
+                for (int i = 0; i < stringPassword.length(); i++) {
+                    char currentChar = stringPassword.charAt(i);
+                    //Checks for an uppercase character
+                    if (Character.isLetter(currentChar) && currentChar == Character.toUpperCase(currentChar)) {
+                        validUpperCase = true;
+                    }
+                    else if (Character.isLetter(currentChar) && currentChar == Character.toLowerCase(currentChar)) {
+                        validLowerCase = true;
+                    } else if (!Character.isLetterOrDigit(currentChar)) {
+                        validSymbol = true;
+                    } else if (Character.isDigit(currentChar)) {
+                        validNumber = true;
+                    }
+
+                }
+                if (validUpperCase && validLowerCase && validSymbol && validNumber && validConfirm) {
+
+                    if (database.changePass(currentEmail, stringPassword)) {
+                        Toast.makeText(getApplicationContext(), "Your password has been changed!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "An Error has occurred!", Toast.LENGTH_SHORT).show();
+                    }
+                    Intent i = new Intent(this, LoginActivity.class);
+                    startActivity(i);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Invalid password", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Password must be 6 or more characters", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
