@@ -1,13 +1,23 @@
 package com.example.pawsupapplication.data.model;
 
+/**
+ * Class responsible for creating a "History" object, containing all the necessary raw data for
+ * a transaction.
+ * @author Annas, Wader
+ * @version 1.0
+ * @since Nov 4th 2021
+ */
+
 public class History {
 
+    // Variables
     private int amount;
     private String price;
     private String name;
     private String date;
     private String image;
 
+    // Constructor
     public History(int amount, String price, String name, String date, String image) {
         this.amount = amount;
         this.price = price;
@@ -16,6 +26,7 @@ public class History {
         this.image = image;
     }
 
+    // Getters
     public int getAmount() {
         return amount;
     }
@@ -36,6 +47,7 @@ public class History {
         return image;
     }
 
+    // Setters
     public void setAmount(int amount) {
         this.amount = amount;
     }
