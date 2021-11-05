@@ -90,5 +90,5 @@ public class ServiceDetails extends AppCompatActivity {
     //dismiss popup if user presses no
     public void noDeleteService(View view){
         popupWindow.dismiss();
-    }
+    }*/
 }
