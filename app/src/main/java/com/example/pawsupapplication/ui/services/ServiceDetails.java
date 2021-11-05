@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +26,12 @@ import com.example.pawsupapplication.R;
  * @author Lingfeng Yang
  */
 public class ServiceDetails extends AppCompatActivity {
+    ImageView img, back;
+    TextView proName, proPrice, proDesc, proQty, proUnit;
+
+    String name, price, desc, qty, unit;
+    int image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +40,23 @@ public class ServiceDetails extends AppCompatActivity {
     PopupWindow popupWindow;
     //Sets up popupwindow
     public void onButtonShowPopupWindowClick(View view) {
-
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_window, null);
+        setContentView(R.layout.service_details);
+        Intent i = getIntent();
+      
+        name = i.getStringExtra("name");
+        image = i.getIntExtra("image", R.drawable.food1);
+        price = i.getStringExtra("price");
+        desc = i.getStringExtra("desc");
+        qty = i.getStringExtra("qty");
+        unit = i.getStringExtra("unit");
+      
+        proName = findViewById(R.id.productName);
+        proDesc = findViewById(R.id.prodDesc);
+        proPrice = findViewById(R.id.prodPrice);
+        img = findViewById(R.id.big_image);
+        back = findViewById(R.id.back2);
+        proQty = findViewById(R.id.qty);
+        proUnit = findViewById(R.id.unit);
 
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -42,18 +64,28 @@ public class ServiceDetails extends AppCompatActivity {
         boolean focusable = true; // lets taps outside the popup also dismiss it
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        proName.setText(name);
+        proPrice.setText(price);
+        proDesc.setText(desc);
+        proQty.setText(qty);
+        proUnit.setText(unit);
+      
 
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
+
+        img.setImageResource(image);
+
+
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
+            public void onClick(View view) {
+
+                Intent i = new Intent(ServiceDetails.this, ServiceActivity.class);
+                startActivity(i);
+                finish();
+
             }
         });
+
     }
 
     //Give toast and return to services if yes
