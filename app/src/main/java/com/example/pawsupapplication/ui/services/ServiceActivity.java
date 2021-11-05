@@ -42,6 +42,8 @@ public class ServiceActivity extends AppCompatActivity {
     ServiceRecentlyViewAdapter recentlyViewedAdapter;
     List<ServiceRecentlyViewed> recentlyViewedList;
 
+    TextView allCategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,15 @@ public class ServiceActivity extends AppCompatActivity {
 
         categoryRecyclerView = findViewById(R.id.categoryRecycler);
         recentlyViewedRecycler = findViewById(R.id.recently_item);
+        allCategory = findViewById(R.id.allCategoryImage);
 
+        allCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ServiceActivity.this, ServiceAllCategory.class);
+                startActivity(i);
+            }
+        });
 
         // adding data to model
         categoryList = new ArrayList<>();
