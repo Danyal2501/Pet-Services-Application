@@ -1,5 +1,9 @@
 package com.example.pawsupapplication.data;
 
+/*
+This class is used for all queries used by classes in the application
+Learnt how to use SQL and used code as a base from https://www.youtube.com/watch?v=hDSVInZ2JCs&t=3352s
+*/
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
