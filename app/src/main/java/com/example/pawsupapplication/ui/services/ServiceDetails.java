@@ -6,6 +6,10 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Toast;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
 
 /**
@@ -30,17 +35,21 @@ public class ServiceDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_servicedetails);
+    }
+    PopupWindow popupWindow;
+    //Sets up popupwindow
+    public void onButtonShowPopupWindowClick(View view) {
         setContentView(R.layout.service_details);
-
         Intent i = getIntent();
-
+      
         name = i.getStringExtra("name");
         image = i.getIntExtra("image", R.drawable.food1);
         price = i.getStringExtra("price");
         desc = i.getStringExtra("desc");
         qty = i.getStringExtra("qty");
         unit = i.getStringExtra("unit");
-
+      
         proName = findViewById(R.id.productName);
         proDesc = findViewById(R.id.prodDesc);
         proPrice = findViewById(R.id.prodPrice);
@@ -49,11 +58,18 @@ public class ServiceDetails extends AppCompatActivity {
         proQty = findViewById(R.id.qty);
         proUnit = findViewById(R.id.unit);
 
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        popupWindow = new PopupWindow(popupView, width, height, focusable);
+
         proName.setText(name);
         proPrice.setText(price);
         proDesc.setText(desc);
         proQty.setText(qty);
         proUnit.setText(unit);
+      
 
 
         img.setImageResource(image);
@@ -71,4 +87,18 @@ public class ServiceDetails extends AppCompatActivity {
         });
 
     }
+
+    //Give toast and return to services if yes
+    public void deleteService(View view){
+        Toast.makeText(getApplicationContext(), "Service Deleted", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, ServiceActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    //dismiss popup if user presses no
+    public void noDeleteService(View view){
+        popupWindow.dismiss();
+    }
+
 }

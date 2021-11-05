@@ -12,6 +12,13 @@ import com.example.pawsupapplication.ui.products.ProductsActivity;
 import com.example.pawsupapplication.ui.services.ServiceActivity;
 import com.example.pawsupapplication.ui.ratingReview.RecentServices;
 
+/**
+ * Class responsible for the main interface of the app, and contains paths to all functionality.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 2nd 2021
+ */
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

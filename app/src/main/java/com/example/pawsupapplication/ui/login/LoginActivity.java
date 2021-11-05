@@ -28,11 +28,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pawsupapplication.data.DAO;
+import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.ui.profile.ProfileActivity;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.apply.ApplyPage;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 import com.example.pawsupapplication.ui.petcard.AddCard;
+import com.example.pawsupapplication.user.AfterLoginActivity;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Class responsible for carrying out the action of the interface when someone "login".
@@ -60,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = binding.login;
         final TextView applyButton = findViewById(R.id.apply);
         final ProgressBar loadingProgressBar = binding.loading;
+
+        DAO database = new DAO(LoginActivity.this);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -123,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
+                            passwordEditText.getText().toString(), database.getUsers());
                 }
                 return false;
             }
@@ -142,15 +150,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                        passwordEditText.getText().toString(), database.getUsers());
             }
         });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
+        String email = model.getDisplayName();
+        String userID = model.getUserID();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent newIntent = new Intent(this, AfterLoginActivity.class);
+        newIntent.putExtra("userEmail", email);
+        startActivity(newIntent);
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
@@ -183,6 +196,7 @@ public class LoginActivity extends AppCompatActivity {
     //Gets email, password, and confirm password fields, and verifies that password
     //inputs are valid. If valid, a toast is shown to the user.
     public void registerAccount(View view){
+        DAO database = new DAO(view.getContext());
         EditText registerEmail = findViewById(R.id.createEmail);
         EditText registerPassword = findViewById(R.id.createPassword);
         EditText registerConfirmPassword = findViewById(R.id.confirmCreatePassword);
@@ -191,11 +205,19 @@ public class LoginActivity extends AppCompatActivity {
         boolean validLowerCase=false;
         boolean validSymbol=false;
         boolean validNumber=false;
+        boolean uniqueEmail=true;
 
+        String stringEmail=registerEmail.getText().toString();
         String stringRegPass=registerPassword.getText().toString();
         String stringRegPassConfirm=registerConfirmPassword.getText().toString();
 
         boolean validConfirm=(stringRegPassConfirm.equals(stringRegPass));
+
+        //Verifies a unique email
+        Map<String,ArrayList<String>> users = database.getUsers();
+        if(!users.isEmpty()) {
+            uniqueEmail=(users.get(stringEmail)==null);
+        }
 
         //verifies password length
         if (stringRegPass.length()>=6) {
@@ -214,9 +236,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
             }
-            if (validUpperCase && validLowerCase && validSymbol && validNumber && validConfirm) {
-                Toast.makeText(getApplicationContext(), "Account Created!", Toast.LENGTH_SHORT).show();
-
+            if (validUpperCase && validLowerCase && validSymbol && validNumber && validConfirm && uniqueEmail) {
+                LoggedInUser newUser = new LoggedInUser(java.util.UUID.randomUUID().toString(), stringEmail, stringRegPass);
+                if (database.addUser(newUser)) {
+                    Toast.makeText(getApplicationContext(), "Account Created!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "An Error has occurred!", Toast.LENGTH_SHORT).show();
+                }
+            }else if (!uniqueEmail) {
+                Toast.makeText(getApplicationContext(), "Email is in use! Please try another.", Toast.LENGTH_SHORT).show();
             }
         }
         TextView testText = findViewById(R.id.testText);

@@ -7,14 +7,17 @@ package com.example.pawsupapplication.ui.login;
  * @since Oct 1st 2021
  */
 class LoggedInUserView {
-    private String displayName;
+    private String displayName; // This is the user's email
+    private String userID;
     //... other data fields that may be accessible to the UI
 
-    LoggedInUserView(String displayName) {
+    LoggedInUserView(String displayName, String userID) {
         this.displayName = displayName;
+        this.userID = userID;
     }
 
     String getDisplayName() {
         return displayName;
     }
+    String getUserID() {return userID;}
 }

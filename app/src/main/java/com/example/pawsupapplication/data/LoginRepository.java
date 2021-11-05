@@ -2,8 +2,11 @@ package com.example.pawsupapplication.data;
 
 import com.example.pawsupapplication.data.model.LoggedInUser;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 /**
- * Class that requests authentication and user information from the remote data source (MongoDB) and
+ * Class that requests authentication and user information from the remote data source (Sqlite) and
  * maintains an in-memory cache of login status and user credentials information.
  * @author Android Studio, Wader
  * @version 1.1
@@ -45,9 +48,9 @@ public class LoginRepository {
         // @see https://developer.android.com/training/articles/keystore
     }
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public Result<LoggedInUser> login(String username, String password, Map<String, ArrayList<String>> users) {
         // handle login
-        Result<LoggedInUser> result = dataSource.login(username, password);
+        Result<LoggedInUser> result = dataSource.login(username, password, users);
         if (result instanceof Result.Success) {
             setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
         }

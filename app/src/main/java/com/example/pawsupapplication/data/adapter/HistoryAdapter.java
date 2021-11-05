@@ -19,22 +19,22 @@ import com.squareup.picasso.Picasso;
  * @author Annas Rahuma
  */
 
-public class PetCardAdapter extends BaseAdapter {
+public class HistoryAdapter extends BaseAdapter {
     Context context;
-    Object PetCardInfo[];
-    Object PetCardPic[];
+    Object historyInfo[];
+    Object historyPic[];
     LayoutInflater inflter;
 
-    public PetCardAdapter(Context applicationContext, Object[] PetCardInfo, Object[] PetCardPic) {
-        this.context = applicationContext;
-        this.PetCardInfo = PetCardInfo;
-        this.PetCardPic = PetCardPic;
-        inflter = (LayoutInflater.from(applicationContext));
+    public HistoryAdapter(Context context, Object[] historyInfo, Object[] historyPic) {
+        this.context = context;
+        this.historyInfo = historyInfo;
+        this.historyPic = historyPic;
+        inflter = (LayoutInflater.from(context));
     }
 
     @Override
     public int getCount() {
-        return PetCardInfo.length;
+        return historyInfo.length;
     }
 
     @Override
@@ -52,10 +52,11 @@ public class PetCardAdapter extends BaseAdapter {
         view = inflter.inflate(R.layout.cards_display, null);
         TextView petInfo = (TextView)view.findViewById(R.id.petText);
         ImageView petPic = (ImageView)view.findViewById(R.id.petImage);
-        String url = (String)PetCardPic[i];
+        String url = (String)historyPic[i];
         Picasso.with(context).load(url).placeholder(R.drawable.ic_launcher_background)
                 .resize(100, 100).into(petPic);
-        petInfo.setText((String)PetCardInfo[i]);
+        petInfo.setText((String)historyInfo[i]);
         return view;
     }
+
 }

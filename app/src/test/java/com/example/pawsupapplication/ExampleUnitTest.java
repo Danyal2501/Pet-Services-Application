@@ -20,10 +20,10 @@ import com.example.pawsupapplication.data.model.LoggedInUser;
 public class ExampleUnitTest {
     @Test
     public void LoggedInUser_isCorrect() {
-        LoggedInUser fakeUser = new LoggedInUser("12345", "fakename");
+        LoggedInUser fakeUser = new LoggedInUser("12345", "fakename", "tempPass");
         boolean pass = false;
         String id = fakeUser.getUserId();
-        String name = fakeUser.getDisplayName();
+        String name = fakeUser.getEmail();
         if(id.equals("12345") && name.equals("fakename")) {
             pass = true;
         }
