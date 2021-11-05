@@ -1,5 +1,11 @@
 package com.example.pawsupapplication.data;
 
+
+/*
+This class is used for all queries used by classes in the application
+Learnt how to use SQL and used code as a base from https://www.youtube.com/watch?v=hDSVInZ2JCs&t=3352s
+*/
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,6 +13,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+
+import com.example.pawsupapplication.data.model.History;
 
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
@@ -32,12 +41,21 @@ public class DAO extends SQLiteOpenHelper {
                 "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
                 " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, Email TEXT)";
         db.execSQL(createTableStatement2);
+
+        String createTableStatement3 = "CREATE TABLE " +
+                "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
+                " Price Text, Date TEXT, Image TEXT, Email TEXT)";
+    db.execSQL(createTableStatement3);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + "USER_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "PETCARD_TABLE");
+
+        db.execSQL("DROP TABLE IF EXISTS " + "HISTORY_TABLE");
+
         onCreate(db);
     }
 
@@ -99,7 +117,8 @@ public class DAO extends SQLiteOpenHelper {
 
     public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();
-        String q = "Select * From PETCARD_TABLE Where Email = " + email;
+
+        String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 
@@ -128,13 +147,80 @@ public class DAO extends SQLiteOpenHelper {
 
     public ArrayList<String> getPetsPic(String email){
         ArrayList<String> cards = new ArrayList<>();
-        String q = "Select * From PETCARD_TABLE Where Email = " + email;
+
+        String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 
         if(cursor.moveToFirst()){
             do{
                 String pic = cursor.getString(7);
+                // String picture = cursor.getString(7);
+
+
+
+                cards.add(pic);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return cards;
+    }
+
+    
+    public boolean addHistory(History his, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("Name", his.getName());
+        cv.put("Amount", his.getAmount());
+        cv.put("Price", his.getPrice());
+        cv.put("Date", his.getDate());
+        cv.put("Image", his.getImage());
+        cv.put("Email", email);
+
+        long report = db.insert("HISTORY_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
+    public ArrayList<String> getHistoryInfo(String email){
+        ArrayList<String> cards = new ArrayList<>();
+        String q = "Select * From HISTORY_TABLE Where Email = \"" + email + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String name = cursor.getString(1);
+                int amount = cursor.getInt(2);
+                String price = cursor.getString(3);
+                String date = cursor.getString(4);
+                // String picture = cursor.getString(7);
+
+                String card = "Transaction: " + name + "\nAmount: " + amount +
+                        "\nPrice $: " + price + "\nDate: " + date;
+
+                cards.add(card);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return cards;
+    }
+
+
+    public ArrayList<String> getHistoryPic(String email){
+        ArrayList<String> cards = new ArrayList<>();
+        String q = "Select * From HISTORY_TABLE Where Email = \"" + email + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String pic = cursor.getString(5);
                 // String picture = cursor.getString(7);
 
 

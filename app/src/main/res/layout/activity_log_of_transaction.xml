@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04" />
 
-    <androidx.recyclerview.widget.RecyclerView
+     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/TransactionsLog"
         android:layout_width="410dp"
         android:layout_height="646dp"
@@ -31,4 +31,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+    <ListView
+        android:id="@+id/TransactionsLog"
+        android:layout_width="405dp"
+        android:layout_height="646dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="84dp"
+        tools:listitem="@layout/cards_display" />
 </androidx.constraintlayout.widget.ConstraintLayout>
