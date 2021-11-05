@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Pawsup Application</string>
+    <color name="peach">#FFE5B4</color>
+    <color name="turquoise">#40E0D0</color>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
