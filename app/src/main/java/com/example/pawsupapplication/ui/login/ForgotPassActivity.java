@@ -131,7 +131,7 @@ public class ForgotPassActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if(s.equals("sent")){
-                Toast.makeText(getApplicationContext(), "Sent", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Email Sent", Toast.LENGTH_SHORT).show();
                 setContentView(R.layout.activity_reset_password_otp);
 
             }
