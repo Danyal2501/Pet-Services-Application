@@ -105,12 +105,13 @@
         android:backgroundTint="#F870C3BC"
         android:onClick="showRegister"
         android:text="@string/action_register"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.77" />
+
 
     <Button
         android:id="@+id/ButtonToPetCards"
@@ -147,6 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foregroundTint="#AF3232"
+        android:onClick="goToForgotPass"
         android:text="Forgot password?"
         android:textColor="#6BB1E6"
         app:layout_constraintBottom_toTopOf="@+id/register"
@@ -154,7 +156,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.229" />
 
     <ImageView
         android:id="@+id/imageView3"

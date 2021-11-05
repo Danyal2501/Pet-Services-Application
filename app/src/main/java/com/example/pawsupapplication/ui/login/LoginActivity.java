@@ -14,16 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -249,6 +244,11 @@ public class LoginActivity extends AppCompatActivity {
         }
         TextView testText = findViewById(R.id.testText);
         testText.setText(String.valueOf(validUpperCase)+String.valueOf(validLowerCase)+String.valueOf(validSymbol)+ String.valueOf(validNumber) + String.valueOf(validConfirm) +"||"+ stringRegPass +"||"+stringRegPassConfirm);
+    }
+
+    public void goToForgotPass(View v) {
+        Intent i = new Intent(this, ForgotPassActivity.class);
+        startActivity(i);
     }
 
 

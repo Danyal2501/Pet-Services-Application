@@ -16,13 +16,13 @@ import com.example.pawsupapplication.ui.products.ProductsActivity;
 import com.example.pawsupapplication.ui.services.ServiceActivity;
 import com.example.pawsupapplication.ui.ratingReview.RecentServices;
 
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
 /**
  * Class responsible for the main interface of the app, and contains paths to all functionality.
  * @author Dream Team

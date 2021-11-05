@@ -33,14 +33,17 @@ public class AfterLoginActivity extends AppCompatActivity {
         userEmail = getIntent().getStringExtra("userEmail");
     }
 
+
     // Add Profile Button Later
 
     // PETCARD Button
+
     public void launchPetCard(View v){
         Intent i = new Intent(this, AddCard.class);
         i.putExtra("userEmail", userEmail);
         startActivity(i);
     }
+
 
     // ACTIVITES Button
     public void launchActivities(View v){
@@ -50,6 +53,7 @@ public class AfterLoginActivity extends AppCompatActivity {
     }
 
     // LOGOUT Button
+
     public void logout(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
