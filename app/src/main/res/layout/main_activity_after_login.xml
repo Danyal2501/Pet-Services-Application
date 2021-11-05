@@ -38,6 +38,7 @@
         android:layout_width="120dp"
         android:layout_height="54dp"
         android:backgroundTint="#F870C3BC"
+        android:onClick="launchActivities"
         android:text="@string/activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

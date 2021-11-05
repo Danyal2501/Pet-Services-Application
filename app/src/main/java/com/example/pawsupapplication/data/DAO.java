@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.pawsupapplication.data.model.History;
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
 
@@ -104,7 +105,7 @@ public class DAO extends SQLiteOpenHelper {
 
     public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();
-        String q = "Select * From PETCARD_TABLE Where Email = " + email;
+        String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 
@@ -133,7 +134,7 @@ public class DAO extends SQLiteOpenHelper {
 
     public ArrayList<String> getPetsPic(String email){
         ArrayList<String> cards = new ArrayList<>();
-        String q = "Select * From PETCARD_TABLE Where Email = " + email;
+        String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 

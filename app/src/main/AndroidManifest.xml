@@ -20,6 +20,9 @@
             android:name=".user.AfterLoginActivity"
             android:exported="true" />
         <activity
+            android:name=".user.HistoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.ratingReview.DisplayReviews"
             android:exported="true" />
         <activity

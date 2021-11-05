@@ -39,6 +39,12 @@ public class AfterLoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void launchActivities(View v){
+        Intent i = new Intent(this, HistoryActivity.class);
+        i.putExtra("userEmail", userEmail);
+        startActivity(i);
+    }
+
     public void logout(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
