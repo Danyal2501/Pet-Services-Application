@@ -3,6 +3,7 @@ package com.example.pawsupapplication.ui.petcard;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.data.DAO;
 import com.example.pawsupapplication.data.model.PetCard;
 import com.squareup.picasso.Picasso;
 
@@ -25,13 +27,17 @@ public class AddCard extends AppCompatActivity {
     /**
      * Temporary "database" for sprint 1.
      */
-    private Map<String, PetCard> cardMap= new HashMap<String, PetCard>();
+    //private Map<String, PetCard> cardMap= new HashMap<String, PetCard>();
+    String ID = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_card);
+        ID = getIntent().getStringExtra("userEmail");
         Intent i = getIntent();
+        ImageView petPic = (ImageView) findViewById(R.id.imageView2);
+        petPic.setImageResource(R.drawable.ic_launcher_background);
     }
 
     /**
@@ -44,7 +50,8 @@ public class AddCard extends AppCompatActivity {
     public void viewPetCards(View v){
 
         Intent i = new Intent(this, PetCards.class);
-        Collection<PetCard> cards = cardMap.values();
+        i.putExtra("userEmail", ID);
+        /*Collection<PetCard> cards = cardMap.values();
 
         Iterator<PetCard> it = cardMap.values().iterator();
         Iterator<PetCard> it2 = cardMap.values().iterator();
@@ -68,7 +75,8 @@ public class AddCard extends AppCompatActivity {
 
         i.putExtra("map", cardsArray);
         i.putExtra("map1", cardsPics);
-
+        */
+        System.out.println("1");
         startActivity(i);
     }
 
@@ -89,7 +97,7 @@ public class AddCard extends AppCompatActivity {
         EditText t5 = findViewById(R.id.textInput5);
         EditText t6 = findViewById(R.id.textInput6);
         EditText t7 = findViewById(R.id.textInput7);
-        String id = UUID.randomUUID().toString();
+        //String id = UUID.randomUUID().toString();
         String[] s = inputParse(t1.getText().toString(), t2.getText().toString(),
                 t3.getText().toString(), t4.getText().toString(), t5.getText().toString(),
                 t6.getText().toString(), t7.getText().toString());
@@ -100,13 +108,19 @@ public class AddCard extends AppCompatActivity {
             ImageView petPic = (ImageView) findViewById(R.id.imageView2);
             Picasso.with(this).load(url).placeholder(R.drawable.ic_launcher_background)
                     .resize(100, 100).into(petPic);
-            cardMap.put(id, card);
-
+            //cardMap.put(id, card);
+            DAO dbHelp = new DAO(AddCard.this);
+            boolean report = dbHelp.addPetCard(card, ID);
             Toast.makeText(this, "Pet card created", Toast.LENGTH_LONG).show();
         }
         catch(Exception e){
-            Toast.makeText(this, "An error has occured with last pet card", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "An error has occurred with last pet card", Toast.LENGTH_LONG).show();
         }
+        //DAO dbHelp = new DAO(AddCard.this);
+
+        //boolean report = dbHelp.addPetCard(card);
+
+        //Toast.makeText(this, "Report " + report, Toast.LENGTH_LONG).show();
 
     }
 

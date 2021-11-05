@@ -23,6 +23,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Class responsible for the main interface of the app, and contains paths to all functionality.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 2nd 2021
+ */
+
 public class MainActivity extends AppCompatActivity {
     public static Map<Integer, Order> reviewMap= new HashMap<Integer, Order>();
 
