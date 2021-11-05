@@ -26,6 +26,12 @@
             android:name=".ui.ratingReview.DisplayReviews"
             android:exported="true" />
         <activity
+            android:name=".ui.Contacts.OrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.Contacts.ContactsActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.ratingReview.ReviewActivity"
             android:exported="true" />
         <activity
