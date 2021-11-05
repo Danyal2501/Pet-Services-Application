@@ -234,4 +234,15 @@ public class DAO extends SQLiteOpenHelper {
         return cards;
     }
 
+    public Boolean changePass(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("password", password);
+
+        long report = db.update("USER_TABLE", cv, "email=?", new String[]{email});
+
+        return (report != -1);
+    }
+
 }
