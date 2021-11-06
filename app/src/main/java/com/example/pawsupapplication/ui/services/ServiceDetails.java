@@ -24,6 +24,7 @@ public class ServiceDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.service_details);
 
         Intent i = getIntent();
@@ -46,6 +47,7 @@ public class ServiceDetails extends AppCompatActivity {
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         popupWindow = new PopupWindow(popupView, width, height, focusable);
+
   */
         proName.setText(name);
         proPrice.setText(price);
@@ -53,6 +55,7 @@ public class ServiceDetails extends AppCompatActivity {
         proAddress.setText(address);
 
         img.setImageResource(image);
+
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +81,5 @@ public class ServiceDetails extends AppCompatActivity {
     //dismiss popup if user presses no
     public void noDeleteService(View view){
         popupWindow.dismiss();
-    }
-    */
+    }*/
 }

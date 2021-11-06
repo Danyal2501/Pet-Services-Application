@@ -1,9 +1,11 @@
 package com.example.pawsupapplication.data;
 
+
 /*
 This class is used for all queries used by classes in the application
 Learnt how to use SQL and used code as a base from https://www.youtube.com/watch?v=hDSVInZ2JCs&t=3352s
 */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,7 +14,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+
 import com.example.pawsupapplication.data.model.History;
+
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
 
@@ -37,17 +41,21 @@ public class DAO extends SQLiteOpenHelper {
                 "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
                 " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, Email TEXT)";
         db.execSQL(createTableStatement2);
+
         String createTableStatement3 = "CREATE TABLE " +
                 "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
                 " Price Text, Date TEXT, Image TEXT, Email TEXT)";
     db.execSQL(createTableStatement3);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + "USER_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "PETCARD_TABLE");
+
         db.execSQL("DROP TABLE IF EXISTS " + "HISTORY_TABLE");
+
         onCreate(db);
     }
 
@@ -109,6 +117,7 @@ public class DAO extends SQLiteOpenHelper {
 
     public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();
+
         String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
@@ -138,6 +147,7 @@ public class DAO extends SQLiteOpenHelper {
 
     public ArrayList<String> getPetsPic(String email){
         ArrayList<String> cards = new ArrayList<>();
+
         String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
@@ -157,6 +167,7 @@ public class DAO extends SQLiteOpenHelper {
         db.close();
         return cards;
     }
+
     
     public boolean addHistory(History his, String email){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -221,6 +232,17 @@ public class DAO extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return cards;
+    }
+
+    public Boolean changePass(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("password", password);
+
+        long report = db.update("USER_TABLE", cv, "email=?", new String[]{email});
+
+        return (report != -1);
     }
 
 }
