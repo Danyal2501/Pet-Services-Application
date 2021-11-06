@@ -11,14 +11,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.data.adapter.ServiceAdapter;
-import com.example.pawsupapplication.data.adapter.service.ServiceAllCategoryAdapter;
 import com.example.pawsupapplication.data.adapter.service.ServiceCategoryAdapter;
 import com.example.pawsupapplication.data.adapter.service.ServiceRecentlyViewAdapter;
-import com.example.pawsupapplication.data.model.service.Service;
 import com.example.pawsupapplication.data.model.service.ServiceCategory;
 import com.example.pawsupapplication.data.model.service.ServiceImpl;
-import com.example.pawsupapplication.data.model.service.ServiceRecentlyViewed;
 
 import static com.example.pawsupapplication.R.drawable.*;
 
@@ -40,18 +36,18 @@ public class ServiceActivity extends AppCompatActivity {
     List<ServiceCategory> categoryList;
 
     ServiceRecentlyViewAdapter recentlyViewedAdapter;
-    List<ServiceRecentlyViewed> recentlyViewedList;
+    List<ServiceImpl> recentlyViewedList;
 
     TextView allCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services);
+        setContentView(R.layout.service_activity);
 
-        categoryRecyclerView = findViewById(R.id.categoryRecycler);
-        recentlyViewedRecycler = findViewById(R.id.recently_item);
-        allCategory = findViewById(R.id.allCategoryImage);
+        categoryRecyclerView = findViewById(R.id.categoryRecycler_service);
+        recentlyViewedRecycler = findViewById(R.id.recently_item_service);
+        allCategory = findViewById(R.id.allServiceCategoryImage);
 
         allCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,10 +70,10 @@ public class ServiceActivity extends AppCompatActivity {
 
         // adding data to model
         recentlyViewedList = new ArrayList<>();
-        recentlyViewedList.add(new ServiceRecentlyViewed("Food 1", "Food 1 description.", "$ 50.00", "10", "KG", food1, food1));
-        recentlyViewedList.add(new ServiceRecentlyViewed("Food 2", "Food 2 Description.", "$35.99", "7", "KG", food2, food2));
-        recentlyViewedList.add(new ServiceRecentlyViewed("Treat 1", "Treat 1 Description.", "$19.99", "200", "G", treat1, treat1));
-        recentlyViewedList.add(new ServiceRecentlyViewed("Treat 2", "Treat 2 Description.", "$9.99", "100", "G", treat2, treat2));
+        recentlyViewedList.add(new ServiceImpl(1, 1, "Service 1", "Service Description 1", "Service Address 1", "19.99", food1));
+        recentlyViewedList.add(new ServiceImpl(2, 2, "Service 2", "Service Description 2", "Service Address 2", "25.99", food2));
+        recentlyViewedList.add(new ServiceImpl(3, 3, "Service 3", "Service Description 3", "Service Address 3", "10.99", treat1));
+        recentlyViewedList.add(new ServiceImpl(4, 4, "Service 4", "Service Description 4", "Service Address 4", "30.99", treat2));
 
 
         setCategoryRecycler(categoryList);
@@ -93,7 +89,7 @@ public class ServiceActivity extends AppCompatActivity {
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
-    private void setRecentlyViewedRecycler(List<ServiceRecentlyViewed> recentlyViewedDataList) {
+    private void setRecentlyViewedRecycler(List<ServiceImpl> recentlyViewedDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recentlyViewedRecycler.setLayoutManager(layoutManager);
         recentlyViewedAdapter = new ServiceRecentlyViewAdapter(this,recentlyViewedDataList);

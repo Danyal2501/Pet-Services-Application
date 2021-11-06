@@ -1,4 +1,4 @@
-package com.example.pawsupapplication.data.adapter;
+package com.example.pawsupapplication.data.adapter.service;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawsupapplication.data.model.Product;
 import com.example.pawsupapplication.data.model.service.Service;
-import com.example.pawsupapplication.data.model.service.ServiceImpl;
-import com.example.pawsupapplication.ui.products.ProductDetails;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.services.ServiceDetails;
 
@@ -42,7 +39,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
     @Override
     public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.services_row_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.service_row_item, parent, false);
         return new ServiceViewHolder(view);
     }
 

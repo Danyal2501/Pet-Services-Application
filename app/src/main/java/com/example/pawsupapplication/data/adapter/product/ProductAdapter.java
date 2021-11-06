@@ -1,4 +1,4 @@
-package com.example.pawsupapplication.data.adapter;
+package com.example.pawsupapplication.data.adapter.product;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawsupapplication.data.model.Product;
+import com.example.pawsupapplication.data.adapter.service.ServiceAdapter;
+import com.example.pawsupapplication.data.model.product.Product;
+import com.example.pawsupapplication.data.model.service.Service;
 import com.example.pawsupapplication.ui.products.ProductDetails;
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.services.ServiceDetails;
 
 
 import java.util.List;
@@ -27,35 +30,35 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     Context context;
-    List<Product> productsList;
+    List<Product> productList;
 
 
-    public ProductAdapter(Context context, List<Product> productsList) {
+    public ProductAdapter(Context context, List<Product> serviceList) {
         this.context = context;
-        this.productsList = productsList;
+        this.productList = serviceList;
     }
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.products_row_item, parent, false);
-        return new ProductViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.product_row_item, parent, false);
+        return new ProductAdapter.ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ProductAdapter.ProductViewHolder holder, int position) {
 
-        holder.prodImage.setImageResource(productsList.get(position).getProductPicture());
-        holder.prodName.setText(productsList.get(position).getProductName());
-        holder.prodQty.setText(productsList.get(position).getProductQty());
-        holder.prodPrice.setText(productsList.get(position).getProductPrice());
-        holder.prodRating.setText(productsList.get(position).getProductRating());
+        holder.prodImage.setImageResource(productList.get(position).getProductPicture());
+        holder.prodName.setText(productList.get(position).getProductName());
+        holder.prodQty.setText(productList.get(position).getProductQty());
+        holder.prodPrice.setText(productList.get(position).getProductPrice());
+        holder.prodRating.setText(productList.get(position).getProductRating());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, ProductDetails.class);
+                Intent i = new Intent(context, ServiceDetails.class);
 /*
                 Pair[] pairs = new Pair[1];
                 pairs[0] = new Pair<View, String>(holder.prodImage, "image");
@@ -69,7 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public int getItemCount() {
-        return productsList.size();
+        return productList.size();
     }
 
     public static final class ProductViewHolder extends RecyclerView.ViewHolder{
@@ -82,11 +85,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
             prodImage = itemView.findViewById(R.id.prod_image);
             prodName = itemView.findViewById(R.id.prod_name);
-            prodPrice = itemView.findViewById(R.id.prod_price);
             prodQty = itemView.findViewById(R.id.prod_qty);
+            prodPrice = itemView.findViewById(R.id.prod_price);
             prodRating = itemView.findViewById(R.id.prod_rating);
-
-
         }
     }
 

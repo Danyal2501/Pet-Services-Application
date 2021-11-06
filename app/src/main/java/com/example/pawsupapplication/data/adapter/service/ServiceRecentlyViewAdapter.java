@@ -12,16 +12,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.data.model.service.ServiceRecentlyViewed;
+import com.example.pawsupapplication.data.model.service.ServiceImpl;
 import com.example.pawsupapplication.ui.services.ServiceDetails;
 
 import java.util.List;
 
 public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRecentlyViewAdapter.RecentlyViewedViewHolder>{
     Context context;
-    List<ServiceRecentlyViewed> recentlyViewedList;
+    List<ServiceImpl> recentlyViewedList;
 
-    public ServiceRecentlyViewAdapter(Context context, List<ServiceRecentlyViewed> recentlyViewedList) {
+    public ServiceRecentlyViewAdapter(Context context, List<ServiceImpl> recentlyViewedList) {
         this.context = context;
         this.recentlyViewedList = recentlyViewedList;
     }
@@ -37,24 +37,22 @@ public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRece
     @Override
     public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder, final int position) {
 
-        holder.name.setText(recentlyViewedList.get(position).getName());
-        holder.description.setText(recentlyViewedList.get(position).getDescription());
-        holder.price.setText(recentlyViewedList.get(position).getPrice());
-        holder.qty.setText(recentlyViewedList.get(position).getQuantity());
-        holder.unit.setText(recentlyViewedList.get(position).getUnit());
-        holder.bg.setBackgroundResource(recentlyViewedList.get(position).getImageUrl());
+        holder.name.setText(recentlyViewedList.get(position).getServiceName());
+        holder.description.setText(recentlyViewedList.get(position).getServiceDesc());
+        holder.price.setText(recentlyViewedList.get(position).getServicePrice());
+        holder.address.setText(recentlyViewedList.get(position).getServiceAddress());
+        holder.bg.setBackgroundResource(recentlyViewedList.get(position).getServicePicture());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i=new Intent(context, ServiceDetails.class);
-                i.putExtra("name", recentlyViewedList.get(position).getName());
-                i.putExtra("image", recentlyViewedList.get(position).getBigimageurl());
-                i.putExtra("price",recentlyViewedList.get(position).getPrice());
-                i.putExtra("desc",recentlyViewedList.get(position).getDescription());
-                i.putExtra("qty",recentlyViewedList.get(position).getQuantity());
-                i.putExtra("unit",recentlyViewedList.get(position).getUnit());
+                i.putExtra("name", recentlyViewedList.get(position).getServiceName());
+                i.putExtra("image", recentlyViewedList.get(position).getServicePicture());
+                i.putExtra("price",recentlyViewedList.get(position).getServicePrice());
+                i.putExtra("desc",recentlyViewedList.get(position).getServiceDesc());
+                i.putExtra("qty",recentlyViewedList.get(position).getServiceAddress());
 
                 context.startActivity(i);
 
@@ -70,7 +68,7 @@ public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRece
 
     public  static class RecentlyViewedViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, description, price, qty, unit;
+        TextView name, description, price, address;
         ConstraintLayout bg;
 
         public RecentlyViewedViewHolder(@NonNull View itemView) {
@@ -79,8 +77,7 @@ public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRece
             name = itemView.findViewById(R.id.service_name);
             description = itemView.findViewById(R.id.description);
             price = itemView.findViewById(R.id.price);
-            qty = itemView.findViewById(R.id.qty);
-            unit = itemView.findViewById(R.id.unit);
+            address = itemView.findViewById(R.id.address);
             bg = itemView.findViewById(R.id.recently_layout);
 
         }
