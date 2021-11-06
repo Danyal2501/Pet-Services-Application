@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
-        android:id="@+id/servicePageTitle"
+        android:id="@+id/productPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_bold"
-        android:text="Services"
+        android:text="Products"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/servicePageTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/productPageTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/servicePageTitle"
+        app:layout_constraintTop_toTopOf="@+id/productPageTitle"
         app:srcCompat="@drawable/ic_account_settings" />
 
     <TextView
@@ -48,11 +47,11 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans"
         android:lineSpacingExtra="4dp"
-        android:text="Browse the best local services for your pets."
+        android:text="Browse premium quality products for your pets."
         android:textColor="#717171"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/servicePageTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/productPageTitle" />
 
     <EditText
         android:id="@+id/editText"
@@ -88,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecycler"
+        android:id="@+id/categoryRecycler_product"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -97,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/allCategoryImage"
+        android:id="@+id/allProductCategoryImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -119,15 +118,36 @@
         android:textColor="@android:color/background_dark"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryRecycler" />
+        app:layout_constraintTop_toBottomOf="@+id/categoryRecycler_product" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recently_item"
+        android:id="@+id/recently_item_product"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+<!--
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="All Products"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recently_item" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/all_products"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

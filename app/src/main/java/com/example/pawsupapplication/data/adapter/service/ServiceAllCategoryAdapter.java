@@ -52,7 +52,7 @@ public class ServiceAllCategoryAdapter extends RecyclerView.Adapter<ServiceAllCa
         public AllCategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            categoryImage = itemView.findViewById(R.id.categoryImage);
+            categoryImage = itemView.findViewById(R.id.serviceCategoryImage);
 
         }
     }

@@ -1,4 +1,4 @@
-package com.example.pawsupapplication.ui.services;
+package com.example.pawsupapplication.ui.products;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -8,40 +8,38 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.pawsupapplication.R;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawsupapplication.data.adapter.service.ServiceAllCategoryAdapter;
-import com.example.pawsupapplication.data.model.service.ServiceAllCategoryModel;
+import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.data.adapter.product.ProductAllCategoryAdapter;
+import com.example.pawsupapplication.data.model.product.ProductAllCategoryModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.pawsupapplication.R.drawable.*;
-
-public class ServiceAllCategory extends AppCompatActivity {
+public class ProductAllCategory extends AppCompatActivity {
     RecyclerView AllCategoryRecycler;
-    ServiceAllCategoryAdapter allCategoryAdapter;
-    List<ServiceAllCategoryModel> allCategoryModelList;
+    ProductAllCategoryAdapter allCategoryAdapter;
+    List<ProductAllCategoryModel> allCategoryModelList;
 
     ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.service_all_category);
+        setContentView(R.layout.product_all_category);
 
-        AllCategoryRecycler = findViewById(R.id.all_category_service);
-        back = findViewById(R.id.back_service);
+        AllCategoryRecycler = findViewById(R.id.all_category_product);
+        back = findViewById(R.id.back_product);
 
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(ServiceAllCategory.this, ServiceActivity.class);
+                Intent back = new Intent(ProductAllCategory.this, ProductsActivity.class);
                 startActivity(back);
                 finish();
             }
@@ -50,27 +48,27 @@ public class ServiceAllCategory extends AppCompatActivity {
 
         // adding data to model
         allCategoryModelList = new ArrayList<>();
-        allCategoryModelList.add(new ServiceAllCategoryModel(1, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(2, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(3, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(4, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(5, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(6, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(7, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(8, R.drawable.ic_fish));
-        allCategoryModelList.add(new ServiceAllCategoryModel(8, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(1, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(2, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(3, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(4, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(5, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(6, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(7, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(8, R.drawable.ic_fish));
+        allCategoryModelList.add(new ProductAllCategoryModel(8, R.drawable.ic_fish));
 
 
         setCategoryRecycler(allCategoryModelList);
 
     }
 
-    private void setCategoryRecycler(List<ServiceAllCategoryModel> allcategoryModelList) {
+    private void setCategoryRecycler(List<ProductAllCategoryModel> allcategoryModelList) {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 4);
         AllCategoryRecycler.setLayoutManager(layoutManager);
-        AllCategoryRecycler.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(16), true));
+        AllCategoryRecycler.addItemDecoration(new ProductAllCategory.GridSpacingItemDecoration(4, dpToPx(16), true));
         AllCategoryRecycler.setItemAnimator(new DefaultItemAnimator());
-        allCategoryAdapter = new ServiceAllCategoryAdapter(this,allcategoryModelList);
+        allCategoryAdapter = new ProductAllCategoryAdapter(this,allcategoryModelList);
         AllCategoryRecycler.setAdapter(allCategoryAdapter);
     }
 

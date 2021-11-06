@@ -2,14 +2,8 @@ package com.example.pawsupapplication.ui.services;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.Toast;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +16,9 @@ import com.example.pawsupapplication.R;
  */
 public class ServiceDetails extends AppCompatActivity {
     ImageView img, back;
-    TextView proName, proPrice, proDesc, proQty, proUnit;
+    TextView proName, proPrice, proDesc, proAddress;
 
-    String name, price, desc, qty, unit;
+    String name, price, desc, address;
     int image;
 
     @Override
@@ -39,16 +33,14 @@ public class ServiceDetails extends AppCompatActivity {
         image = i.getIntExtra("image", R.drawable.food1);
         price = i.getStringExtra("price");
         desc = i.getStringExtra("desc");
-        qty = i.getStringExtra("qty");
-        unit = i.getStringExtra("unit");
+        address = i.getStringExtra("address");
 
-        proName = findViewById(R.id.productName);
-        proDesc = findViewById(R.id.prodDesc);
-        proPrice = findViewById(R.id.prodPrice);
-        img = findViewById(R.id.big_image);
-        back = findViewById(R.id.back2);
-        proQty = findViewById(R.id.qty);
-        proUnit = findViewById(R.id.unit);
+        proName = findViewById(R.id.serviceName);
+        proDesc = findViewById(R.id.servDesc);
+        proPrice = findViewById(R.id.servPrice);
+        img = findViewById(R.id.big_image_service);
+        back = findViewById(R.id.back_service2);
+        proAddress = findViewById(R.id.address_serviceDetail);
 /*
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -60,8 +52,7 @@ public class ServiceDetails extends AppCompatActivity {
         proName.setText(name);
         proPrice.setText(price);
         proDesc.setText(desc);
-        proQty.setText(qty);
-        proUnit.setText(unit);
+        proAddress.setText(address);
 
         img.setImageResource(image);
 

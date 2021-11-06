@@ -1,4 +1,4 @@
-package com.example.pawsupapplication.data.model;
+package com.example.pawsupapplication.data.model.product;
 
 /**
  * This class is the structure for the product, it is composed of strings that will handle

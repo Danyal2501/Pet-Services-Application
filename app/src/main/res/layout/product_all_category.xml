@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.services.ServiceAllCategory">
+    tools:context=".ui.products.ProductAllCategory">
 
 
     <TextView
@@ -14,13 +14,13 @@
         android:text="Select a category"
         android:fontFamily="@font/open_sans"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/back_service"
+        app:layout_constraintBottom_toBottomOf="@+id/back_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/back_service" />
+        app:layout_constraintTop_toTopOf="@+id/back_product" />
 
     <ImageView
-        android:id="@+id/back_service"
+        android:id="@+id/back_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,14 +30,14 @@
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/all_category_service"
+        android:id="@+id/all_category_product"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_service"
+        app:layout_constraintTop_toBottomOf="@+id/back_product"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView

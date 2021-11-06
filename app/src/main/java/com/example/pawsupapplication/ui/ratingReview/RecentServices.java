@@ -28,7 +28,7 @@ public class RecentServices extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recent_services);
+        setContentView(R.layout.service_recent);
     }
 
     public void addAReview(View v){
