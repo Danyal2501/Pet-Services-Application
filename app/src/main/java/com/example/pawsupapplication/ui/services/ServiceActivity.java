@@ -70,10 +70,10 @@ public class ServiceActivity extends AppCompatActivity {
 
         // adding data to model
         recentlyViewedList = new ArrayList<>();
-        recentlyViewedList.add(new ServiceImpl(1, 1, "Service 1", "Service Description 1", "Service Address 1", "19.99", food1));
-        recentlyViewedList.add(new ServiceImpl(2, 2, "Service 2", "Service Description 2", "Service Address 2", "25.99", food2));
-        recentlyViewedList.add(new ServiceImpl(3, 3, "Service 3", "Service Description 3", "Service Address 3", "10.99", treat1));
-        recentlyViewedList.add(new ServiceImpl(4, 4, "Service 4", "Service Description 4", "Service Address 4", "30.99", treat2));
+        recentlyViewedList.add(new ServiceImpl("1", "Service 1", "Service Description 1", "Service Address 1", "19.99", food1));
+        recentlyViewedList.add(new ServiceImpl("2", "Service 2", "Service Description 2", "Service Address 2", "25.99", food2));
+        recentlyViewedList.add(new ServiceImpl("3", "Service 3", "Service Description 3", "Service Address 3", "10.99", treat1));
+        recentlyViewedList.add(new ServiceImpl("4", "Service 4", "Service Description 4", "Service Address 4", "30.99", treat2));
 
 
         setCategoryRecycler(categoryList);

@@ -7,7 +7,7 @@ package com.example.pawsupapplication.user;
  *
  */
 public class Customer extends User{
-    private int id;
+    private String id;
     private String name;
     private String address;
     private int roleId;
@@ -34,7 +34,7 @@ public class Customer extends User{
      * @param name name of the user
      * @param address address of the user
      */
-    public Customer(int id, String name, int age, String address) {
+    public Customer(String id, String name, int age, String address) {
         this.setId(id);
         this.setName(name);
         this.setAddress(address);

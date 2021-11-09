@@ -4,20 +4,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.ui.login.*;
+import com.example.pawsupapplication.ui.*;
 import com.example.pawsupapplication.data.model.service.*;
+import com.example.pawsupapplication.data.DAO;
+
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class ApplyPage extends AppCompatActivity {
     protected EditText sername;
     protected EditText address;
     protected EditText description;
     protected EditText price;
+    protected EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +38,37 @@ public class ApplyPage extends AppCompatActivity {
         address =  findViewById(R.id.serads);
         description =  findViewById(R.id.description);
         price = findViewById(R.id.price);
+        email  = findViewById(R.id.email);
         TextView Apply = findViewById(R.id.apply);
+        DAO db = new DAO(ApplyPage.this);
         Apply.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 try{
-                    new ServiceImpl(1,1,
-                            sername.getText().toString(),
-                            description.getText().toString(),
-                            address.getText().toString(),
-                            price.getText().toString(),
-                            R.drawable.food1);
-                    startActivity(new Intent(ApplyPage.this, LoginActivity.class));
+                    //add new service
+                    Map<String, ArrayList<String>> users = db.getUsers();
+                    boolean b = false;
+                    for(String key: users.keySet()){
+                        if (email.getText().toString().compareTo(key) == 0 && !db.getByEmail(key).getProvider()) {
+                            Service ser = new ServiceImpl(db.getByEmail(key).getId(),
+                                    sername.getText().toString(),
+                                    description.getText().toString(),
+                                    address.getText().toString(),
+                                    price.getText().toString(),
+                                    R.drawable.food1);
+                            db.addService(ser);
+                            db.setFlagByEmail(key);
+                            b = true;
+                        }
+                    }
+                    if(b){
+                        //return to previous page if successful
+                        Toast.makeText(ApplyPage.this, "Apply Success", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(ApplyPage.this, "Apply Fail: account not found/ not a customer", Toast.LENGTH_SHORT).show();
+                    }
                 }catch (NumberFormatException nfe) {
-                    startActivity(new Intent(ApplyPage.this, LoginActivity.class));
+                    Toast.makeText(ApplyPage.this, "Apply Fail: Wrong format", Toast.LENGTH_SHORT).show();
                 }
             }
         });

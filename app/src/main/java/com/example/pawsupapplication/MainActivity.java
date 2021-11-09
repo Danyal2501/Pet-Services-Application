@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.pawsupapplication.data.model.Order;
 import com.example.pawsupapplication.data.model.User;
 import com.example.pawsupapplication.ui.Contacts.OrderActivity;
+import com.example.pawsupapplication.ui.apply.ApplyPage;
 import com.example.pawsupapplication.ui.login.LoginActivity;
 import com.example.pawsupapplication.ui.products.ChangePrice;
 import com.example.pawsupapplication.ui.products.ProductsActivity;
@@ -61,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToPriceChange(View v) {
         Intent startIntent = new Intent(getApplicationContext(), ChangePrice.class);
+        startActivity(startIntent);
+    }
+
+    public void applyProvider(View v) {
+        Intent startIntent = new Intent(getApplicationContext(), ApplyPage.class);
         startActivity(startIntent);
     }
 

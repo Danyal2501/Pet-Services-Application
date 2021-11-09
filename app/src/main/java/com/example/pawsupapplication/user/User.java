@@ -7,7 +7,7 @@ package com.example.pawsupapplication.user;
  *
  */
 public abstract class User {
-    private int id;
+    private String id;
     private String name;
     private String address;
     private int roleId;
@@ -16,7 +16,7 @@ public abstract class User {
      *
      * @return id of the user
      */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
     /**
@@ -24,7 +24,7 @@ public abstract class User {
      *
      * @param id id of the user to be set
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     /**

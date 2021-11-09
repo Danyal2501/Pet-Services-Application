@@ -25,13 +25,13 @@ public interface Service {
      * Get the user id of the service
      * @return the user id of the service
      */
-    public int getUserId();
+    public String getUserId();
 
     /**
      * Set the user id of the service given an id
      * @param id the user id of the service
      */
-    public void setUserId(int id);
+    public void setUserId(String id);
     /**
      * Get the name of the service
      * @return the name of the service
