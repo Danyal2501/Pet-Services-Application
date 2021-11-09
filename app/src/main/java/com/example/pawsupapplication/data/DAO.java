@@ -19,6 +19,8 @@ import com.example.pawsupapplication.data.model.History;
 
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
+import com.example.pawsupapplication.user.Customer;
+import com.example.pawsupapplication.data.model.service.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +37,7 @@ public class DAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement1 = "CREATE TABLE " +
-                "USER_TABLE (UserID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, Id TEXT)";
+                "USER_TABLE (UserID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, Id TEXT, flag TEXT)";
         db.execSQL(createTableStatement1);
         String createTableStatement2 = "CREATE TABLE " +
                 "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
@@ -45,16 +47,19 @@ public class DAO extends SQLiteOpenHelper {
         String createTableStatement3 = "CREATE TABLE " +
                 "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
                 " Price Text, Date TEXT, Image TEXT, Email TEXT)";
-    db.execSQL(createTableStatement3);
-
+        db.execSQL(createTableStatement3);
+        String createTableStatement4 = "CREATE TABLE " +
+                "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
+                " Address TEXT, Price TEXT, Picture INTEGER)";
+        db.execSQL(createTableStatement4);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + "USER_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "PETCARD_TABLE");
-
         db.execSQL("DROP TABLE IF EXISTS " + "HISTORY_TABLE");
+        db.execSQL("DROP TABLE IF EXISTS " + "SERVICE_TABLE");
 
         onCreate(db);
     }
@@ -66,8 +71,25 @@ public class DAO extends SQLiteOpenHelper {
         cv.put("email", user.getEmail());
         cv.put("password", user.getPassword());
         cv.put("Id", user.getUserId());
+        cv.put("flag", 1);
 
         long report = db.insert("USER_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
+    public boolean addService(Service ser){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("UserID", ser.getUserId());
+        cv.put("Name", ser.getServiceName());
+        cv.put("Describe", ser.getServiceDesc());
+        cv.put("Address", ser.getServiceAddress());
+        cv.put("Price", ser.getServicePrice());
+        cv.put("Picture", ser.getServicePicture());
+
+        long report = db.insert("SERVICE_TABLE", null, cv);
 
         return (report != -1);
     }
@@ -95,6 +117,85 @@ public class DAO extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return users;
+    }
+
+    public ArrayList<Service> getServices(String UserID){
+        ArrayList<Service> services = new ArrayList<>();
+        String q = "Select * From SERVICE_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int ID = cursor.getInt(0);
+                String userid = cursor.getString(1);
+                String name = cursor.getString(2);
+                String desc = cursor.getString(3);
+                String address = cursor.getString(4);
+                String price = cursor.getString(5);
+                int picture = cursor.getInt(6);
+
+                if (userid.compareTo(UserID) == 0){
+                    Service ser = new ServiceImpl("",""
+                            ,"","","",0);
+                    ser.setServiceId(ID);
+                    ser.setUserId(userid);
+                    ser.setServiceName(name);
+                    ser.setServiceDesc(desc);
+                    ser.setServiceAddress(address);
+                    ser.setServicePrice(price);
+                    ser.setServicePicture(picture);
+                    services.add(ser);
+                }
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return services;
+    }
+
+    public Map<String,ArrayList<Service>> getAllService(){
+        Map<String,ArrayList<Service>> allSer = new HashMap<>();
+        Map<String,ArrayList<String>> users = this.getUsers();
+        for(String key: users.keySet()){
+            String id = users.get(key).get(1);
+            ArrayList<Service> ser = this.getServices(id);
+            allSer.put(key,ser);
+        }
+        return allSer;
+    }
+
+    public Customer getByEmail(String s){
+        String q = "Select * From USER_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+        Customer c = new Customer("","",0,"");
+
+        if(cursor.moveToFirst()){
+            do{
+                String email = cursor.getString(1);
+                String UserId = cursor.getString(3);
+                String flag = cursor.getString(4);
+                if (email.compareTo(s) == 0){
+                    if(Integer.parseInt(flag) == 0){
+                        c.setProvider(true);
+                    }else{
+                        c.setProvider(false);
+                    }
+                    c.setId(UserId);
+                }
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return c;
+    }
+
+    public void setFlagByEmail(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String setTableStatement = "UPDATE USER_TABLE SET flag='0' WHERE email = \"" + email + "\"";
+        db.execSQL(setTableStatement);
+        db.close();
     }
 
     public boolean addPetCard(PetCard pet, String email){

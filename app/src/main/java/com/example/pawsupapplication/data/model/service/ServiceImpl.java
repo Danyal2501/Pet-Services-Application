@@ -10,18 +10,17 @@ import java.math.BigDecimal;
 public class ServiceImpl implements Service {
 
     private int serviceId;
-    private int userid;
+    private String userid;
     private String serviceName;
     private String serviceDesc;
     private String serviceAds;
     private String servicePrice;
     private Integer servicePicture;
 
-    public ServiceImpl(Integer serviceId, Integer userid, String serviceName, String serviceDesc, String serviceAds,
+    public ServiceImpl(String userid, String serviceName, String serviceDesc, String serviceAds,
                        String servicePrice, Integer servicePicture){
         super();
 
-        this.serviceId = serviceId;
         this.userid = userid;
         this.serviceName = serviceName;
         this.serviceDesc = serviceDesc;
@@ -40,12 +39,12 @@ public class ServiceImpl implements Service {
 
     }
     @Override
-    public int getUserId() {
+    public String getUserId() {
         return this.userid;
     }
 
     @Override
-    public void setUserId(int userid) {
+    public void setUserId(String userid) {
         this.userid = userid;
 
     }

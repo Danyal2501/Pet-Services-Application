@@ -25,11 +25,12 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="registration_success">Account Created!</string>
-    <string name="apply">Apply to become a service provider</string>
-    <string name="service_name">Service Name</string>
-    <string name="service_address">Service Address</string>
-    <string name="service_desc">Service description</string>
-    <string name="service_price">Service Price</string>
+    <string name="apply">Apply to be providers</string>
+    <string name="email">Enter Email Address</string>
+    <string name="service_name">Enter Service Name</string>
+    <string name="service_address">Enter Service Address</string>
+    <string name="service_desc">Enter Service Description</string>
+    <string name="service_price">Enter Service Price</string>
     <string name="edit_price">Edit Price</string>
     <string name="confirmation_message">Are you sure you want to go through with this change?</string>
     <string name="Confirm">Confirm</string>
