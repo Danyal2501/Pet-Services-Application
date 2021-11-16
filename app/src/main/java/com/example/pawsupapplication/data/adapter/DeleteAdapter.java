@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,16 +20,14 @@ import com.squareup.picasso.Picasso;
  * @author Annas Rahuma
  */
 
-public class PetCardAdapter extends BaseAdapter {
+public class DeleteAdapter extends BaseAdapter {
     Context context;
     Object PetCardInfo[];
-    Object PetCardPic[];
     LayoutInflater inflter;
 
-    public PetCardAdapter(Context applicationContext, Object[] PetCardInfo, Object[] PetCardPic) {
+    public DeleteAdapter(Context applicationContext, Object[] PetCardInfo) {
         this.context = applicationContext;
         this.PetCardInfo = PetCardInfo;
-        this.PetCardPic = PetCardPic;
         inflter = (LayoutInflater.from(applicationContext));
     }
 
@@ -49,13 +48,10 @@ public class PetCardAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.cards_display, null);
-        TextView petInfo = (TextView)view.findViewById(R.id.petText);
-        ImageView petPic = (ImageView)view.findViewById(R.id.petImage);
-        String url = (String)PetCardPic[i];
-        Picasso.with(context).load(url).placeholder(R.drawable.pawsup_logo)
-                .resize(100, 100).into(petPic);
-        petInfo.setText((String)PetCardInfo[i]);
+        view = inflter.inflate(R.layout.delete_display, null);
+        Button delete = (Button)view.findViewById(R.id.deleter);
+        delete.setText((String)PetCardInfo[i]);
+
         return view;
     }
 }

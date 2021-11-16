@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.pawsupapplication" >
+    package="com.example.pawsupapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PawsupApplication"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.petcard.cardDeleteChange"
+            android:exported="true" />
+        <activity
+            android:name=".ui.petcard.DeleteCards"
+            android:exported="true" />
+        <activity
+            android:name=".ui.petcard.UpdateCards"
+            android:exported="true" />
         <activity
             android:name=".ui.login.ForgotPassActivity"
             android:exported="true" />
@@ -88,7 +97,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
