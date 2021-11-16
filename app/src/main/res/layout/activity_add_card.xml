@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6DFBD"
     tools:context=".ui.petcard.AddCard">
 
     <TextView
@@ -19,14 +20,14 @@
 
     <EditText
         android:id="@+id/textInput5"
-        android:layout_width="212dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inputParam5"
+        app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toBottomOf="@+id/textInput4" />
 
     <TextView
@@ -74,14 +75,14 @@
 
     <EditText
         android:id="@+id/textInput4"
-        android:layout_width="212dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inputParam4"
+        app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toBottomOf="@+id/textInput3" />
 
     <TextView
@@ -108,49 +109,50 @@
 
     <EditText
         android:id="@+id/textInput6"
-        android:layout_width="212dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inputParam6"
+        app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toBottomOf="@+id/textInput5" />
 
     <EditText
         android:id="@+id/textInput7"
-        android:layout_width="212dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inputParam7"
+        app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toBottomOf="@+id/textInput6" />
 
     <EditText
         android:id="@+id/textInput1"
-        android:layout_width="212dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inputPar1"
+        app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/textInput2"
-        android:layout_width="212dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/inputParam2"
+        app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toBottomOf="@+id/textInput1" />
 
     <EditText
@@ -161,39 +163,58 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/inputParam3"
         app:layout_constraintTop_toBottomOf="@+id/textInput2" />
 
     <Button
         android:id="@+id/creator"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="152dp"
+        android:backgroundTint="#F870C3BC"
         android:onClick="createPetCard"
         android:text="Create Pet Card"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/viewer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="183dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#F870C3BC"
         android:onClick="viewPetCards"
         android:text="View Pet Cards"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
+        android:maxHeight="100px"
+        android:maxWidth="100px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInput7"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="183dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#F870C3BC"
+        android:onClick="viewUpdateCards"
+        android:text="UPDATE PET CARDS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
