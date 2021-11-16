@@ -27,10 +27,10 @@ import com.example.pawsupapplication.data.DAO;
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.ui.profile.ProfileActivity;
 import com.example.pawsupapplication.R;
-import com.example.pawsupapplication.ui.apply.ApplyPage;
 import com.example.pawsupapplication.databinding.ActivityLoginBinding;
 import com.example.pawsupapplication.ui.petcard.AddCard;
 import com.example.pawsupapplication.user.AfterLoginActivity;
+import com.example.pawsupapplication.user.SellerActivity;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -59,10 +59,13 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
-        final TextView applyButton = findViewById(R.id.apply);
         final ProgressBar loadingProgressBar = binding.loading;
 
         DAO database = new DAO(LoginActivity.this);
+        // create admin account for sellers
+        LoggedInUser admin = new LoggedInUser("admin","admin@admin.com","AdminAdmin/");
+        database.addUser(admin);
+
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -148,7 +151,13 @@ public class LoginActivity extends AppCompatActivity {
         String userID = model.getUserID();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        Intent newIntent = new Intent(this, AfterLoginActivity.class);
+        Intent newIntent;
+        //check user type (admin/customers/service providers)
+        if (email.compareTo("admin@admin.com") == 0){
+            newIntent = new Intent(this, SellerActivity.class);
+        }else{
+            newIntent = new Intent(this, AfterLoginActivity.class);
+        }
         newIntent.putExtra("userEmail", email);
         startActivity(newIntent);
     }

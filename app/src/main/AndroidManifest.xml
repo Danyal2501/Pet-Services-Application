@@ -23,6 +23,9 @@
             android:name=".user.AfterLoginActivity"
             android:exported="true" />
         <activity
+            android:name=".user.SellerActivity"
+            android:exported="true" />
+        <activity
             android:name=".user.HistoryActivity"
             android:exported="true" />
         <activity
@@ -57,6 +60,15 @@
             android:exported="true" />
         <activity
             android:name=".ui.products.ProductsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.seller.AddShop"
+            android:exported="true" />
+        <activity
+            android:name=".ui.seller.CustomizeShop"
+            android:exported="true" />
+        <activity
+            android:name=".ui.seller.RemoveShop"
             android:exported="true" />
         <activity
             android:name=".ui.services.ServiceDetails"
