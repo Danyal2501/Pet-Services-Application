@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.pawsupapplication" >
+    package="com.example.pawsupapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PawsupApplication"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+
+        <activity
+            android:name=".ui.services.MapActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.login.ForgotPassActivity"
             android:exported="true" />
@@ -74,9 +84,24 @@
             android:name=".ui.products.ProductAllCategory"
             android:exported="true" />
         <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.PhoneActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.EmailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.PasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.SuccessActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
