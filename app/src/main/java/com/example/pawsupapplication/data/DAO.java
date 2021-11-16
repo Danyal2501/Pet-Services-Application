@@ -43,7 +43,6 @@ public class DAO extends SQLiteOpenHelper {
                 "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
                 " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, Email TEXT)";
         db.execSQL(createTableStatement2);
-
         String createTableStatement3 = "CREATE TABLE " +
                 "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
                 " Price Text, Date TEXT, Image TEXT, Email TEXT)";
@@ -52,6 +51,11 @@ public class DAO extends SQLiteOpenHelper {
                 "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
                 " Address TEXT, Price TEXT, Picture INTEGER)";
         db.execSQL(createTableStatement4);
+        String createTableStatement5 = "CREATE TABLE " +
+                "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
+                " Amount INTEGER)";
+        db.execSQL(createTableStatement5);
+
     }
 
     @Override
@@ -60,6 +64,7 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + "PETCARD_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "HISTORY_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "SERVICE_TABLE");
+        db.execSQL("DROP TABLE IF EXISTS " + "PURCHASE_TABLE");
 
         onCreate(db);
     }
@@ -78,6 +83,19 @@ public class DAO extends SQLiteOpenHelper {
         return (report != -1);
     }
 
+    public boolean addPurchase(String email, String serviceID, Integer amount){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("email", email);
+        cv.put("serviceID", serviceID);
+        cv.put("Amount", amount);
+
+        long report = db.insert("PURCHASE_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
     public boolean addService(Service ser){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -92,6 +110,25 @@ public class DAO extends SQLiteOpenHelper {
         long report = db.insert("SERVICE_TABLE", null, cv);
 
         return (report != -1);
+    }
+    public Map<String,Integer> getPurchases(String email){
+        Map<String,Integer> purchased = new HashMap<>();
+        String q = "Select * From PURCHASE_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                if(email.equals(cursor.getString(1))){
+                    String serviceID = cursor.getString(2);
+                    Integer amount = cursor.getInt(3);
+                    purchased.put(serviceID, amount);
+                }
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return purchased;
     }
 
     public Map<String,ArrayList<String>> getUsers(){
