@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
  * @version 1.1
  * @since Oct 1st 2021
  */
-class LoginFormState {
+public class LoginFormState {
     @Nullable
     private Integer usernameError;
     @Nullable

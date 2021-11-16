@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
  * @version 1.1
  * @since Oct 1st 2021
  */
-class LoginResult {
+public class LoginResult {
     @Nullable
     private LoggedInUserView success;
     @Nullable
