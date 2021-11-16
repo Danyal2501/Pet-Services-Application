@@ -233,8 +233,8 @@ public class DAO extends SQLiteOpenHelper {
                 String information = cursor.getString(6);
                // String picture = cursor.getString(7);
 
-                String card = "Name: " + name + "\n Gender: " + gender +
-                        "\n Neutered/Spayed: " + ns + "\nType: " + type +
+                String card = "Name: " + name + "\nGender: " + gender +
+                        "\nNeutered/Spayed: " + ns + "\nType: " + type +
                         "\nWeight: " + weight + "\nInformation: " + information;
 
                 cards.add(card);
@@ -245,6 +245,67 @@ public class DAO extends SQLiteOpenHelper {
         db.close();
         return cards;
     }
+
+    public ArrayList<String> getPetsName(String email){
+        ArrayList<String> names = new ArrayList<>();
+
+        String q = "Select * From PETCARD_TABLE Where Email = \"" + email + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String name = cursor.getString(1);
+
+                names.add(name);
+            }while (cursor.moveToNext());
+        }
+
+
+
+        cursor.close();
+        db.close();
+        return names;
+    }
+
+    public boolean deletePet(String name, String email){
+        String q = "Delete From PETCARD_TABLE Where Email = \"" + email +
+                "\" and Name =\"" + name + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(q);
+
+        Cursor c = db.rawQuery(q, null);
+        System.out.println(c.moveToFirst());
+        if(c.moveToFirst()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean updatePet(String name, String email, String ns,
+                             String weight, String information, String picture){
+        String q = "Update PETCARD_TABLE"
+                + " Set Ns = \"" + ns + "\","
+                + " Weight = \"" + weight + "\","
+                + " Information = \"" + information + "\","
+                + " Picture = \"" + picture + "\""
+                + " Where Email = \"" + email +
+                "\" and Name =\"" + name + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(q);
+
+        Cursor c = db.rawQuery(q, null);
+        System.out.println(c.moveToFirst());
+        if(c.moveToFirst()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 
     public ArrayList<String> getPetsPic(String email){
         ArrayList<String> cards = new ArrayList<>();
