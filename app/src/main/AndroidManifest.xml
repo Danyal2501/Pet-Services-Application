@@ -4,6 +4,8 @@
     package="com.example.pawsupapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PawsupApplication"
         android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+        <activity
+            android:name=".ui.services.MapActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.petcard.cardDeleteChange"
             android:exported="true" />
@@ -93,6 +102,21 @@
             android:exported="true" />
         <activity
             android:name=".ui.products.ProductAllCategory"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.PhoneActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.EmailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.PasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.profile.SuccessActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
