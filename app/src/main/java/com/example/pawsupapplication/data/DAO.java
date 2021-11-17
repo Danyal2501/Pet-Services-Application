@@ -107,12 +107,15 @@ public class DAO extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
 
-                String email = cursor.getString(1);
-                String serivceID = cursor.getString(2);
+
+                String serviceID = cursor.getString(2);
                 int amount = cursor.getInt(3);
                 String petName = cursor.getString(4);
                 LocalDate date = LocalDate.now();
-                his = new History(amount, price, serivceID, date.toString(), image, petName);
+                ArrayList<String> A = getPurchasedItems(serviceID);
+                String price = A.get(4);
+                String image = A.get(6);
+                History his = new History(amount, price, serviceID, date.toString(), image, petName);
                 addHistory(his, email);
             }while (cursor.moveToNext());
         }
@@ -124,10 +127,10 @@ public class DAO extends SQLiteOpenHelper {
 
         q = "Delete From PETCARD_TABLE Where Email = \"" + email +
                 "\"";
-        SQLiteDatabase db1 = this.getWritableDatabase();
+
         System.out.println(q);
 
-        Cursor c1 = db.rawQuery(q, null);
+        Cursor c1 = db1.rawQuery(q, null);
 
     }
 

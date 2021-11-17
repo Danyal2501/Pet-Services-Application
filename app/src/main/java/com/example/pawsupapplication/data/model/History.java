@@ -19,7 +19,7 @@ public class History {
     private String pet;
 
     // Constructor
-    public History(int amount,  String name, String date, String image, String pet) {
+    public History(int amount, String price, String name, String date, String image, String pet) {
         this.amount = amount;
         this.price = price;
         this.name = name;
