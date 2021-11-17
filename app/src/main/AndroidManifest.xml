@@ -15,10 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PawsupApplication"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.purchase.AddServiceToCart"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
+
         <activity
             android:name=".ui.services.MapActivity"
             android:exported="false" />

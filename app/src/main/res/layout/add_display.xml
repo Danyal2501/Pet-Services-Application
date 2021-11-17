@@ -9,7 +9,7 @@
         android:id="@+id/adder"
         android:layout_width="404dp"
         android:layout_height="59dp"
-        android:onClick="viewCardDeleteChange"
+        android:onClick="addServiceToCart"
         android:backgroundTint="#F870C3BC"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"

@@ -22,6 +22,7 @@ import com.example.pawsupapplication.data.model.PetCard;
 import com.example.pawsupapplication.user.Customer;
 import com.example.pawsupapplication.data.model.service.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +46,7 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL(createTableStatement2);
         String createTableStatement3 = "CREATE TABLE " +
                 "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
-                " Price Text, Date TEXT, Image TEXT, Email TEXT)";
+                " Price Text, Date TEXT, Image TEXT, Email TEXT, Pet TEXT)";
         db.execSQL(createTableStatement3);
         String createTableStatement4 = "CREATE TABLE " +
                 "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
@@ -95,6 +96,39 @@ public class DAO extends SQLiteOpenHelper {
         long report = db.insert("PURCHASE_TABLE", null, cv);
 
         return (report != -1);
+    }
+
+    public void deletePurchase(String email/*, String serviceID, Integer amount, String pet*/){
+
+        String q = "Select * From PURCHASE_TABLE Where Email = \"" + email + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+
+                String email = cursor.getString(1);
+                String serivceID = cursor.getString(2);
+                int amount = cursor.getInt(3);
+                String petName = cursor.getString(4);
+                LocalDate date = LocalDate.now();
+                his = new History(amount, price, serivceID, date.toString(), image, petName);
+                addHistory(his, email);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        SQLiteDatabase db1 = this.getWritableDatabase();
+
+        q = "Delete From PETCARD_TABLE Where Email = \"" + email +
+                "\"";
+        SQLiteDatabase db1 = this.getWritableDatabase();
+        System.out.println(q);
+
+        Cursor c1 = db.rawQuery(q, null);
+
     }
 
     public boolean addService(Service ser){
@@ -412,6 +446,7 @@ public class DAO extends SQLiteOpenHelper {
         cv.put("Date", his.getDate());
         cv.put("Image", his.getImage());
         cv.put("Email", email);
+        cv.put("Pet", his.getPet());
 
         long report = db.insert("HISTORY_TABLE", null, cv);
 
@@ -433,7 +468,7 @@ public class DAO extends SQLiteOpenHelper {
                 // String picture = cursor.getString(7);
 
                 String card = "Transaction: " + name + "\nAmount: " + amount +
-                        "\nPrice $: " + price + "\nDate: " + date;
+                        "\nPrice $: " + price + "\nDate: " + date + "\nPet: " + pet;
 
                 cards.add(card);
             }while (cursor.moveToNext());
