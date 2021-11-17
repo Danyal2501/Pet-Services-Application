@@ -23,6 +23,24 @@
             android:name=".ui.services.MapActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.purchase.PlaceOrder"
+            android:exported="true" />
+        <activity
+            android:name=".ui.purchase.PurchaseSummary"
+            android:exported="true" />
+        <activity
+            android:name=".ui.purchase.Payment"
+            android:exported="true" />
+        <activity
+            android:name=".ui.purchase.PurchaseDetail"
+            android:exported="true" />
+        <activity
+            android:name=".ui.purchase.Checkout"
+            android:exported="true" />
+        <activity
+            android:name=".ui.purchase.addCart"
+            android:exported="true" />
+        <activity
             android:name=".ui.petcard.cardDeleteChange"
             android:exported="true" />
         <activity
