@@ -89,6 +89,7 @@
         app:layout_constraintVertical_bias="0.757" />
 
     <ListView
+        android:id="@+id/order_infos"
         android:layout_width="407dp"
         android:layout_height="104dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,6 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F870C3BC"
+        android:onClick="backToPreviousPage"
         android:text="@string/Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F870C3BC"
+        android:onClick="toPlaceOrder"
         android:text="@string/place_order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

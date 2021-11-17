@@ -49,11 +49,11 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL(createTableStatement3);
         String createTableStatement4 = "CREATE TABLE " +
                 "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
-                " Address TEXT, Price TEXT, Picture INTEGER)";
+                " Address TEXT, Price TEXT, ServiceID TEXT, Image TEXT, Picture INTEGER)";
         db.execSQL(createTableStatement4);
         String createTableStatement5 = "CREATE TABLE " +
                 "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
-                " Amount INTEGER)";
+                " Amount INTEGER, petName TEXT)";
         db.execSQL(createTableStatement5);
 
     }
@@ -83,13 +83,14 @@ public class DAO extends SQLiteOpenHelper {
         return (report != -1);
     }
 
-    public boolean addPurchase(String email, String serviceID, Integer amount){
+    public boolean addPurchase(String email, String serviceID, Integer amount, String pet){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("email", email);
         cv.put("serviceID", serviceID);
         cv.put("Amount", amount);
+        cv.put("petName", pet);
 
         long report = db.insert("PURCHASE_TABLE", null, cv);
 
@@ -129,6 +130,39 @@ public class DAO extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return purchased;
+    }
+
+    public ArrayList<String> getPurchasedItems(String itemID){
+        ArrayList<String> item = new ArrayList<>();
+
+        String q = "Select * From SERVICE_TABLE Where ServiceID = \"" + itemID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String provider = cursor.getString(1); // index 0
+                String name = cursor.getString(2); // 1
+                String description = cursor.getString(3); // 2
+                String address = cursor.getString(4); // 3
+                String price = cursor.getString(5); // 4
+                String serviceID = cursor.getString(6); // 5
+                String image = cursor.getString(7); // 6
+
+                item.add(provider);
+                item.add(name);
+                item.add(description);
+                item.add(address);
+                item.add(price);
+                item.add(serviceID);
+                item.add(image);
+
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return item;
     }
 
     public Map<String,ArrayList<String>> getUsers(){

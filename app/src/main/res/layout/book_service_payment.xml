@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.166" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/cashButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cash"
@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.254" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/creditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/credit"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.386" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/cardNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/card_number"
@@ -89,7 +89,7 @@
         app:layout_constraintVertical_bias="0.559" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/cardPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_password"
@@ -102,6 +102,7 @@
         app:layout_constraintVertical_bias="0.655" />
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/CVV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/security_code"
@@ -118,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#F870C3BC"
+        android:onClick="toSummary"
         android:text="@string/Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +133,7 @@
         android:layout_width="105dp"
         android:layout_height="48dp"
         android:backgroundTint="#F870C3BC"
+        android:onClick="backToPreviousPage"
         android:text="@string/Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
