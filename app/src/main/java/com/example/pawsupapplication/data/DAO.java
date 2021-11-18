@@ -339,7 +339,7 @@ public class DAO extends SQLiteOpenHelper {
                 String type = cursor.getString(4);
                 String weight = cursor.getString(5);
                 String information = cursor.getString(6);
-               // String picture = cursor.getString(7);
+                String pet = cursor.getString(6);
 
                 String card = "Name: " + name + "\nGender: " + gender +
                         "\nNeutered/Spayed: " + ns + "\nType: " + type +
