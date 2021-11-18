@@ -56,6 +56,10 @@ public class DAO extends SQLiteOpenHelper {
                 "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
                 " Amount INTEGER, petName TEXT)";
         db.execSQL(createTableStatement5);
+        String createTableStatement6 = "CREATE TABLE " +
+                "REVIEW_TABLE (reviewID FLOAT PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
+                " stars INTEGER, title TEXT, body TEXT, date TEXT)";
+        db.execSQL(createTableStatement6);
 
     }
 
@@ -324,6 +328,23 @@ public class DAO extends SQLiteOpenHelper {
         return (report != -1);
     }
 
+    public boolean addReview(Review rev, String email, String service){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("email", email);
+        cv.put("serviceID", service);
+        cv.put("stars", rev.getRating());
+        cv.put("title", rev.getTitle());
+        cv.put("body", rev.getReview());
+        cv.put("date", rev.getDate().toString());
+
+
+        long report = db.insert("PETCARD_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
     public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();
 
@@ -375,6 +396,8 @@ public class DAO extends SQLiteOpenHelper {
         db.close();
         return names;
     }
+
+
 
     public boolean deletePet(String name, String email){
         String q = "Delete From PETCARD_TABLE Where Email = \"" + email +
@@ -438,6 +461,52 @@ public class DAO extends SQLiteOpenHelper {
         return cards;
     }
 
+    public ArrayList<Float> getReviewStars(String serviceID){
+        ArrayList<Float> cards = new ArrayList<>();
+
+        String q = "Select * From REVIEW_TABLE Where serviceID = \"" + serviceID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Float star = cursor.getFloat(3);
+
+                cards.add(star);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return cards;
+    }
+
+    public ArrayList<String> getReviewInfo(String serviceID){
+        ArrayList<String> cards = new ArrayList<>();
+
+        String q = "Select * From REVIEW_TABLE Where serviceID = \"" + serviceID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String title = cursor.getString(4);
+                String body = cursor.getString(5);
+                String date = cursor.getString(6);
+                String review = "Title:" + title
+                        + "\nDetails:" + body +
+                        "\nDate: " + date ;
+
+                cards.add(review);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return cards;
+    }
+
+
     
     public boolean addHistory(History his, String email){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -468,6 +537,7 @@ public class DAO extends SQLiteOpenHelper {
                 int amount = cursor.getInt(2);
                 String price = cursor.getString(3);
                 String date = cursor.getString(4);
+                String pet = cursor.getString(6);
                 // String picture = cursor.getString(7);
 
                 String card = "Transaction: " + name + "\nAmount: " + amount +
