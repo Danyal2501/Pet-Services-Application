@@ -23,10 +23,12 @@ import java.util.List;
 public class ProductRecentlyViewAdapter extends RecyclerView.Adapter<ProductRecentlyViewAdapter.RecentlyViewedViewHolder>{
     Context context;
     List<Product> recentlyViewedList;
+    String ID = null;
 
-    public ProductRecentlyViewAdapter(Context context, List<Product> recentlyViewedList) {
+    public ProductRecentlyViewAdapter(Context context, List<Product> recentlyViewedList, String ID) {
         this.context = context;
         this.recentlyViewedList = recentlyViewedList;
+        this.ID = ID;
     }
 
     @NonNull
@@ -61,6 +63,7 @@ public class ProductRecentlyViewAdapter extends RecyclerView.Adapter<ProductRece
                 i.putExtra("qty",recentlyViewedList.get(position).getProductQty());
                 i.putExtra("rating",recentlyViewedList.get(position).getProductRating());
                 i.putExtra("productID", recentlyViewedList.get(position).getId());
+                i.putExtra("userEmail", ID);
 
                 context.startActivity(i);
 

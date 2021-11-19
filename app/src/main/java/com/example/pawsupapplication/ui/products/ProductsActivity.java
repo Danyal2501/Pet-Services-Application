@@ -100,7 +100,7 @@ public class ProductsActivity extends AppCompatActivity {
         recentlyViewedList = database.getAllProducts();
 
         setCategoryRecycler(categoryList);
-        setRecentlyViewedRecycler(recentlyViewedList);
+        setRecentlyViewedRecycler(recentlyViewedList, ID);
 
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,10 +124,10 @@ public class ProductsActivity extends AppCompatActivity {
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
-    private void setRecentlyViewedRecycler(List<Product> recentlyViewedDataList) {
+    private void setRecentlyViewedRecycler(List<Product> recentlyViewedDataList, String ID) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recentlyViewedRecycler.setLayoutManager(layoutManager);
-        recentlyViewedAdapter = new ProductRecentlyViewAdapter(this,recentlyViewedDataList);
+        recentlyViewedAdapter = new ProductRecentlyViewAdapter(this,recentlyViewedDataList, ID);
         recentlyViewedRecycler.setAdapter(recentlyViewedAdapter);
     }
 }

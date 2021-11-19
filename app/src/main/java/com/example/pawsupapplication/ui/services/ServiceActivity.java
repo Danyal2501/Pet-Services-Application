@@ -94,7 +94,7 @@ public class ServiceActivity extends AppCompatActivity {
 
 
         setCategoryRecycler(categoryList);
-        setRecentlyViewedRecycler(recentlyViewedList);
+        setRecentlyViewedRecycler(recentlyViewedList, ID);
 
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,10 +123,10 @@ public class ServiceActivity extends AppCompatActivity {
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
-    private void setRecentlyViewedRecycler(List<Service> recentlyViewedDataList) {
+    private void setRecentlyViewedRecycler(List<Service> recentlyViewedDataList, String ID) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recentlyViewedRecycler.setLayoutManager(layoutManager);
-        recentlyViewedAdapter = new ServiceRecentlyViewAdapter(this,recentlyViewedDataList);
+        recentlyViewedAdapter = new ServiceRecentlyViewAdapter(this,recentlyViewedDataList, ID);
         recentlyViewedRecycler.setAdapter(recentlyViewedAdapter);
     }
 }
