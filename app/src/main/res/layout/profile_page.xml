@@ -8,6 +8,19 @@
     <!--
     Home button
      -->
+    <TextView
+        android:id="@+id/password2"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
+        android:text="Password"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/changepassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="91dp"
@@ -48,7 +61,7 @@
         android:layout_width="211dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="23dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -63,42 +76,60 @@
     <!--
     Password
      -->
+
+    <!--
+    Change Password
+     -->
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/pets"
         android:layout_width="119dp"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="17dp"
-        android:text="Password"
+        android:layout_marginBottom="30dp"
+        android:text="Pets:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/savechange"
         app:layout_constraintEnd_toStartOf="@+id/changepassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone" />
 
-    <!--
-    Change Password
-     -->
     <TextView
         android:id="@+id/changepassword"
         android:layout_width="206dp"
         android:layout_height="48dp"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="29dp"
+        android:layout_marginBottom="19dp"
         android:onClick="password"
         android:password="true"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/savechange"
+        app:layout_constraintBottom_toTopOf="@+id/numPets"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/password"
+        app:layout_constraintStart_toEndOf="@+id/pets"
         app:layout_constraintTop_toBottomOf="@+id/changephone" />
 
     <!--
     Change Location
      -->
+
+    <TextView
+        android:id="@+id/numPets"
+        android:layout_width="206dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="18dp"
+        android:onClick="phone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/savechange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toEndOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@+id/changepassword"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
     <EditText
         android:id="@+id/changelocation"
         android:layout_width="210dp"
@@ -124,9 +155,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:text="Phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintBottom_toTopOf="@+id/password2"
         app:layout_constraintEnd_toStartOf="@+id/changephone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail" />
@@ -155,7 +187,7 @@
         android:id="@+id/changeEmail"
         android:layout_width="206dp"
         android:layout_height="48dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="26dp"
         android:onClick="email"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -218,26 +250,29 @@
     <!--
     Save Changes
      -->
+
+    <!--
+    Change Name
+     -->
+
     <Button
         android:id="@+id/savechange"
         android:layout_width="280dp"
         android:layout_height="48dp"
         android:layout_marginStart="57dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="288dp"
+        android:layout_marginBottom="83dp"
         android:clickable="true"
         android:onClick="saveProfile"
         android:shadowColor="#F44336"
         android:text="Save Changes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changepassword" />
+        app:layout_constraintTop_toBottomOf="@+id/numPets" />
 
-    <!--
-    Change Name
-     -->
     <EditText
         android:id="@+id/changefullname"
         android:layout_width="210dp"
