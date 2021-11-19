@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.purchase.Checkout;
+import com.example.pawsupapplication.ui.purchase.addCart;
+import com.squareup.picasso.Picasso;
 
 /**
  * This class creates the activity for product details
@@ -19,8 +22,7 @@ public class ProductDetails extends AppCompatActivity {
     ImageView img, back;
     TextView proName, proPrice, proDesc, proQty, proRating;
 
-    String name, price, desc, qty, rating;
-    int image;
+    String name, price, desc, qty, rating, ID, image, productID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +30,15 @@ public class ProductDetails extends AppCompatActivity {
         setContentView(R.layout.product_details);
 
         Intent i = getIntent();
+        ID = getIntent().getStringExtra("userEmail");
 
         name = i.getStringExtra("name");
-        image = i.getIntExtra("image", R.drawable.food1);
+        image = i.getStringExtra("image");
         price = i.getStringExtra("price");
         desc = i.getStringExtra("desc");
         qty = i.getStringExtra("quantity");
         rating = i.getStringExtra("rating");
+        productID = i.getStringExtra("productID");
 
         proName = findViewById(R.id.productName);
         proDesc = findViewById(R.id.prodDesc);
@@ -43,6 +47,8 @@ public class ProductDetails extends AppCompatActivity {
         back = findViewById(R.id.back_product2);
         proQty = findViewById(R.id.qty);
         proRating = findViewById(R.id.rating);
+        View cart = findViewById(R.id.cart);
+        View addToCart = findViewById(R.id.button_product);
 
         proName.setText(name);
         proPrice.setText(price);
@@ -50,7 +56,7 @@ public class ProductDetails extends AppCompatActivity {
         proQty.setText(qty);
         proRating.setText(rating);
 
-        img.setImageResource(image);
+        Picasso.with(this).load(image).placeholder(R.drawable.ic_launcher_background).into(img);
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +66,32 @@ public class ProductDetails extends AppCompatActivity {
                 Intent i = new Intent(ProductDetails.this, ProductsActivity.class);
                 startActivity(i);
                 finish();
+
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(ProductDetails.this, Checkout.class);
+                i.putExtra("userEmail", ID);
+
+                startActivity(i);
+
+            }
+        });
+
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(ProductDetails.this, addCart.class);
+                i.putExtra("userEmail", ID);
+                i.putExtra("itemID", productID);
+                i.putExtra("amount", price);
+
+                startActivity(i);
 
             }
         });

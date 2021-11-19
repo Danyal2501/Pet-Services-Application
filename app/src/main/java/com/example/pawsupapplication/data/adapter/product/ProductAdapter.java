@@ -17,6 +17,7 @@ import com.example.pawsupapplication.data.model.service.Service;
 import com.example.pawsupapplication.ui.products.ProductDetails;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.services.ServiceDetails;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull final ProductAdapter.ProductViewHolder holder, int position) {
 
-        holder.prodImage.setImageResource(productList.get(position).getProductPicture());
+        Picasso.with(context).load(productList.get(position).getProductPicture()).placeholder(R.drawable.ic_launcher_background).into(holder.prodImage);
         holder.prodName.setText(productList.get(position).getProductName());
         holder.prodQty.setText(productList.get(position).getProductQty());
         holder.prodPrice.setText(productList.get(position).getProductPrice());

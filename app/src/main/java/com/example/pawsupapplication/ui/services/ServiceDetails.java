@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.purchase.AddServiceToCart;
+import com.example.pawsupapplication.ui.purchase.Checkout;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -20,7 +22,7 @@ public class ServiceDetails extends AppCompatActivity {
     ImageView img, back;
     TextView proName, proPrice, proDesc, proAddress;
 
-    String name, price, desc, address, image, userId;
+    String name, price, desc, address, image, userId, serviceId, ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class ServiceDetails extends AppCompatActivity {
         setContentView(R.layout.service_details);
 
         Intent i = getIntent();
+        ID = getIntent().getStringExtra("userEmail");
 
         name = i.getStringExtra("name");
         image = i.getStringExtra("image");
@@ -36,6 +39,7 @@ public class ServiceDetails extends AppCompatActivity {
         desc = i.getStringExtra("desc");
         address = i.getStringExtra("address");
         userId = i.getStringExtra("userId");
+        serviceId = i.getStringExtra("serviceId");
 
         proName = findViewById(R.id.serviceName);
         proDesc = findViewById(R.id.servDesc);
@@ -70,13 +74,13 @@ public class ServiceDetails extends AppCompatActivity {
 
             }
         });
-/*
+
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i = new Intent(ServiceDetails.this, Checkout.class);
-                i.putExtra("userEmail", "");
+                i.putExtra("userEmail", ID);
 
                 startActivity(i);
 
@@ -87,16 +91,16 @@ public class ServiceDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(ServiceDetails.this, addServiceToCart.class);
-                i.putExtra("userEmail", "");
-                i.putExtra("serviceId", "");
-                i.putExtra("amount", "1");
+                Intent i = new Intent(ServiceDetails.this, AddServiceToCart.class);
+                i.putExtra("userEmail", ID);
+                i.putExtra("serviceId", serviceId);
+                i.putExtra("amount", price);
 
                 startActivity(i);
 
             }
         });
-*/
+
     }
     public void location(View v) {
         Intent i = new Intent(this, MapActivity.class);

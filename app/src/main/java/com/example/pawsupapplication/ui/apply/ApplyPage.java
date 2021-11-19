@@ -22,6 +22,7 @@ import com.example.pawsupapplication.data.DAO;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.UUID;
 
 public class ApplyPage extends AppCompatActivity {
     protected EditText sername;
@@ -50,6 +51,7 @@ public class ApplyPage extends AppCompatActivity {
                     //add new service
                     Map<String, ArrayList<String>> users = db.getUsers();
                     boolean b = false;
+                    String uniqueID = UUID.randomUUID().toString();
                     for(String key: users.keySet()){
                         if (email.getText().toString().compareTo(key) == 0 && !db.getByEmail(key).getProvider()) {
                             Service ser = new ServiceImpl(db.getByEmail(key).getId(),
@@ -57,7 +59,8 @@ public class ApplyPage extends AppCompatActivity {
                                     description.getText().toString(),
                                     address.getText().toString(),
                                     price.getText().toString(),
-                                    picture.getText().toString());
+                                    picture.getText().toString(),
+                                    uniqueID);
                             db.addService(ser);
                             db.setFlagByEmail(key);
                             b = true;

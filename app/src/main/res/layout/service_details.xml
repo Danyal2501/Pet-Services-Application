@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="goToCart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cart_black" />
@@ -86,10 +85,8 @@
         android:text="Add To Cart"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:onClick="addToCart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/big_image_service"
         app:layout_constraintVertical_bias="1.0" />
@@ -119,15 +116,12 @@
         android:id="@+id/Location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="192dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="8dp"
         android:onClick="location"
         android:text="Location"
-        app:layout_constraintBottom_toTopOf="@+id/button_service"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/big_image_service" />
+        app:layout_constraintStart_toStartOf="@+id/address_serviceDetail"
+        app:layout_constraintTop_toBottomOf="@+id/address_serviceDetail"
+        app:layout_constraintVertical_bias="0.266" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
