@@ -2,6 +2,7 @@ package com.example.pawsupapplication.ui.purchase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class PlaceOrder extends AppCompatActivity {
         userEmail = getIntent().getStringExtra("userEmail");
     }
 
-    public void confirmPlaceOrder() {
+    public void confirmPlaceOrder(View view) {
 
         try {
 

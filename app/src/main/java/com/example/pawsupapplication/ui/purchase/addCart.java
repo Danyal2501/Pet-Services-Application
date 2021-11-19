@@ -2,6 +2,7 @@ package com.example.pawsupapplication.ui.purchase;
 
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,7 @@ public class addCart extends AppCompatActivity {
         pet = "N/A";
     }
 
-    public void addProductToCart() {
+    public void addProductToCart(View view) {
         DAO database = new DAO(addCart.this);
         database.addPurchase(userEmail,itemID, amount, pet);
         Toast.makeText(getApplicationContext(), "Added to cart!", Toast.LENGTH_SHORT).show();

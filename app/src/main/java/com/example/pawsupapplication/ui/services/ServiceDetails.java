@@ -94,7 +94,7 @@ public class ServiceDetails extends AppCompatActivity {
                 Intent i = new Intent(ServiceDetails.this, AddServiceToCart.class);
                 i.putExtra("userEmail", ID);
                 i.putExtra("serviceId", serviceId);
-                i.putExtra("amount", price);
+                i.putExtra("amount", "1");
 
                 startActivity(i);
 

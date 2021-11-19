@@ -2,6 +2,7 @@ package com.example.pawsupapplication.ui.purchase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ public class PurchaseDetail extends AppCompatActivity {
         cardList.setAdapter(a);
     }
 
-    public void toPayments() {
+    public void toPayments(View view) {
         Intent startIntent = new Intent(getApplicationContext(), PurchaseDetail.class);
         startIntent.putExtra("userEmail", userEmail);
         startActivity(startIntent);

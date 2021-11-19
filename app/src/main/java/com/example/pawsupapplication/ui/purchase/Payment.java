@@ -2,6 +2,7 @@ package com.example.pawsupapplication.ui.purchase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class Payment extends AppCompatActivity {
         }
     }
 
-    public void toSummary() {
+    public void toSummary(View view) {
         EditText cardNumber = findViewById(R.id.cardNumber);
         EditText cardPassword = findViewById(R.id.cardPassword);
         EditText cvv = findViewById(R.id.CVV);

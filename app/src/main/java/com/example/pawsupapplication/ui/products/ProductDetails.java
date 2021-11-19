@@ -89,7 +89,7 @@ public class ProductDetails extends AppCompatActivity {
                 Intent i = new Intent(ProductDetails.this, addCart.class);
                 i.putExtra("userEmail", ID);
                 i.putExtra("itemID", productID);
-                i.putExtra("amount", price);
+                i.putExtra("amount", "1");
 
                 startActivity(i);
 

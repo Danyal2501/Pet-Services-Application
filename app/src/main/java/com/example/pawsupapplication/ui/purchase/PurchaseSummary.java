@@ -2,6 +2,7 @@ package com.example.pawsupapplication.ui.purchase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
@@ -69,7 +70,7 @@ public class PurchaseSummary extends AppCompatActivity {
         arrPic2.add(cardImage);
     }
 
-    public void toPlaceOrder() {
+    public void toPlaceOrder(View view) {
         Intent startIntent = new Intent(getApplicationContext(), PlaceOrder.class);
         startIntent.putExtra("userEmail", userEmail);
     }

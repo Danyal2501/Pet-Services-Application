@@ -64,7 +64,7 @@ public class Checkout extends AppCompatActivity {
         return (Math.round(sum*100.0)/100.0);
     }
 
-    public void toDetails() {
+    public void toDetails(View view) {
         Intent startIntent = new Intent(getApplicationContext(), PurchaseDetail.class);
         startIntent.putExtra("userEmail", userEmail);
         startActivity(startIntent);
