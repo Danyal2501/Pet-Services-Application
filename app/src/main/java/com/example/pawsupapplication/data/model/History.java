@@ -16,14 +16,16 @@ public class History {
     private String name;
     private String date;
     private String image;
+    private String pet;
 
     // Constructor
-    public History(int amount, String price, String name, String date, String image) {
+    public History(int amount, String price, String name, String date, String image, String pet) {
         this.amount = amount;
         this.price = price;
         this.name = name;
         this.date = date;
         this.image = image;
+        this.pet = pet;
     }
 
     // Getters
@@ -47,6 +49,10 @@ public class History {
         return image;
     }
 
+    public String getPet() {
+        return pet;
+    }
+
     // Setters
     public void setAmount(int amount) {
         this.amount = amount;
@@ -54,6 +60,9 @@ public class History {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+    public void setPet(String pet) {
+        this.pet = pet;
     }
 
     public void setName(String name) {

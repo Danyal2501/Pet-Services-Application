@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Order o2 = new Order(u2, 2, "Pomeranian", day, "07/11/2021 2:00:00", "09/11/2021 4:00:00");
         Order o3 = new Order(u3, 3, "German Shepherd", day, "09/11/2021 2:00:00", "10/11/2021 12:00:00");
         Order o4 = new Order(u4, 4,"Golden Retriever", day, "10/11/2021 2:00:00", "13/11/2021 2:00:00");
-        Order o5 = new Order(u5, 5,"Poodle", "01/11/2021 3:12:26", "03/11/2021 5:00:00", "04/13/2021 1:00:00");
+        Order o5 = new Order(u5, 5,"Poodle", "01/11/2021 3:12:26", "03/11/2021 5:00:00", "04/11/2021 1:00:00");
 
         try {
             MainActivity.reviewMap.put(0, o1);

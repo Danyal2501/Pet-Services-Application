@@ -31,7 +31,7 @@ public class PetCards extends AppCompatActivity {
         ID = getIntent().getStringExtra("userEmail");
        // ArrayList<String> arr =  getIntent().getStringArrayListExtra("map");
         DAO dbh = new DAO(PetCards.this);
-        System.out.println("4");
+
         ArrayList<String> arr3 = dbh.getPetsInfo(ID);
         ArrayList<String> arr4 = dbh.getPetsPic(ID);
        // Toast.makeText(this, arr3.toString(), Toast.LENGTH_LONG).show();

@@ -52,7 +52,6 @@ public class ServiceDetails extends AppCompatActivity {
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         popupWindow = new PopupWindow(popupView, width, height, focusable);
-
   */
         proName.setText(name);
         proPrice.setText(price);
@@ -98,6 +97,10 @@ public class ServiceDetails extends AppCompatActivity {
             }
         });
 */
+    }
+    public void location(View v) {
+        Intent i = new Intent(this, MapActivity.class);
+        startActivity(i);
     }
 
 /*

@@ -115,4 +115,19 @@
         app:layout_constraintStart_toStartOf="@+id/servPrice"
         app:layout_constraintTop_toBottomOf="@+id/servPrice" />
 
+    <Button
+        android:id="@+id/Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="location"
+        android:text="Location"
+        app:layout_constraintBottom_toTopOf="@+id/button_service"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/big_image_service" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

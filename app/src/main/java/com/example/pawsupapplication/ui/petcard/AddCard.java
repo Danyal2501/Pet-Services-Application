@@ -37,7 +37,7 @@ public class AddCard extends AppCompatActivity {
         ID = getIntent().getStringExtra("userEmail");
         Intent i = getIntent();
         ImageView petPic = (ImageView) findViewById(R.id.imageView2);
-        petPic.setImageResource(R.drawable.ic_launcher_background);
+        petPic.setImageResource(R.drawable.pawsup_logo);
     }
 
     /**
@@ -51,35 +51,26 @@ public class AddCard extends AppCompatActivity {
 
         Intent i = new Intent(this, PetCards.class);
         i.putExtra("userEmail", ID);
-        /*Collection<PetCard> cards = cardMap.values();
-
-        Iterator<PetCard> it = cardMap.values().iterator();
-        Iterator<PetCard> it2 = cardMap.values().iterator();
-        ArrayList<String> cardsArray = new ArrayList<String>();
-        ArrayList<String> cardsPics = new ArrayList<String>();
-
-        while(it.hasNext()){
-            PetCard p = it.next();
-            String card = "Name: " + p.getName() + "\n Gender: " + p.getGender() +
-                    "\n Neutered/Spayed: " + p.getNs() + "\nType: " + p.getType() +
-                    "\nWeight: " + p.getWeight() + "\nInformation: " + p.getInformation();
-
-            cardsArray.add(card);
-        }
-        while(it2.hasNext()){
-            PetCard p = it2.next();
-            String pic = p.getProfilePic();
-
-            cardsPics.add(pic);
-        }
-
-        i.putExtra("map", cardsArray);
-        i.putExtra("map1", cardsPics);
-        */
         System.out.println("1");
         startActivity(i);
     }
 
+    public void viewUpdateCards(View v){
+
+        Intent i = new Intent(this, UpdateCards.class);
+        i.putExtra("userEmail", ID);
+        System.out.println("1");
+        startActivity(i);
+    }
+/*
+    public void viewChangeCards(View v){
+
+        Intent i = new Intent(this, PetCards.class);
+        i.putExtra("userEmail", ID);
+        System.out.println("1");
+        startActivity(i);
+    }
+*/
     /**
      * Once the user has filled in all the text boxes for the PetCard,
      * this function will be responsible for adding singular petcards to the database.
@@ -106,7 +97,7 @@ public class AddCard extends AppCompatActivity {
         String url = s[0];
         try {
             ImageView petPic = (ImageView) findViewById(R.id.imageView2);
-            Picasso.with(this).load(url).placeholder(R.drawable.ic_launcher_background)
+            Picasso.with(this).load(url).placeholder(R.drawable.pawsup_logo)
                     .resize(100, 100).into(petPic);
             //cardMap.put(id, card);
             DAO dbHelp = new DAO(AddCard.this);
@@ -140,7 +131,6 @@ public class AddCard extends AppCompatActivity {
         String s4;
         String s5;
         String s6;
-        String s7;
 
         if(i1.length() == 0 || i1.length() > 20) {
             s1 = "N/A";
@@ -175,7 +165,7 @@ public class AddCard extends AppCompatActivity {
         else{
             s4 = i4;
         }
-        if(i5.length() == 0 || i1.length() > 20) {
+        if(i5.length() == 0 || i5.length() > 20) {
             s5 = "N/A";
         }
         else{
