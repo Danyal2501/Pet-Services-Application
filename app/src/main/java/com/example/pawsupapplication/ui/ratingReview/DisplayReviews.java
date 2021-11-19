@@ -19,13 +19,15 @@ import java.util.ArrayList;
  */
 
 public class DisplayReviews extends AppCompatActivity {
+    public static ArrayList<String> arr;
+    public static ArrayList<String> arr2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displayreview_activity);
-        ArrayList<String> arr = getIntent().getStringArrayListExtra("map");
-        ArrayList<String> arr2 = getIntent().getStringArrayListExtra("map1");
+        arr = getIntent().getStringArrayListExtra("map");
+        arr2 = getIntent().getStringArrayListExtra("map1");
         ReviewAdapter a = new ReviewAdapter(this, arr.toArray(), arr2.toArray());
         ListView ReviewList = (ListView) findViewById(R.id.reviewLister);
         ReviewList.setAdapter(a);

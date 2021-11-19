@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.ratingReview.DisplayReviews;
+
 /**
  * This class creates the activity for service details
  *
@@ -72,6 +74,11 @@ public class ServiceDetails extends AppCompatActivity {
 
     public void location(View v) {
         Intent i = new Intent(this, MapActivity.class);
+        startActivity(i);
+    }
+
+    public void reviews(View v) {
+        Intent i = new Intent(this, DisplayReviews.class);
         startActivity(i);
     }
 /*
