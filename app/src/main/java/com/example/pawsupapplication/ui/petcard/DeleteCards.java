@@ -10,6 +10,12 @@ import android.widget.Toast;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.DAO;
 
+/**
+ * This class is responsible for deleting petcards
+ *
+ * @author Annas Rahuma
+ */
+
 public class DeleteCards extends AppCompatActivity {
 
     String ID = null;
@@ -23,16 +29,9 @@ public class DeleteCards extends AppCompatActivity {
     public void deletePetCard(View v) {
     try {
         EditText t = findViewById(R.id.deletePetName);
-        DAO dbHelp = new DAO(DeleteCards.this);
-        boolean report = dbHelp.deletePet(t.getText().toString(), ID);
-        /*
-        if(report == true){
-            Toast.makeText(this, "Pet has been deleted", Toast.LENGTH_LONG).show();
-        }
-        else{
-            Toast.makeText(this, "An error has occurred with Deletion", Toast.LENGTH_LONG).show();
-        }
-        */
+        DAO db = new DAO(DeleteCards.this);
+        boolean report = db.deletePet(t.getText().toString(), ID);
+
     }catch(Exception e){
         Toast.makeText(this, "An error has occurred with Deletion", Toast.LENGTH_LONG).show();
     }

@@ -9,6 +9,14 @@ import android.widget.Button;
 
 import com.example.pawsupapplication.R;
 
+/**
+ * This class is an extension of the adapter class that allows displaying of current pets before the
+ * processes of booking a service.
+ * This is an extension of a class from https://abhiandroid.com/ui/listview.
+ *
+ * @author Annas Rahuma
+ */
+
 public class AddAdapter extends BaseAdapter {
     Context context;
     Object PetCardInfo[];
