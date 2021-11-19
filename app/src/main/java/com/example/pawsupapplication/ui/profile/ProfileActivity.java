@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pawsupapplication.MainActivity;
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.ui.petcard.PetCards;
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -50,6 +52,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         View t6 = findViewById(R.id.changepassword);
         ((TextView) t6).setText(u.getPassword());
+
+        View t7 = findViewById(R.id.numPets);
+        ((TextView) t6).setText(PetCards.arr3.size());
     }
 
     /*
