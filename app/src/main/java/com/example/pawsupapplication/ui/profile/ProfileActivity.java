@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
         ((TextView) t6).setText(u.getPassword());
 
         View t7 = findViewById(R.id.numPets);
-        ((TextView) t6).setText(PetCards.arr3.size());
+        ((TextView) t7).setText(PetCards.arr3.size());
     }
 
     /*
