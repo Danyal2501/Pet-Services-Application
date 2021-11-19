@@ -11,6 +11,13 @@ import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.DAO;
 import com.example.pawsupapplication.user.HistoryActivity;
 
+/**
+ * Class responsible for a logged in user to add a product to the shopping cart.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 19th 2021
+ */
+
 public class addCart extends AppCompatActivity {
 
     private String userEmail;
@@ -35,7 +42,7 @@ public class addCart extends AppCompatActivity {
         finish();
     }
 
-    public void backToPreviousPage() {
+    public void backToPreviousPage(View view) {
         finish();
     }
 
