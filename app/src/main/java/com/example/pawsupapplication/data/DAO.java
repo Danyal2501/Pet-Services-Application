@@ -120,6 +120,8 @@ public class DAO extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
 
+
+
         if(cursor.moveToFirst()){
             do{
 
@@ -127,10 +129,19 @@ public class DAO extends SQLiteOpenHelper {
                 String serviceID = cursor.getString(2);
                 int amount = cursor.getInt(3);
                 String petName = cursor.getString(4);
+                String price;
+                String image;
                 LocalDate date = LocalDate.now();
                 ArrayList<String> A = getPurchasedItems(serviceID);
-                String price = A.get(4);
-                String image = A.get(6);
+                if (A.isEmpty()){
+                    A = getPurchasedProduct(serviceID);
+                    price = A.get(2);
+                    image = A.get(4);
+                }
+                else {
+                    price = A.get(4);
+                    image = A.get(6);
+                }
                 History his = new History(amount, price, serviceID, date.toString(), image, petName);
                 addHistory(his, email);
             }while (cursor.moveToNext());
