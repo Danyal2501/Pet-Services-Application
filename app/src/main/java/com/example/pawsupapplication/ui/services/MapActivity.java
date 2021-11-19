@@ -24,6 +24,12 @@ import java.util.Locale;
 
 import com.example.pawsupapplication.R;
 
+/*
+This class is responsible for displaying the location of a given service on a google maps window.
+
+@author Shu Sun
+ */
+
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
 
     GoogleMap map;
@@ -38,6 +44,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
         mapFragment.getMapAsync(this);
     }
 
+    /*
+       Displays map on Page.
+     */
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
@@ -54,7 +63,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
                 double latitude = address.getLatitude();
 
                 LatLng location = new LatLng(latitude, longitude);
-                drawCircle(location);
+                //drawCircle(location);
+                //Adds pinpoint to map
                 map.addMarker(new MarkerOptions().position(location).title(myLocation));
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 18));
             }
@@ -63,6 +73,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
         }
     }
 
+    /*
+      Draws circle around the location.
+     */
     private void drawCircle(LatLng point){
 
         // Instantiating CircleOptions to draw a circle around the marker
@@ -88,6 +101,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback{
 
     }
 
+    /*
+     Returns to the previous page.
+    */
     public void back(View v) {
         Intent i = new Intent(this, ServiceActivity.class);
         startActivity(i);
