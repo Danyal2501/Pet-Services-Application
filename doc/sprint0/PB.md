@@ -124,3 +124,11 @@ Criteria of satisfaction:
 - User can enter their email to request a password reset
 - An email should be sent to the given address, if the email matches an account in the database
 - There is a link in the email which the user can access, and enter a new password.
+
+# User Story #21 ()
+As Mike (a customer), I would like to customize and delete my pet cards, so that I can keep my information up to date.
+
+Criteria of satisfaction: 
+- User has the ability for user to delete a pet card.
+- User has the ability to update an existing petcard.
+
