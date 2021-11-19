@@ -9,20 +9,12 @@ import android.widget.Button;
 
 import com.example.pawsupapplication.R;
 
-/**
- * This class is an extension of the adapter class that allows for the input of images alongside
- * text rather than the basic adapter only having one parameter, this one has two.
- * This is an extension of a class from https://abhiandroid.com/ui/listview.
- *
- * @author Annas Rahuma
- */
-
-public class DeleteAdapter extends BaseAdapter {
+public class AddAdapter extends BaseAdapter {
     Context context;
     Object PetCardInfo[];
     LayoutInflater inflter;
 
-    public DeleteAdapter(Context applicationContext, Object[] PetCardInfo) {
+    public AddAdapter(Context applicationContext, Object[] PetCardInfo) {
         this.context = applicationContext;
         this.PetCardInfo = PetCardInfo;
         inflter = (LayoutInflater.from(applicationContext));
@@ -45,7 +37,7 @@ public class DeleteAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.delete_display, null);
+        view = inflter.inflate(R.layout.add_display, null);
         Button delete = (Button)view.findViewById(R.id.adder);
         delete.setText((String)PetCardInfo[i]);
 

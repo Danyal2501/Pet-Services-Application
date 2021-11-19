@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pawsupapplication.data.model.service.Service;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.services.ServiceDetails;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -45,8 +46,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
     @Override
     public void onBindViewHolder(@NonNull final ServiceViewHolder holder, int position) {
-
-        holder.servImage.setImageResource(serviceList.get(position).getServicePicture());
+        Picasso.with(context).load(serviceList.get(position).getServicePicture()).placeholder(R.drawable.ic_launcher_background).into(holder.servImage);
         holder.servName.setText(serviceList.get(position).getServiceName());
         holder.servDesc.setText(serviceList.get(position).getServiceDesc());
         holder.servAddr.setText(serviceList.get(position).getServiceAddress());

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class PetCards extends AppCompatActivity {
 
     String ID = null;
-
+    public static ArrayList<String> arr3 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,7 +32,7 @@ public class PetCards extends AppCompatActivity {
        // ArrayList<String> arr =  getIntent().getStringArrayListExtra("map");
         DAO dbh = new DAO(PetCards.this);
 
-        ArrayList<String> arr3 = dbh.getPetsInfo(ID);
+        arr3 = dbh.getPetsInfo(ID);
         ArrayList<String> arr4 = dbh.getPetsPic(ID);
        // Toast.makeText(this, arr3.toString(), Toast.LENGTH_LONG).show();
         //ArrayList<String> arr2 =  getIntent().getStringArrayListExtra("map1");

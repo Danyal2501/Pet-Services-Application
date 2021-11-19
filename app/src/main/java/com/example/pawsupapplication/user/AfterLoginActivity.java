@@ -53,11 +53,24 @@ public class AfterLoginActivity extends AppCompatActivity {
     }
 
     // LOGOUT Button
-
     public void logout(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         Toast.makeText(getApplicationContext(), "Logout Successful!", Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    // LOGOUT Button
+    public void launchProducts(View v) {
+        Intent i = new Intent(this, ProductsActivity.class);
+        i.putExtra("userEmail", userEmail);
+        startActivity(i);
+    }
+
+    // LOGOUT Button
+    public void launchServices(View v) {
+        Intent i = new Intent(this, ServiceActivity.class);
+        i.putExtra("userEmail", userEmail);
+        startActivity(i);
     }
 }

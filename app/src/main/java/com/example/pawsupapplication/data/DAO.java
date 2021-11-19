@@ -19,9 +19,11 @@ import com.example.pawsupapplication.data.model.History;
 
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
+import com.example.pawsupapplication.data.model.product.Product;
 import com.example.pawsupapplication.user.Customer;
 import com.example.pawsupapplication.data.model.service.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,19 +41,37 @@ public class DAO extends SQLiteOpenHelper {
         String createTableStatement1 = "CREATE TABLE " +
                 "USER_TABLE (UserID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, Id TEXT, flag TEXT)";
         db.execSQL(createTableStatement1);
+
         String createTableStatement2 = "CREATE TABLE " +
                 "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
                 " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, Email TEXT)";
         db.execSQL(createTableStatement2);
-
+      
         String createTableStatement3 = "CREATE TABLE " +
                 "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
-                " Price Text, Date TEXT, Image TEXT, Email TEXT)";
+                " Price Text, Date TEXT, Image TEXT, Email TEXT, Pet TEXT)";
         db.execSQL(createTableStatement3);
+      
         String createTableStatement4 = "CREATE TABLE " +
                 "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
-                " Address TEXT, Price TEXT, Picture INTEGER)";
+                " Address TEXT, Price TEXT, Picture TEXT, ServiceID TEXT)";
         db.execSQL(createTableStatement4);
+
+        String createTableStatement5 = "CREATE TABLE " +
+                "PRODUCT_TABLE (ProID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Quantity TEXT," +
+                " Price TEXT, Rating TEXT, Picture TEXT, ProductID TEXT)";
+        db.execSQL(createTableStatement5);
+      
+        String createTableStatement6 = "CREATE TABLE " +
+                "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
+                " Amount INTEGER, petName TEXT)";
+        db.execSQL(createTableStatement6);
+      
+        String createTableStatement7 = "CREATE TABLE " +
+                "REVIEW_TABLE (reviewID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
+                " stars INTEGER, title TEXT, body TEXT, date TEXT)";
+        db.execSQL(createTableStatement7);
+
     }
 
     @Override
@@ -60,6 +80,8 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + "PETCARD_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "HISTORY_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "SERVICE_TABLE");
+        db.execSQL("DROP TABLE IF EXISTS " + "PURCHASE_TABLE");
+        db.execSQL("DROP TABLE IF EXISTS " + "PRODUCT_TABLE");
 
         onCreate(db);
     }
@@ -78,6 +100,56 @@ public class DAO extends SQLiteOpenHelper {
         return (report != -1);
     }
 
+    public boolean addPurchase(String email, String serviceID, Integer amount, String pet){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("email", email);
+        cv.put("serviceID", serviceID);
+        cv.put("Amount", amount);
+        cv.put("petName", pet);
+
+        long report = db.insert("PURCHASE_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
+    public void deletePurchase(String email/*, String serviceID, Integer amount, String pet*/){
+
+        String q = "Select * From PURCHASE_TABLE Where Email = \"" + email + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+
+
+                String serviceID = cursor.getString(2);
+                int amount = cursor.getInt(3);
+                String petName = cursor.getString(4);
+                LocalDate date = LocalDate.now();
+                ArrayList<String> A = getPurchasedItems(serviceID);
+                String price = A.get(4);
+                String image = A.get(6);
+                History his = new History(amount, price, serviceID, date.toString(), image, petName);
+                addHistory(his, email);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        SQLiteDatabase db1 = this.getWritableDatabase();
+
+        q = "Delete From PETCARD_TABLE Where Email = \"" + email +
+                "\"";
+
+        System.out.println(q);
+
+        Cursor c1 = db1.rawQuery(q, null);
+
+    }
+
     public boolean addService(Service ser){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -88,10 +160,80 @@ public class DAO extends SQLiteOpenHelper {
         cv.put("Address", ser.getServiceAddress());
         cv.put("Price", ser.getServicePrice());
         cv.put("Picture", ser.getServicePicture());
+        cv.put("ServiceID", ser.getId());
 
         long report = db.insert("SERVICE_TABLE", null, cv);
 
         return (report != -1);
+    }
+
+    public boolean addProduct(Product pro){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("Name", pro.getProductName());
+        cv.put("Quantity", pro.getProductQty());
+        cv.put("Price", pro.getProductPrice());
+        cv.put("Rating", pro.getProductRating());
+        cv.put("Picture", pro.getProductPicture());
+        cv.put("ProductID", pro.getId());
+
+        long report = db.insert("PRODUCT_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
+    public Map<String,Integer> getPurchases(String email){
+        Map<String,Integer> purchased = new HashMap<>();
+        String q = "Select * From PURCHASE_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                if(email.equals(cursor.getString(1))){
+                    String serviceID = cursor.getString(2);
+                    Integer amount = cursor.getInt(3);
+                    purchased.put(serviceID, amount);
+                }
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return purchased;
+    }
+
+    public ArrayList<String> getPurchasedItems(String itemID){
+        ArrayList<String> item = new ArrayList<>();
+
+        String q = "Select * From SERVICE_TABLE Where ServiceID = \"" + itemID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String provider = cursor.getString(1); // index 0
+                String name = cursor.getString(2); // 1
+                String description = cursor.getString(3); // 2
+                String address = cursor.getString(4); // 3
+                String price = cursor.getString(5); // 4
+                String serviceID = cursor.getString(6); // 5
+                String image = cursor.getString(7); // 6
+
+                item.add(provider);
+                item.add(name);
+                item.add(description);
+                item.add(address);
+                item.add(price);
+                item.add(serviceID);
+                item.add(image);
+
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return item;
     }
 
     public Map<String,ArrayList<String>> getUsers(){
@@ -133,11 +275,12 @@ public class DAO extends SQLiteOpenHelper {
                 String desc = cursor.getString(3);
                 String address = cursor.getString(4);
                 String price = cursor.getString(5);
-                int picture = cursor.getInt(6);
+                String picture = cursor.getString(6);
+                String serviceId = cursor.getString(7);
 
                 if (userid.compareTo(UserID) == 0){
                     Service ser = new ServiceImpl("",""
-                            ,"","","",0);
+                            ,"","","","", "");
                     ser.setServiceId(ID);
                     ser.setUserId(userid);
                     ser.setServiceName(name);
@@ -145,6 +288,7 @@ public class DAO extends SQLiteOpenHelper {
                     ser.setServiceAddress(address);
                     ser.setServicePrice(price);
                     ser.setServicePicture(picture);
+                    ser.setId(serviceId);
                     services.add(ser);
                 }
             }while (cursor.moveToNext());
@@ -154,15 +298,73 @@ public class DAO extends SQLiteOpenHelper {
         return services;
     }
 
-    public Map<String,ArrayList<Service>> getAllService(){
-        Map<String,ArrayList<Service>> allSer = new HashMap<>();
-        Map<String,ArrayList<String>> users = this.getUsers();
-        for(String key: users.keySet()){
-            String id = users.get(key).get(1);
-            ArrayList<Service> ser = this.getServices(id);
-            allSer.put(key,ser);
+    public ArrayList<Service> getAllService(){
+        ArrayList<Service> allSer = new ArrayList<>();
+        String q = "Select * From SERVICE_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int serv_id = cursor.getInt(0);
+                String serv_userId = cursor.getString(1);
+                String serv_name = cursor.getString(2);
+                String serv_description = cursor.getString(3);
+                String serv_address = cursor.getString(4);
+                String serv_price = cursor.getString(5);
+                String serv_picture = cursor.getString(6);
+                String serviceId = cursor.getString(7);
+
+                Service ser = new ServiceImpl("",""
+                        ,"","","","", "");
+                ser.setServiceId(serv_id);
+                ser.setUserId(serv_userId);
+                ser.setServiceName(serv_name);
+                ser.setServiceDesc(serv_description);
+                ser.setServiceAddress(serv_address);
+                ser.setServicePrice(serv_price);
+                ser.setServicePicture(serv_picture);
+                ser.setId(serviceId);
+                allSer.add(ser);
+            }while (cursor.moveToNext());
         }
+        cursor.close();
+        db.close();
         return allSer;
+    }
+
+    public ArrayList<Product> getAllProducts(){
+        ArrayList<Product> allPro = new ArrayList<>();
+        String q = "Select * From PRODUCT_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int prod_id = cursor.getInt(0);
+                String prod_name = cursor.getString(1);
+                String prod_quantity = cursor.getString(2);
+                String prod_price = cursor.getString(3);
+                String prod_rating = cursor.getString(4);
+                String prod_picture = cursor.getString(5);
+                String productId = cursor.getString(6);
+
+                Product pro = new Product(""
+                        ,"","","","", "");
+                pro.setProductId(prod_id);
+                pro.setProductName(prod_name);
+                pro.setProductQty(prod_quantity);
+                pro.setProductPrice(prod_price);
+                pro.setProductRating(prod_rating);
+                pro.setProductPicture(prod_picture);
+                pro.setId(productId);
+
+                allPro.add(pro);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return allPro;
     }
 
     public Customer getByEmail(String s){
@@ -215,6 +417,23 @@ public class DAO extends SQLiteOpenHelper {
 
         return (report != -1);
     }
+/*
+    public boolean addReview(Review rev, String email, String service){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("email", email);
+        cv.put("serviceID", service);
+        cv.put("stars", rev.getRating());
+        cv.put("title", rev.getTitle());
+        cv.put("body", rev.getReview());
+        cv.put("date", rev.getDate().toString());
+
+
+        long report = db.insert("PETCARD_TABLE", null, cv);
+
+        return (report != -1);
+    }*/
 
     public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();
@@ -231,7 +450,7 @@ public class DAO extends SQLiteOpenHelper {
                 String type = cursor.getString(4);
                 String weight = cursor.getString(5);
                 String information = cursor.getString(6);
-               // String picture = cursor.getString(7);
+                String pet = cursor.getString(6);
 
                 String card = "Name: " + name + "\nGender: " + gender +
                         "\nNeutered/Spayed: " + ns + "\nType: " + type +
@@ -267,6 +486,8 @@ public class DAO extends SQLiteOpenHelper {
         db.close();
         return names;
     }
+
+
 
     public boolean deletePet(String name, String email){
         String q = "Delete From PETCARD_TABLE Where Email = \"" + email +
@@ -330,6 +551,52 @@ public class DAO extends SQLiteOpenHelper {
         return cards;
     }
 
+    public ArrayList<Float> getReviewStars(String serviceID){
+        ArrayList<Float> cards = new ArrayList<>();
+
+        String q = "Select * From REVIEW_TABLE Where serviceID = \"" + serviceID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Float star = cursor.getFloat(3);
+
+                cards.add(star);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return cards;
+    }
+
+    public ArrayList<String> getReviewInfo(String serviceID){
+        ArrayList<String> cards = new ArrayList<>();
+
+        String q = "Select * From REVIEW_TABLE Where serviceID = \"" + serviceID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String title = cursor.getString(4);
+                String body = cursor.getString(5);
+                String date = cursor.getString(6);
+                String review = "Title:" + title
+                        + "\nDetails:" + body +
+                        "\nDate: " + date ;
+
+                cards.add(review);
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return cards;
+    }
+
+
     
     public boolean addHistory(History his, String email){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -341,6 +608,7 @@ public class DAO extends SQLiteOpenHelper {
         cv.put("Date", his.getDate());
         cv.put("Image", his.getImage());
         cv.put("Email", email);
+        cv.put("Pet", his.getPet());
 
         long report = db.insert("HISTORY_TABLE", null, cv);
 
@@ -359,10 +627,11 @@ public class DAO extends SQLiteOpenHelper {
                 int amount = cursor.getInt(2);
                 String price = cursor.getString(3);
                 String date = cursor.getString(4);
+                String pet = cursor.getString(6);
                 // String picture = cursor.getString(7);
 
                 String card = "Transaction: " + name + "\nAmount: " + amount +
-                        "\nPrice $: " + price + "\nDate: " + date;
+                        "\nPrice $: " + price + "\nDate: " + date + "\nPet: " + pet;
 
                 cards.add(card);
             }while (cursor.moveToNext());

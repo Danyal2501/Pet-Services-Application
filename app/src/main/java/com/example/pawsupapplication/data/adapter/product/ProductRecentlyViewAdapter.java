@@ -1,10 +1,12 @@
 package com.example.pawsupapplication.data.adapter.product;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,16 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.model.product.Product;
 import com.example.pawsupapplication.ui.products.ProductDetails;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ProductRecentlyViewAdapter extends RecyclerView.Adapter<ProductRecentlyViewAdapter.RecentlyViewedViewHolder>{
     Context context;
     List<Product> recentlyViewedList;
+    String ID = null;
 
-    public ProductRecentlyViewAdapter(Context context, List<Product> recentlyViewedList) {
+    public ProductRecentlyViewAdapter(Context context, List<Product> recentlyViewedList, String ID) {
         this.context = context;
         this.recentlyViewedList = recentlyViewedList;
+        this.ID = ID;
     }
 
     @NonNull
@@ -35,13 +40,17 @@ public class ProductRecentlyViewAdapter extends RecyclerView.Adapter<ProductRece
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductRecentlyViewAdapter.RecentlyViewedViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ProductRecentlyViewAdapter.RecentlyViewedViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+
+        ImageView tempImg = new ImageView(context);
+
+        Picasso.with(context).load(recentlyViewedList.get(position).getProductPicture()).placeholder(R.drawable.ic_launcher_background).into(tempImg);
 
         holder.name.setText(recentlyViewedList.get(position).getProductName());
         holder.quantity.setText(recentlyViewedList.get(position).getProductQty());
         holder.price.setText(recentlyViewedList.get(position).getProductPrice());
         holder.rating.setText(recentlyViewedList.get(position).getProductRating());
-        holder.bg.setBackgroundResource(recentlyViewedList.get(position).getProductPicture());
+        holder.bg.setBackground(tempImg.getDrawable());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +62,8 @@ public class ProductRecentlyViewAdapter extends RecyclerView.Adapter<ProductRece
                 i.putExtra("price",recentlyViewedList.get(position).getProductPrice());
                 i.putExtra("qty",recentlyViewedList.get(position).getProductQty());
                 i.putExtra("rating",recentlyViewedList.get(position).getProductRating());
+                i.putExtra("productID", recentlyViewedList.get(position).getId());
+                i.putExtra("userEmail", ID);
 
                 context.startActivity(i);
 
