@@ -24,10 +24,7 @@ import java.util.UUID;
 
 public class AddCard extends AppCompatActivity {
 
-    /**
-     * Temporary "database" for sprint 1.
-     */
-    //private Map<String, PetCard> cardMap= new HashMap<String, PetCard>();
+
     String ID = null;
 
     @Override
@@ -62,21 +59,7 @@ public class AddCard extends AppCompatActivity {
         System.out.println("1");
         startActivity(i);
     }
-/*
-    public void viewChangeCards(View v){
 
-        Intent i = new Intent(this, PetCards.class);
-        i.putExtra("userEmail", ID);
-        System.out.println("1");
-        startActivity(i);
-    }
-*/
-    /**
-     * Once the user has filled in all the text boxes for the PetCard,
-     * this function will be responsible for adding singular petcards to the database.
-     *
-     * @param v, the button to be clicked to submit petcards
-     */
 
 
     public void createPetCard(View v){
@@ -88,7 +71,7 @@ public class AddCard extends AppCompatActivity {
         EditText t5 = findViewById(R.id.textInput5);
         EditText t6 = findViewById(R.id.textInput6);
         EditText t7 = findViewById(R.id.textInput7);
-        //String id = UUID.randomUUID().toString();
+
         String[] s = inputParse(t1.getText().toString(), t2.getText().toString(),
                 t3.getText().toString(), t4.getText().toString(), t5.getText().toString(),
                 t6.getText().toString(), t7.getText().toString());
@@ -100,18 +83,13 @@ public class AddCard extends AppCompatActivity {
             Picasso.with(this).load(url).placeholder(R.drawable.pawsup_logo)
                     .resize(100, 100).into(petPic);
             //cardMap.put(id, card);
-            DAO dbHelp = new DAO(AddCard.this);
-            boolean report = dbHelp.addPetCard(card, ID);
+            DAO db = new DAO(AddCard.this);
+            db.addPetCard(card, ID);
             Toast.makeText(this, "Pet card created", Toast.LENGTH_LONG).show();
         }
         catch(Exception e){
             Toast.makeText(this, "An error has occurred with last pet card", Toast.LENGTH_LONG).show();
         }
-        //DAO dbHelp = new DAO(AddCard.this);
-
-        //boolean report = dbHelp.addPetCard(card);
-
-        //Toast.makeText(this, "Report " + report, Toast.LENGTH_LONG).show();
 
     }
 

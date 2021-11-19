@@ -15,6 +15,13 @@ import com.example.pawsupapplication.ui.petcard.UpdateCards;
 
 import java.util.ArrayList;
 
+/**
+ * Class responsible for a logged in user to add a service to the shopping cart.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 19th 2021
+ */
+
 public class AddServiceToCart extends AppCompatActivity {
 
     private String userEmail;
@@ -32,8 +39,6 @@ public class AddServiceToCart extends AppCompatActivity {
         DAO dbh = new DAO(AddServiceToCart.this);
         ArrayList<String> petNames = dbh.getPetsName(userEmail);
 
-        // Toast.makeText(this, arr3.toString(), Toast.LENGTH_LONG).show();
-        //ArrayList<String> arr2 =  getIntent().getStringArrayListExtra("map1");
         DeleteAdapter a = new DeleteAdapter(this, petNames.toArray());
         ListView cardList = (ListView)findViewById(R.id.addLister);
         cardList.setAdapter(a);

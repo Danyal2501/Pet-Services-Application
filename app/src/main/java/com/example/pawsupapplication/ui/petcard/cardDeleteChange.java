@@ -14,6 +14,13 @@ import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.DAO;
 import com.squareup.picasso.Picasso;
 
+/**
+ * This class is responsible for deleting or updating the specified pet chosen from the previous
+ * activity
+ *
+ * @author Annas Rahuma
+ */
+
 public class cardDeleteChange extends AppCompatActivity {
 
     String ID = null;
@@ -47,27 +54,23 @@ public class cardDeleteChange extends AppCompatActivity {
 
         try {
 
-            //cardMap.put(id, card);
-            DAO dbHelp = new DAO(cardDeleteChange.this);
-            boolean report = dbHelp.updatePet(petName, ID, nS, weight, information, picture);
+
+            DAO db = new DAO(cardDeleteChange.this);
+            db.updatePet(petName, ID, nS, weight, information, picture);
             Toast.makeText(this, "Pet card updated", Toast.LENGTH_LONG).show();
         }
         catch(Exception e){
             Toast.makeText(this, "An error has occurred with updating", Toast.LENGTH_LONG).show();
         }
-        //DAO dbHelp = new DAO(AddCard.this);
 
-        //boolean report = dbHelp.addPetCard(card);
-
-        //Toast.makeText(this, "Report " + report, Toast.LENGTH_LONG).show();
 
     }
     public void deletePetCardButton(View v){
 
         try {
 
-            DAO dbHelp = new DAO(cardDeleteChange.this);
-            boolean report = dbHelp.deletePet(petName, ID);
+            DAO db = new DAO(cardDeleteChange.this);
+            db.deletePet(petName, ID);
             Toast.makeText(this, "Pet has been deleted", Toast.LENGTH_LONG).show();
         }catch(Exception e){
             Toast.makeText(this, "An error has occurred with Deletion", Toast.LENGTH_LONG).show();

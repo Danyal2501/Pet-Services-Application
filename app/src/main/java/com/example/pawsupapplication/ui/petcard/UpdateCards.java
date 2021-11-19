@@ -16,6 +16,12 @@ import com.example.pawsupapplication.data.adapter.DeleteAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for selecting what pets in the database you want to update.
+ *
+ * @author Annas Rahuma
+ */
+
 public class UpdateCards extends AppCompatActivity {
 
     String ID = null;

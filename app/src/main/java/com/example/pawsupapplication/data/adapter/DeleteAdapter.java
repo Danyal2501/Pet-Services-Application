@@ -10,8 +10,8 @@ import android.widget.Button;
 import com.example.pawsupapplication.R;
 
 /**
- * This class is an extension of the adapter class that allows for the input of images alongside
- * text rather than the basic adapter only having one parameter, this one has two.
+ * This class is an extension of the adapter class that allows displaying the current pets in
+ * database that you want to delete or change.
  * This is an extension of a class from https://abhiandroid.com/ui/listview.
  *
  * @author Annas Rahuma
