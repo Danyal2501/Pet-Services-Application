@@ -31,6 +31,7 @@
     <string name="service_address">Enter Service Address</string>
     <string name="service_desc">Enter Service Description</string>
     <string name="service_price">Enter Service Price</string>
+    <string name="service_picture">Enter Service Picture Address</string>
     <string name="admin">Seller Page</string>
     <string name="add_shop">Add Service</string>
     <string name="edit_shop">Customize Shop</string>

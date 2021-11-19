@@ -40,22 +40,27 @@ public class DAO extends SQLiteOpenHelper {
         String createTableStatement1 = "CREATE TABLE " +
                 "USER_TABLE (UserID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, Id TEXT, flag TEXT)";
         db.execSQL(createTableStatement1);
+
         String createTableStatement2 = "CREATE TABLE " +
                 "PETCARD_TABLE (PetID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Gender TEXT," +
                 " Ns Text, Type TEXT, Weight TEXT, Information TEXT, Picture TEXT, Email TEXT)";
         db.execSQL(createTableStatement2);
+      
         String createTableStatement3 = "CREATE TABLE " +
                 "HISTORY_TABLE (HisID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Amount INTEGER," +
                 " Price Text, Date TEXT, Image TEXT, Email TEXT, Pet TEXT)";
         db.execSQL(createTableStatement3);
+      
         String createTableStatement4 = "CREATE TABLE " +
                 "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
-                " Address TEXT, Price TEXT, ServiceID TEXT, Image TEXT, Picture INTEGER)";
+                " Address TEXT, Price TEXT, Picture TEXT, ServiceID TEXT)";
         db.execSQL(createTableStatement4);
+      
         String createTableStatement5 = "CREATE TABLE " +
                 "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
                 " Amount INTEGER, petName TEXT)";
         db.execSQL(createTableStatement5);
+      
         String createTableStatement6 = "CREATE TABLE " +
                 "REVIEW_TABLE (reviewID FLOAT PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
                 " stars INTEGER, title TEXT, body TEXT, date TEXT)";
@@ -245,11 +250,11 @@ public class DAO extends SQLiteOpenHelper {
                 String desc = cursor.getString(3);
                 String address = cursor.getString(4);
                 String price = cursor.getString(5);
-                int picture = cursor.getInt(6);
+                String picture = cursor.getString(6);
 
                 if (userid.compareTo(UserID) == 0){
                     Service ser = new ServiceImpl("",""
-                            ,"","","",0);
+                            ,"","","","");
                     ser.setServiceId(ID);
                     ser.setUserId(userid);
                     ser.setServiceName(name);
@@ -266,14 +271,36 @@ public class DAO extends SQLiteOpenHelper {
         return services;
     }
 
-    public Map<String,ArrayList<Service>> getAllService(){
-        Map<String,ArrayList<Service>> allSer = new HashMap<>();
-        Map<String,ArrayList<String>> users = this.getUsers();
-        for(String key: users.keySet()){
-            String id = users.get(key).get(1);
-            ArrayList<Service> ser = this.getServices(id);
-            allSer.put(key,ser);
+    public ArrayList<Service> getAllService(){
+        ArrayList<Service> allSer = new ArrayList<>();
+        String q = "Select * From SERVICE_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int serv_id = cursor.getInt(0);
+                String serv_userId = cursor.getString(1);
+                String serv_name = cursor.getString(2);
+                String serv_description = cursor.getString(3);
+                String serv_address = cursor.getString(4);
+                String serv_price = cursor.getString(5);
+                String serv_picture = cursor.getString(6);
+
+                Service ser = new ServiceImpl("",""
+                        ,"","","","");
+                ser.setServiceId(serv_id);
+                ser.setUserId(serv_userId);
+                ser.setServiceName(serv_name);
+                ser.setServiceDesc(serv_description);
+                ser.setServiceAddress(serv_address);
+                ser.setServicePrice(serv_price);
+                ser.setServicePicture(serv_picture);
+                allSer.add(ser);
+            }while (cursor.moveToNext());
         }
+        cursor.close();
+        db.close();
         return allSer;
     }
 

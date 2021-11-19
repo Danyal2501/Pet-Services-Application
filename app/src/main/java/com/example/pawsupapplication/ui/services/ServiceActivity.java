@@ -13,8 +13,10 @@ import android.widget.TextView;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.adapter.service.ServiceCategoryAdapter;
 import com.example.pawsupapplication.data.adapter.service.ServiceRecentlyViewAdapter;
+import com.example.pawsupapplication.data.model.service.Service;
 import com.example.pawsupapplication.data.model.service.ServiceCategory;
 import com.example.pawsupapplication.data.model.service.ServiceImpl;
+import com.example.pawsupapplication.data.DAO;
 
 import static com.example.pawsupapplication.R.drawable.*;
 
@@ -36,7 +38,7 @@ public class ServiceActivity extends AppCompatActivity {
     List<ServiceCategory> categoryList;
 
     ServiceRecentlyViewAdapter recentlyViewedAdapter;
-    List<ServiceImpl> recentlyViewedList;
+    List<Service> recentlyViewedList;
 
     TextView allCategory;
 
@@ -48,6 +50,8 @@ public class ServiceActivity extends AppCompatActivity {
         categoryRecyclerView = findViewById(R.id.categoryRecycler_service);
         recentlyViewedRecycler = findViewById(R.id.recently_item_service);
         allCategory = findViewById(R.id.allServiceCategoryImage);
+
+        DAO database = new DAO(ServiceActivity.this);
 
         allCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +73,19 @@ public class ServiceActivity extends AppCompatActivity {
         categoryList.add(new ServiceCategory(8, ic_home_fish));
 
         // adding data to model
-        recentlyViewedList = new ArrayList<>();
-        recentlyViewedList.add(new ServiceImpl("1", "Service 1", "Service Description 1", "Service Address 1", "19.99", food1));
-        recentlyViewedList.add(new ServiceImpl("2", "Service 2", "Service Description 2", "Service Address 2", "25.99", food2));
-        recentlyViewedList.add(new ServiceImpl("3", "Service 3", "Service Description 3", "Service Address 3", "10.99", treat1));
-        recentlyViewedList.add(new ServiceImpl("4", "Service 4", "Service Description 4", "Service Address 4", "30.99", treat2));
+        Service ser1 = new ServiceImpl("user1", "Service 1", "Service 1 description", "Service 1 Address", "20.99", "https://images.costco-static.com/ImageDelivery/imageService?profileId=12026539&itemId=29506-894&recipeName=680");
+        database.addService(ser1);
+        Service ser2 = new ServiceImpl("user1", "Service 2", "Service 2 description", "Service 2 Address", "40.99", "https://s3.amazonaws.com/pv-web-01t/wordpress/wp-content/uploads/sites/3/2019/06/14115148/1000207-300x300.jpg");
+        database.addService(ser2);
+        Service ser3 = new ServiceImpl("user2", "Service 3", "Service 3 description", "Service 3 Address", "60.99", "https://m.media-amazon.com/images/I/81a8tFtMGyL._AC_SX425_.jpg");
+        database.addService(ser3);
+        Service ser4 = new ServiceImpl("user2", "Service 4", "Service 4 description", "Service 4 Address", "10.99", "https://canadiantire.scene7.com/is/image/CanadianTire/1426276__1?defaultImage=image_na_EN?defaultImage=image_na_EN&fmt=jpg&wid=573&hei=499");
+        database.addService(ser4);
+        Service ser5 = new ServiceImpl("user3", "Service 5", "Service 5 description", "Service 5 Address", "20.99", "https://cdn.shopify.com/s/files/1/1920/8961/products/php25sup_1000x1000.jpg?v=1561658818");
+        database.addService(ser5);
+
+
+        recentlyViewedList = database.getAllService();
 
 
         setCategoryRecycler(categoryList);
@@ -82,6 +94,11 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
 
+    public void goToCart(View v) {
+        //Intent startIntent = new Intent(getApplicationContext(), );
+        //startActivity(startIntent);
+    }
+
     private void setCategoryRecycler(List<ServiceCategory> categoryDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(layoutManager);
@@ -89,7 +106,7 @@ public class ServiceActivity extends AppCompatActivity {
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
-    private void setRecentlyViewedRecycler(List<ServiceImpl> recentlyViewedDataList) {
+    private void setRecentlyViewedRecycler(List<Service> recentlyViewedDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recentlyViewedRecycler.setLayoutManager(layoutManager);
         recentlyViewedAdapter = new ServiceRecentlyViewAdapter(this,recentlyViewedDataList);

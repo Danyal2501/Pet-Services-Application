@@ -15,10 +15,10 @@ public class ServiceImpl implements Service {
     private String serviceDesc;
     private String serviceAds;
     private String servicePrice;
-    private Integer servicePicture;
+    private String servicePicture;
 
     public ServiceImpl(String userid, String serviceName, String serviceDesc, String serviceAds,
-                       String servicePrice, Integer servicePicture){
+                       String servicePrice, String servicePicture){
         super();
 
         this.userid = userid;
@@ -86,10 +86,10 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public Integer getServicePicture() { return this.servicePicture; }
+    public String getServicePicture() { return this.servicePicture; }
 
     @Override
-    public void setServicePicture(Integer servicePicture) { this.servicePicture = servicePicture; }
+    public void setServicePicture(String servicePicture) { this.servicePicture = servicePicture; }
 
 
 }

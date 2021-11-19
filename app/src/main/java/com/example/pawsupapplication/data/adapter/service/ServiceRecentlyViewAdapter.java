@@ -1,10 +1,12 @@
 package com.example.pawsupapplication.data.adapter.service;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,16 +14,18 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pawsupapplication.R;
+import com.example.pawsupapplication.data.model.service.Service;
 import com.example.pawsupapplication.data.model.service.ServiceImpl;
 import com.example.pawsupapplication.ui.services.ServiceDetails;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRecentlyViewAdapter.RecentlyViewedViewHolder>{
     Context context;
-    List<ServiceImpl> recentlyViewedList;
+    List<Service> recentlyViewedList;
 
-    public ServiceRecentlyViewAdapter(Context context, List<ServiceImpl> recentlyViewedList) {
+    public ServiceRecentlyViewAdapter(Context context, List<Service> recentlyViewedList) {
         this.context = context;
         this.recentlyViewedList = recentlyViewedList;
     }
@@ -35,13 +39,18 @@ public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRece
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+
+        ImageView tempImg = new ImageView(context);
+
+        Picasso.with(context).load(recentlyViewedList.get(position).getServicePicture()).placeholder(R.drawable.ic_launcher_background).into(tempImg);
 
         holder.name.setText(recentlyViewedList.get(position).getServiceName());
         holder.description.setText(recentlyViewedList.get(position).getServiceDesc());
         holder.price.setText(recentlyViewedList.get(position).getServicePrice());
         holder.address.setText(recentlyViewedList.get(position).getServiceAddress());
-        holder.bg.setBackgroundResource(recentlyViewedList.get(position).getServicePicture());
+        holder.bg.setBackground(tempImg.getDrawable());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +62,7 @@ public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRece
                 i.putExtra("price",recentlyViewedList.get(position).getServicePrice());
                 i.putExtra("desc",recentlyViewedList.get(position).getServiceDesc());
                 i.putExtra("qty",recentlyViewedList.get(position).getServiceAddress());
+                i.putExtra("userId", recentlyViewedList.get(position).getUserId());
 
                 context.startActivity(i);
 
