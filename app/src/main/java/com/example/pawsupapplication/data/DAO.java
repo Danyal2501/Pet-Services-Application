@@ -19,6 +19,7 @@ import com.example.pawsupapplication.data.model.History;
 
 import com.example.pawsupapplication.data.model.LoggedInUser;
 import com.example.pawsupapplication.data.model.PetCard;
+import com.example.pawsupapplication.data.model.product.Product;
 import com.example.pawsupapplication.user.Customer;
 import com.example.pawsupapplication.data.model.service.*;
 
@@ -55,16 +56,21 @@ public class DAO extends SQLiteOpenHelper {
                 "SERVICE_TABLE (SerID INTEGER PRIMARY KEY AUTOINCREMENT, UserID TEXT, Name TEXT, Describe TEXT," +
                 " Address TEXT, Price TEXT, Picture TEXT, ServiceID TEXT)";
         db.execSQL(createTableStatement4);
-      
+
         String createTableStatement5 = "CREATE TABLE " +
-                "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
-                " Amount INTEGER, petName TEXT)";
+                "PRODUCT_TABLE (ProID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Quantity TEXT," +
+                " Price TEXT, Rating TEXT, Picture TEXT, ProductID TEXT)";
         db.execSQL(createTableStatement5);
       
         String createTableStatement6 = "CREATE TABLE " +
-                "REVIEW_TABLE (reviewID FLOAT PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
-                " stars INTEGER, title TEXT, body TEXT, date TEXT)";
+                "PURCHASE_TABLE (purID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
+                " Amount INTEGER, petName TEXT)";
         db.execSQL(createTableStatement6);
+      
+        String createTableStatement7 = "CREATE TABLE " +
+                "REVIEW_TABLE (reviewID INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, serviceID TEXT," +
+                " stars INTEGER, title TEXT, body TEXT, date TEXT)";
+        db.execSQL(createTableStatement7);
 
     }
 
@@ -75,6 +81,7 @@ public class DAO extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + "HISTORY_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "SERVICE_TABLE");
         db.execSQL("DROP TABLE IF EXISTS " + "PURCHASE_TABLE");
+        db.execSQL("DROP TABLE IF EXISTS " + "PRODUCT_TABLE");
 
         onCreate(db);
     }
@@ -153,11 +160,29 @@ public class DAO extends SQLiteOpenHelper {
         cv.put("Address", ser.getServiceAddress());
         cv.put("Price", ser.getServicePrice());
         cv.put("Picture", ser.getServicePicture());
+        cv.put("ServiceID", ser.getId());
 
         long report = db.insert("SERVICE_TABLE", null, cv);
 
         return (report != -1);
     }
+
+    public boolean addProduct(Product pro){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("Name", pro.getProductName());
+        cv.put("Quantity", pro.getProductQty());
+        cv.put("Price", pro.getProductPrice());
+        cv.put("Rating", pro.getProductRating());
+        cv.put("Picture", pro.getProductPicture());
+        cv.put("ProductID", pro.getId());
+
+        long report = db.insert("PRODUCT_TABLE", null, cv);
+
+        return (report != -1);
+    }
+
     public Map<String,Integer> getPurchases(String email){
         Map<String,Integer> purchased = new HashMap<>();
         String q = "Select * From PURCHASE_TABLE";
@@ -251,10 +276,11 @@ public class DAO extends SQLiteOpenHelper {
                 String address = cursor.getString(4);
                 String price = cursor.getString(5);
                 String picture = cursor.getString(6);
+                String serviceId = cursor.getString(7);
 
                 if (userid.compareTo(UserID) == 0){
                     Service ser = new ServiceImpl("",""
-                            ,"","","","");
+                            ,"","","","", "");
                     ser.setServiceId(ID);
                     ser.setUserId(userid);
                     ser.setServiceName(name);
@@ -262,6 +288,7 @@ public class DAO extends SQLiteOpenHelper {
                     ser.setServiceAddress(address);
                     ser.setServicePrice(price);
                     ser.setServicePicture(picture);
+                    ser.setId(serviceId);
                     services.add(ser);
                 }
             }while (cursor.moveToNext());
@@ -286,9 +313,10 @@ public class DAO extends SQLiteOpenHelper {
                 String serv_address = cursor.getString(4);
                 String serv_price = cursor.getString(5);
                 String serv_picture = cursor.getString(6);
+                String serviceId = cursor.getString(7);
 
                 Service ser = new ServiceImpl("",""
-                        ,"","","","");
+                        ,"","","","", "");
                 ser.setServiceId(serv_id);
                 ser.setUserId(serv_userId);
                 ser.setServiceName(serv_name);
@@ -296,12 +324,47 @@ public class DAO extends SQLiteOpenHelper {
                 ser.setServiceAddress(serv_address);
                 ser.setServicePrice(serv_price);
                 ser.setServicePicture(serv_picture);
+                ser.setId(serviceId);
                 allSer.add(ser);
             }while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return allSer;
+    }
+
+    public ArrayList<Product> getAllProducts(){
+        ArrayList<Product> allPro = new ArrayList<>();
+        String q = "Select * From PRODUCT_TABLE";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int prod_id = cursor.getInt(0);
+                String prod_name = cursor.getString(1);
+                String prod_quantity = cursor.getString(2);
+                String prod_price = cursor.getString(3);
+                String prod_rating = cursor.getString(4);
+                String prod_picture = cursor.getString(5);
+                String productId = cursor.getString(6);
+
+                Product pro = new Product(""
+                        ,"","","","", "");
+                pro.setProductId(prod_id);
+                pro.setProductName(prod_name);
+                pro.setProductQty(prod_quantity);
+                pro.setProductPrice(prod_price);
+                pro.setProductRating(prod_rating);
+                pro.setProductPicture(prod_picture);
+                pro.setId(productId);
+
+                allPro.add(pro);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return allPro;
     }
 
     public Customer getByEmail(String s){
@@ -354,7 +417,7 @@ public class DAO extends SQLiteOpenHelper {
 
         return (report != -1);
     }
-
+/*
     public boolean addReview(Review rev, String email, String service){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -370,7 +433,7 @@ public class DAO extends SQLiteOpenHelper {
         long report = db.insert("PETCARD_TABLE", null, cv);
 
         return (report != -1);
-    }
+    }*/
 
     public ArrayList<String> getPetsInfo(String email){
         ArrayList<String> cards = new ArrayList<>();

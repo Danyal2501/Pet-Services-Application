@@ -63,6 +63,7 @@ public class ServiceRecentlyViewAdapter extends RecyclerView.Adapter<ServiceRece
                 i.putExtra("desc",recentlyViewedList.get(position).getServiceDesc());
                 i.putExtra("qty",recentlyViewedList.get(position).getServiceAddress());
                 i.putExtra("userId", recentlyViewedList.get(position).getUserId());
+                i.putExtra("serviceId", recentlyViewedList.get(position).getId());
 
                 context.startActivity(i);
 

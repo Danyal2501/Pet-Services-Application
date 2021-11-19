@@ -89,4 +89,15 @@ public interface Service {
      */
     public void setServicePicture(String servicePicture);
 
+    /**
+     * Get the service ID
+     * @return the ID in a string
+     */
+    String getId();
+
+    /**
+     * Set the unique ID of the service as a String
+     * @param id the picture address
+     */
+    void setId(String id);
 }

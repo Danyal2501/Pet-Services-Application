@@ -16,9 +16,10 @@ public class ServiceImpl implements Service {
     private String serviceAds;
     private String servicePrice;
     private String servicePicture;
+    private String id;
 
     public ServiceImpl(String userid, String serviceName, String serviceDesc, String serviceAds,
-                       String servicePrice, String servicePicture){
+                       String servicePrice, String servicePicture, String id){
         super();
 
         this.userid = userid;
@@ -27,6 +28,7 @@ public class ServiceImpl implements Service {
         this.serviceAds = serviceAds;
         this.servicePrice = servicePrice;
         this.servicePicture = servicePicture;
+        this.id = id;
     }
 
     @Override
@@ -90,6 +92,12 @@ public class ServiceImpl implements Service {
 
     @Override
     public void setServicePicture(String servicePicture) { this.servicePicture = servicePicture; }
+
+    @Override
+    public String getId() { return this.id; }
+
+    @Override
+    public void setId(String id) { this.id = id; }
 
 
 }
