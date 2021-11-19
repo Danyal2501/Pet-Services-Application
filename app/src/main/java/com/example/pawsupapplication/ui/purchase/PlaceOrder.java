@@ -15,6 +15,13 @@ import com.example.pawsupapplication.ui.petcard.AddCard;
 import com.example.pawsupapplication.user.AfterLoginActivity;
 import com.squareup.picasso.Picasso;
 
+/**
+ * Class responsible for confirming the checkout action of a user, and updating the database accordingly.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 19th 2021
+ */
+
 public class PlaceOrder extends AppCompatActivity {
 
     private String userEmail;
@@ -29,9 +36,6 @@ public class PlaceOrder extends AppCompatActivity {
     public void confirmPlaceOrder(View view) {
 
         try {
-
-
-            //cardMap.put(id, card);
             DAO database = new DAO(PlaceOrder.this);
             database.deletePurchase(userEmail);
             Toast.makeText(this, "Purchase has been made successfully", Toast.LENGTH_LONG).show();

@@ -16,6 +16,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class responsible for displaying the user's details for a logged in user.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 19th 2021
+ */
+
 public class PurchaseDetail extends AppCompatActivity {
 
     private String userEmail;

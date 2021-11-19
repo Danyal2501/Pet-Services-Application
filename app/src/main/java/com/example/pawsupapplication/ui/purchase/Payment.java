@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.data.DAO;
 
+/**
+ * Class responsible for the payment interface for a logged in user when checking out.
+ * @author Dream Team
+ * @version 1.0
+ * @since Nov 19th 2021
+ */
 
 public class Payment extends AppCompatActivity {
 

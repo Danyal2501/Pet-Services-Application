@@ -236,6 +236,37 @@ public class DAO extends SQLiteOpenHelper {
         return item;
     }
 
+    public ArrayList<String> getPurchasedProduct(String itemID){
+        ArrayList<String> item = new ArrayList<>();
+
+        String q = "Select * From PRODUCT_TABLE Where ProductID = \"" + itemID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                String name = cursor.getString(1); // index 0
+                String quantity = cursor.getString(2); // 1
+                String price = cursor.getString(3); // 2
+                String rating = cursor.getString(4); // 3
+                String image = cursor.getString(5); // 4
+                String productID = cursor.getString(6); // 5
+
+                item.add(name);
+                item.add(quantity);
+                item.add(price);
+                item.add(rating);
+                item.add(image);
+                item.add(productID);
+
+            }while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return item;
+    }
+
     public Map<String,ArrayList<String>> getUsers(){
         Map<String,ArrayList<String>> users = new HashMap<>();
         String q = "Select * From USER_TABLE";
