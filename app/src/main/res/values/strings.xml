@@ -31,6 +31,7 @@
     <string name="service_address">Enter Service Address</string>
     <string name="service_desc">Enter Service Description</string>
     <string name="service_price">Enter Service Price</string>
+    <string name="service_picture">Enter Service Picture Address</string>
     <string name="edit_price">Edit Price</string>
     <string name="confirmation_message">Are you sure you want to go through with this change?</string>
     <string name="Confirm">Confirm</string>

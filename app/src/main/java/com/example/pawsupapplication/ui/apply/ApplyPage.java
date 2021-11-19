@@ -29,6 +29,7 @@ public class ApplyPage extends AppCompatActivity {
     protected EditText description;
     protected EditText price;
     protected EditText email;
+    protected EditText picture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ApplyPage extends AppCompatActivity {
         description =  findViewById(R.id.description);
         price = findViewById(R.id.price);
         email  = findViewById(R.id.email);
+        picture = findViewById(R.id.picture);
         TextView Apply = findViewById(R.id.apply);
         DAO db = new DAO(ApplyPage.this);
         Apply.setOnClickListener(new View.OnClickListener(){
@@ -55,7 +57,7 @@ public class ApplyPage extends AppCompatActivity {
                                     description.getText().toString(),
                                     address.getText().toString(),
                                     price.getText().toString(),
-                                    R.drawable.food1);
+                                    picture.getText().toString());
                             db.addService(ser);
                             db.setFlagByEmail(key);
                             b = true;

@@ -81,12 +81,12 @@ public interface Service {
      * Get the service picture address
      * @return the picture address in a string
      */
-    public Integer getServicePicture();
+    public String getServicePicture();
 
     /**
      * Set the address of service picture
      * @param servicePicture the picture address
      */
-    public void setServicePicture(Integer servicePicture);
+    public void setServicePicture(String servicePicture);
 
 }
