@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -114,6 +115,18 @@ public class ServiceDetails extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void goToContact(View v) {
+        if (ID==null){
+            Toast.makeText(getApplicationContext(), "You must be signed in to contact a service provider", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Intent i = new Intent(this, SendMessageActivity.class);
+            i.putExtra("userEmail", ID);
+            i.putExtra("userId", userId);
+            i.putExtra("prodName", name);
+            startActivity(i);
+        }
+    }
 /*
     //Give toast and return to services if yes
     public void deleteService(View view){
