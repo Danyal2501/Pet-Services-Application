@@ -81,7 +81,7 @@
     Change Password
      -->
     <TextView
-        android:id="@+id/pets"
+        android:id="@+id/password"
         android:layout_width="119dp"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
@@ -108,7 +108,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/numPets"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pets"
+        app:layout_constraintStart_toEndOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/changephone" />
 
     <!--

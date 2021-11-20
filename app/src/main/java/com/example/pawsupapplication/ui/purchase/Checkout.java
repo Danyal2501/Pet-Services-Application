@@ -47,6 +47,8 @@ public class Checkout extends AppCompatActivity {
 
     public double iterateMap(Map mp, DAO dao) {
         double sum = 0.00;
+        ArrayList<String> arrInfo = new ArrayList<>();
+        ArrayList<String> arrPic = new ArrayList<>();
         if(mp.isEmpty()) {
             return sum;
         }
@@ -61,15 +63,15 @@ public class Checkout extends AppCompatActivity {
                 } catch (Exception e) {
                     System.out.println("Exception: " + e);
                 }
-                ArrayList<String> arrInfo = new ArrayList<>();
-                ArrayList<String> arrPic = new ArrayList<>();
+                //ArrayList<String> arrInfo = new ArrayList<>();
+                //ArrayList<String> arrPic = new ArrayList<>();
                 String info = "Provider: " + item.get(0) + "\nService: " + item.get(1) +
                         "\nPrice $: " + item.get(4) + "\nLocation: " + item.get(3) + "\nDescription: " + item.get(2);
                 arrInfo.add(info);
                 arrPic.add(item.get(6));
-                HistoryAdapter a = new HistoryAdapter(this, arrInfo.toArray(), arrPic.toArray());
-                ListView transaction = (ListView) findViewById(R.id.services_to_buy);
-                transaction.setAdapter(a);
+                //HistoryAdapter a = new HistoryAdapter(this, arrInfo.toArray(), arrPic.toArray());
+                //ListView transaction = (ListView) findViewById(R.id.services_to_buy);
+                //transaction.setAdapter(a);
             }else if (!dao.getPurchasedProduct(pair.getKey().toString()).isEmpty()){
                 item = dao.getPurchasedProduct(pair.getKey().toString());
                 try {
@@ -77,18 +79,21 @@ public class Checkout extends AppCompatActivity {
                 } catch (Exception e) {
                     System.out.println("Exception: " + e);
                 }
-                ArrayList<String> arrInfo = new ArrayList<>();
-                ArrayList<String> arrPic = new ArrayList<>();
+                //ArrayList<String> arrInfo = new ArrayList<>();
+                //ArrayList<String> arrPic = new ArrayList<>();
                 String info = "Product: " + item.get(0) +
                         "\nPrice $: " + item.get(2) + "\nQuantity: " + item.get(1) + "\nRating: " + item.get(3);
                 arrInfo.add(info);
                 arrPic.add(item.get(4));
-                HistoryAdapter a = new HistoryAdapter(this, arrInfo.toArray(), arrPic.toArray());
-                ListView transaction = (ListView) findViewById(R.id.services_to_buy);
-                transaction.setAdapter(a);
+                //HistoryAdapter a = new HistoryAdapter(this, arrInfo.toArray(), arrPic.toArray());
+                //ListView transaction = (ListView) findViewById(R.id.services_to_buy);
+                //transaction.setAdapter(a);
             }
             it.remove(); // avoids a ConcurrentModificationException
         }
+        HistoryAdapter a = new HistoryAdapter(this, arrInfo.toArray(), arrPic.toArray());
+        ListView transaction = (ListView) findViewById(R.id.services_to_buy);
+        transaction.setAdapter(a);
         return (Math.round(sum*100.0)/100.0);
     }
 
@@ -96,6 +101,10 @@ public class Checkout extends AppCompatActivity {
         Intent startIntent = new Intent(getApplicationContext(), PurchaseDetail.class);
         startIntent.putExtra("userEmail", userEmail);
         startActivity(startIntent);
+    }
+
+    public void backToPreviousPage(View view) {
+        finish();
     }
 
 }
