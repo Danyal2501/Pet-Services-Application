@@ -8,7 +8,7 @@ The purpose of Pawsup is to provide a method for pet owners and service provider
 
 ## Installation:
 
-Front End: Android Studios
+Front End: Android Studios, XML
 
 Back End: Android Studios, Java
 
