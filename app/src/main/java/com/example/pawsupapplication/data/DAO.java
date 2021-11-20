@@ -718,4 +718,19 @@ public class DAO extends SQLiteOpenHelper {
         return (report != -1);
     }
 
+    public String getUserByID(String userID){
+        ArrayList<String> cards = new ArrayList<>();
+        String q = "Select * From USER_TABLE Where Id = \"" + userID + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(q, null);
+        String email="empty";
+        if(cursor.moveToFirst()){
+            email = cursor.getString(1);
+        }
+
+        cursor.close();
+        db.close();
+        return email;
+    }
+
 }

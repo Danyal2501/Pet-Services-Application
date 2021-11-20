@@ -5,6 +5,6 @@ package com.example.pawsupapplication.ui.login;
  * @author Danyal Rana
  */
 public class PawsupEmail {
-    protected static final String sendEmail="pawsupincapp@gmail.com";
-    protected static final String sendPassword="Pawsup12!";
+    public static final String sendEmail="pawsupincapp@gmail.com";
+    public static final String sendPassword="Pawsup12!";
 }
