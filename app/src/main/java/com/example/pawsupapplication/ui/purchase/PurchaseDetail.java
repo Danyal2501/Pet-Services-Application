@@ -44,9 +44,13 @@ public class PurchaseDetail extends AppCompatActivity {
     }
 
     public void toPayments(View view) {
-        Intent startIntent = new Intent(getApplicationContext(), PurchaseDetail.class);
+        Intent startIntent = new Intent(getApplicationContext(), Payment.class);
         startIntent.putExtra("userEmail", userEmail);
         startActivity(startIntent);
+    }
+
+    public void backToPreviousPage(View view) {
+        finish();
     }
 
 }

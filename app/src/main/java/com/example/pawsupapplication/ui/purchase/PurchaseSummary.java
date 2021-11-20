@@ -95,4 +95,8 @@ public class PurchaseSummary extends AppCompatActivity {
         startIntent.putExtra("userEmail", userEmail);
     }
 
+    public void backToPreviousPage(View view) {
+        finish();
+    }
+
 }

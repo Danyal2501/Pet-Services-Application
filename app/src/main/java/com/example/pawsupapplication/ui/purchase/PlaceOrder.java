@@ -50,4 +50,8 @@ public class PlaceOrder extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void backToPreviousPage(View view) {
+        finish();
+    }
+
 }
