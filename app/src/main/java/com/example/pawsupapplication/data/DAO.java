@@ -194,6 +194,34 @@ public class DAO extends SQLiteOpenHelper {
         return (report != -1);
     }
 
+    public boolean removeProduct(String id){
+        String q = "Delete From PRODUCT_TABLE Where ProductID =\"" + id + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(q);
+
+        Cursor c = db.rawQuery(q, null);
+        System.out.println(c.moveToFirst());
+        if(c.moveToFirst()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void editProduct(String id, String name, String quantity, String price, String picture){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String q1 = "UPDATE PRODUCT_TABLE SET Name =\"" + name + "\" Where ProductID =\"" + id + "\"";
+        String q2 = "UPDATE PRODUCT_TABLE SET Quantity =\"" + quantity + "\" Where ProductID =\"" + id + "\"";
+        String q3 = "UPDATE PRODUCT_TABLE SET Price =\"" + price + "\" Where ProductID =\"" + id + "\"";
+        String q4 = "UPDATE PRODUCT_TABLE SET Picture =\"" + picture + "\" Where ProductID =\"" + id + "\"";
+        db.execSQL(q1);
+        db.execSQL(q2);
+        db.execSQL(q3);
+        db.execSQL(q4);
+        db.close();
+    }
+
     public Map<String,Integer> getPurchases(String email){
         Map<String,Integer> purchased = new HashMap<>();
         String q = "Select * From PURCHASE_TABLE";
@@ -436,7 +464,7 @@ public class DAO extends SQLiteOpenHelper {
     }
 
     public void setFlagByEmail(String email){
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         String setTableStatement = "UPDATE USER_TABLE SET flag='0' WHERE email = \"" + email + "\"";
         db.execSQL(setTableStatement);
         db.close();
