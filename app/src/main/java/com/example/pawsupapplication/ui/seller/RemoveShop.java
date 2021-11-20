@@ -17,6 +17,7 @@ import com.example.pawsupapplication.R;
 import com.example.pawsupapplication.ui.*;
 import com.example.pawsupapplication.data.model.service.*;
 import com.example.pawsupapplication.data.DAO;
+import com.example.pawsupapplication.user.SellerActivity;
 
 
 import java.math.BigDecimal;
@@ -39,7 +40,7 @@ public class RemoveShop extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, SellerActivity.class));
     }
 }
 

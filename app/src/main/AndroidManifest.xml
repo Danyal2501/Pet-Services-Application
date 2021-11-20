@@ -111,6 +111,9 @@
             android:name=".ui.seller.RemoveShop"
             android:exported="true" />
         <activity
+            android:name=".ui.seller.CustomizeProduct"
+            android:exported="true" />
+        <activity
             android:name=".ui.services.ServiceDetails"
             android:exported="true" />
         <activity

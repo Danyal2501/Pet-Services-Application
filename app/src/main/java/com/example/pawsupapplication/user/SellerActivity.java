@@ -25,13 +25,11 @@ public class SellerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_seller);
-        userEmail = getIntent().getStringExtra("userEmail");
     }
 
     // ADD Button
     public void addShopService(View v){
         Intent i = new Intent(this, AddShop.class);
-        i.putExtra("userEmail", userEmail);
         startActivity(i);
     }
 
