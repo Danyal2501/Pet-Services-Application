@@ -22,7 +22,7 @@
 
     Your Mark: _ 
 
-  Planning Meetings Total Mark: _ / 4
+  Planning Meetings Total Mark: _4 / 4
 
 ---
 ## Daily Stand-ups (max 10 marks)
@@ -42,7 +42,7 @@
     - 1 mark  = At least 2 group members or more have not sent their updates or is low-quality
     - 0 marks = At least 3 group members or more have not sent their updates or is low-quality
 
-  Daily Stand-ups Total Mark: __ / 10
+  Daily Stand-ups Total Mark: _10_ / 10
 
 ---
 ## User Stories (Tracked in Jira) (max 10 marks) 
@@ -81,7 +81,7 @@
 
     Your Mark: _ 
 
-  User Stories Total Mark: __ / 10
+  User Stories Total Mark: _10_ / 10
 
 ---
 ## Tracking on Jira  (max 24 marks) 
@@ -128,7 +128,7 @@
     - 1 mark  = one or more commit messages do not begin with the ticket number of the task followed by a short description of commit changes
     - 0 marks = majority of commit message do not begin with the ticket number of the task followed by a short description of commit changes
   
-    Your Mark: _
+    Your Mark: _1 commit message is unclear 'add files via upload'
     
   - Tasks Distribution (max 3 marks)
     - 3 marks = every team member had at least one task assigned and completed
@@ -159,7 +159,7 @@
 
     Your Mark: _
 
-Tracking on Jira Total Mark: __ / 24
+Tracking on Jira Total Mark: _23_ / 24
 
 ---
 ## Sprint Completion (Max 20 marks) 
@@ -169,7 +169,7 @@ Tracking on Jira Total Mark: __ / 24
   - Started stories that are incomplete will be counted
   - Mark Breakdown: [x = Percentage of story points completed * 20]
 
-  Your Mark: __ / 20
+  Your Mark: __20 / 20
 
 ---
 ## System Design (PDF or MD file or another suitable format) (max 10 marks) 
@@ -202,7 +202,7 @@ Tracking on Jira Total Mark: __ / 24
 
     Your Mark: _
 
-  System Design Total: __ / 10  
+  System Design Total: _10_ / 10  
 
 ---
 
@@ -210,7 +210,7 @@ Tracking on Jira Total Mark: __ / 24
 	- 1 mark = documentation is updated, is concise & informative for contributors
   - 0 marks = documentation has not been updated or is unclear & not maintained properly
    
-  Your Mark: __ / 1
+  Your Mark: _1_ / 1
 
 ---
 
@@ -244,4 +244,4 @@ Tracking on Jira Total Mark: __ / 24
 
 ## Total Mark
 
-__ / 93
+_88_ / 93
